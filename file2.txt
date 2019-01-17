@@ -1,0 +1,7 @@
+{
+    "Apple": "A type of fruit",
+    "Ball": [
+        "A spherical object.",
+        "A dance party."
+    ]
+}
