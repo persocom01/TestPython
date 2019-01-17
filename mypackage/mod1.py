@@ -3,5 +3,3 @@ def question(x):
 
 def reply(x):
     print('no thank you, ' + x)
-
-#
