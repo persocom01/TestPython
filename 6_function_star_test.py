@@ -5,6 +5,8 @@ from inspect import signature
 # ': str' and '-> str' are annotations.
 # They specify what data types the function takes in and what it returns respectively.
 # In this case, the function doesn't actually return anything, but annotations have effect on running the function.
+
+
 def creature(kind, *args: str, HP=1, Atk, **kwargs) -> int:
     print('Name:', kind)
     # Counts if any optional positional arguments are given.
@@ -30,9 +32,10 @@ def creature(kind, *args: str, HP=1, Atk, **kwargs) -> int:
             count += 1
     print('No default =', count)
 
+
 # Demonstrates uses of list/tuple as optional argument input.
 description = ['A creature of the woods.',
-        'Prefers ranged attacks.',]
+               'Prefers ranged attacks.', ]
 
 # Demonstrates uses of dictionary as optional keyword argument input.
 itemlist = ['Herb', 'Bow']
@@ -42,4 +45,4 @@ itemlist.sort()
 itemdic = {'item' + str(itemlist.index(item)+1) + ':': item for item in itemlist}
 
 creature('Elf', *description,
-        HP=100, Atk=10, **itemdic)
+         HP=100, Atk=10, **itemdic)

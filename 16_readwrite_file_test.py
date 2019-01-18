@@ -10,17 +10,17 @@ with open('file.txt', 'r') as f:
     print(f.read())
 
 # Demonstrates use of readline to read individual lines.
-# The b mode is necessary for use of most seek methods other than 0 mode to work.
+# The b mode is necessary for use of most seek methods other than 0 to work.
 with open('file.txt', 'rb') as f:
     print(f.readline())
     print(f.readline())
-    # Demonstrates use of tell to read current position and seek to goto a position.
+    # Demonstrates use of tell to read position and seek to goto position.
     print(f.tell())
     # For the second argument, 0=from beginning, 1=from current, 2=from end.
     print(f.seek(-8, 2))
     print(f.readline())
 
-# Functionally idential to repeating readline() if you want all lines to be read.
+# Functionally idential to repeating readline() if you read all lines.
 # readlines() returns a list of lines. Alternatively, use list(f).
 with open('file.txt', 'r') as f:
     for line in f.readlines():

@@ -1,4 +1,6 @@
 # Demonstrates various function methods.
+from collections import deque
+
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple']
 
 print(fruits.count('apple'))
@@ -21,9 +23,8 @@ print(fruits.pop())
 print('pop:', fruits)
 print()
 
-# Imports a type of list where append and pop functions can be applied to the beginning.
-from collections import deque
-
+# Imports a type of list where append and pop functions can be applied to the
+# beginning.
 enemies = deque(['Orc', 'Goblin', 'Catapult'])
 
 enemies.appendleft('Slime')

@@ -8,7 +8,7 @@ for x, y in reversed(months_2018):
 for y, x in enumerate(months_2018):
     print(y, x)
 
-# Demonstrate typical use of enumerate, in this case starting from 1 instead of 0.
+# Demonstrate typical use of enumerate, in this case starting from 1.
 numbered = dict(enumerate(months_2018, 1))
 print(numbered)
 

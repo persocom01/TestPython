@@ -7,6 +7,8 @@ def interface():
     print(mutablefunc(2))
 
 # Demonstrates use of default values.
+
+
 def passwordfunc(password, retries=1, tryagain='Please try again', fail='No more tries left'):
     while retries > 0:
         userinput = input('Please enter the password')
@@ -21,8 +23,11 @@ def passwordfunc(password, retries=1, tryagain='Please try again', fail='No more
                 print(fail)
 
 # Demonstrates how objects used as default values can be changed during the same instance.
+
+
 def mutablefunc(a, L=[]):
     L.append(a)
     return L
+
 
 interface()

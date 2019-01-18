@@ -9,8 +9,9 @@ def compare(x, y):
     except TypeError:
         print(x, 'cannot be compared to', y)
 
+
 list1 = [x for x in range(3)]
-list2 = [0.0, 1, 2.0,]
+list2 = [0.0, 1, 2.0, ]
 tuple1 = (0, 1, 2,)
 letter1 = ['ABC']
 letter2 = ['abc']

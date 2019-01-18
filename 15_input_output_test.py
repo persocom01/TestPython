@@ -10,21 +10,25 @@ print(f'{year:<10} ==> {event:>10}')
 participants = 1234567
 prior_year = 987654
 change = (participants - prior_year) / prior_year
-# Possible to leave out 0 and 1 positional indicators in this case since arguments are in the same order.
+# Possible to leave out 0 and 1 positional indicators in this case since
+# the arguments are in the same order.
 # + indicates that the sign will be displaced whether the figure is +ve or -ve.
 # Alternative is ' ' (space) for leading space for +ve values.
 # Default is -.
 print('This year, there was a {0:+2.2%} change in particpants '
-'represented by {1:,} people.'
-.format(change, abs(participants - prior_year), ))
+      'represented by {1:,} people.'
+      .format(change, abs(participants - prior_year), ))
 
 # A dictionary can be used to pass keyword arguments to the functionself.
 # Keywords cannot be numerical.
 franchises = {'AL': 2521, 'KC': 35123, 'FGO': 92346}
-# This step is actually completely unnecessary since the print statement demonstrates format by keywords.
+# This step is actually completely unnecessary since the print statement
+# demonstrates format by keywords.
 # What it does though, is rearranges the dictionary in order of largest value.
-franchises = {x : franchises[x] for x in sorted(franchises, key=franchises.__getitem__)}
-print('The top three franchise turnouts for  were {FGO:,}, {KC:,} and {AL:,}\n'.format(**franchises))
+franchises = {x: franchises[x] for x in sorted(
+    franchises, key=franchises.__getitem__)}
+print('The top three franchise turnouts for  were'
+      ' {FGO:,}, {KC:,} and {AL:,}\n'.format(**franchises))
 
 # Demonstrates use of vars, which returns a dictionary of all local variables.
 print(vars())

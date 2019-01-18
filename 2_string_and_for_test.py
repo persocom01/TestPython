@@ -1,9 +1,11 @@
 texts = []
 
-# Demonstrates \used to escape special characters as well as addition and multiplication.
+# Demonstrates \used to escape special characters as well as addition and
+# multiplication.
 texts = texts + ['spam said ' + 2*'\'eggs\'']
 
-# Demonstrates r used to indicate rawtext as well as quoted string autojoin. Often used with regex.
+# Demonstrates r used to indicate rawtext as well as quoted string autojoin.
+# Often used with regex.
 texts.append(
     r'^spam\s[a-z]{3}'
     r'\seggs?')
@@ -20,7 +22,7 @@ for t in texts:
 
 # Demonstrates different ways to slice a string.
 slicetext = 'spam and eggs'
-slices = [5, -7, len(slicetext) - 6, slice(0,8)]
+slices = [5, -7, len(slicetext) - 6, slice(0, 8)]
 
 for s in slices:
     print(slicetext[s])
@@ -30,7 +32,8 @@ inserttext = ['spam ', 'and ', 'eggs']
 for i in inserttext:
     if 'spam' in i:
         # If the code order is switched it doesn't work.
-        # If the string inserted ahead of the searched string contains the searched string, it results in an infinite loop.
+        # If the string inserted ahead of the searched string contains the
+        # searched string, it results in an infinite loop.
         inserttext.insert(inserttext.index(i) + 1, 'ham ')
         inserttext[inserttext.index(i)] = 'spam, '
 print(*inserttext, sep='')
