@@ -1,0 +1,10 @@
+{
+    "Kuro": [
+        "M",
+        "Black"
+    ],
+    "Shiro": [
+        "F",
+        "White"
+    ]
+}
