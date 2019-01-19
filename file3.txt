@@ -1,10 +1,10 @@
 [
-    [
-        "M",
-        "Black"
-    ],
-    [
-        "F",
-        "White"
-    ]
+    {
+        "color": "Black",
+        "sex": "M"
+    },
+    {
+        "color": "White",
+        "sex": "F"
+    }
 ]

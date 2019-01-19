@@ -3,7 +3,7 @@ import cerberus
 import requests
 
 # Write data to file.
-list1 = [['M', 'Black'], ['F', 'White']]
+list1 = [{'sex': 'M', 'color': 'Black'}, {'sex': 'F', 'color': 'White'}]
 with open('file3.txt', 'w') as f:
     json.dump(list1, f, sort_keys=True, indent=4, ensure_ascii=False)
 
