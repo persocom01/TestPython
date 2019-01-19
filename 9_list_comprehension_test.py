@@ -28,7 +28,7 @@ def is_prime(n):
 
 
 # Demonstrates filtering of list using function.
-odd = [x for x in odd if is_prime(x) == True]
+odd = [x for x in odd if is_prime(x)]
 print(odd)
 
 

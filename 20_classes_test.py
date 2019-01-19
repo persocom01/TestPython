@@ -3,15 +3,23 @@ import cerberus
 import requests
 
 # Write data to file.
-dic = {'Kuro': ['M', 'Black'], 'Shiro': ['F', 'White']}
+list1 = [['M', 'Black'], ['F', 'White']]
 with open('file3.txt', 'w') as f:
-    json.dump(dic, f, sort_keys=True, indent=4, ensure_ascii=False)
+    json.dump(list1, f, sort_keys=True, indent=4, ensure_ascii=False)
 
 r = requests.get(
     'https://raw.githubusercontent.com/persocom01/TestPython/master/file3.txt')
 
-print(r)
-#
+list2 = json.loads(r.text)
+
+schema = {
+    'sex': {'type': 'string', 'allowed': ['M', 'F']}
+}
+v = cerberus.Validator(schema)
+
+for key in list2:
+    print(v.validate(list2[key]))
+
 # class Animal:
 #     def __init__(self, sex='', color=''):
 #         self.sex = sex
@@ -25,8 +33,3 @@ print(r)
 # Kuro.sound()
 # print(Kuro.sex)
 #
-# schema = {
-#     'sex': {'type': 'string', 'allowed': ['M', 'F']}
-#     }
-# v = cerberus.Validator(schema)
-# print(v.validate(Kuro.sex))
