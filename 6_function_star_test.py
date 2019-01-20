@@ -3,8 +3,9 @@ from inspect import signature
 
 # Demonstrates use of optional postional and keyword arguments
 # ': str' and '-> str' are annotations.
-# They specify what data types the function takes in and what it returns respectively.
-# In this case, the function doesn't actually return anything, but annotations have effect on running the function.
+# They specify what data types the function takes in and what it returns.
+# In this case, the function doesn't actually return anything,
+# but annotations have effect on running the function.
 
 
 def creature(kind, *args: str, HP=1, Atk, **kwargs) -> int:
@@ -24,7 +25,7 @@ def creature(kind, *args: str, HP=1, Atk, **kwargs) -> int:
         print('Total items:', len(kwargs))
     # Alternative way to counts arguments.
     # The difference is more complicated specifications can be given.
-    # In this case it counts number of keyword arguments without default values.
+    # In this case it counts the # of keyword arguments without default values.
     sig = signature(creature)
     count = 0
     for param in sig.parameters.values():
@@ -42,7 +43,8 @@ itemlist = ['Herb', 'Bow']
 # Sorts list in alphabetical order.
 itemlist.sort()
 # Creates dictionary.
-itemdic = {'item' + str(itemlist.index(item)+1) + ':': item for item in itemlist}
+itemdic = {'item' + str(itemlist.index(item)+1) +
+           ':': item for item in itemlist}
 
 creature('Elf', *description,
          HP=100, Atk=10, **itemdic)

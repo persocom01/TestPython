@@ -6,6 +6,7 @@ __all__ = ['greeting', ]
 __version__ = '1.0'
 __author__ = 'user'
 
+
 def greeting(x):
     mymodule1.greeting(x)
     print('how are you?')

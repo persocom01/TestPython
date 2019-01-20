@@ -1,10 +1,12 @@
 [
     {
-        "color": "Black",
-        "sex": "M"
+        "Name": "Kuro",
+        "sex": "M",
+        "color": "Black"
     },
     {
-        "color": "White",
-        "sex": "F"
+        "Name": "Shiro",
+        "sex": "F",
+        "color": "White"
     }
 ]

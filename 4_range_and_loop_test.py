@@ -15,15 +15,19 @@ print(rangelist, '\n')
 
 searchtext = ['a', 'litte']
 
-# Changing the searchtext array gives insight as to how python iterates the search.
+# Changing the searchtext array gives insight as to how python iterates the
+# search.
 for t in range(len(texts)):
     for s in range(len(searchtext)):
         if searchtext[s] == texts[t]:
             print('mary\'s friend')
-            # break breaks the innermost loop. In this case the outer loop still runs 5 times,
-            # but break makes this loop only work once even if multiple searchtext are correct.
+            # break breaks the innermost loop. In this case the outer loop
+            # still runs 5 times,
+            # but break makes this loop only work once even if multiple
+            # searchtext are correct.
             break
-    # This else is for the for loop and executes so long as break does not execute.
+    # This else is for the for loop and executes so long as break does not
+    # execute.
     else:
         print('checking for lambs...')
     if t < len(texts) - 1:
