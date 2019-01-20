@@ -10,7 +10,7 @@ for y, x in enumerate(months_2018):
 
 # Demonstrate typical use of enumerate, in this case starting from 1.
 numbered = dict(enumerate(months_2018, 1))
-print(numbered)
+print(numbered, '\n')
 
 # Demonstrates use zip function to link two lists together.
 questions = ['age', 'sex']
@@ -26,4 +26,13 @@ print(q_and_a)
 # Reverse zip.
 questions, answers = zip(*q_and_a)
 print(questions)
-print(answers)
+print(answers, '\n')
+
+# Demonstrates practical use of zip to collect values under the same key.
+key = ['a', 'b', 'a']
+value = [1, 2, 3]
+dict = {}
+for k, v in zip(key, value):
+    dict.setdefault(k, []).append(v)
+
+print(dict)
