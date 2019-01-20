@@ -28,13 +28,17 @@ for key in list2:
         print(v.errors)
 
 # Demonstrates creation of class.
+# In this case a dictionary is used to set instance attributes.
 
 
 class Animal:
-    def __init__(self, name='', sex='', color=''):
-        self.name = name
-        self.sex = sex
-        self.color = color
+    def __init__(self, dictionary):
+        self.trick = []
+        for k, v in dictionary.items():
+            setattr(self, k, v)
+
+    def add_trick(self, trick):
+        self.trick.append(trick)
 
 # Demonstrates creation of subclass
 
@@ -44,10 +48,8 @@ class Cat(Animal):
         print('Meow')
 
 
-# for i, dic in enumerate(list2):
-#     exec 'cat%s=Cat(dic['name'], dic['sex'], dic['color'], )' % i
-
-# Kuro = Cat(**list2[0])
-# Kuro.sound()
-# print(Kuro.sex)
-# print(Kuro.color)
+Kuro = Cat(list2[0])
+Kuro.add_trick('claw rush')
+Kuro.sound()
+print(Kuro.name, Kuro.sex, Kuro.color)
+print(Kuro.trick)

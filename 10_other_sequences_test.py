@@ -4,7 +4,7 @@ print(tuple)
 tuple = ('first',)
 print(tuple)
 tuple = 'first', 'second', 'third'
-print(tuple)
+print(tuple, '\n')
 
 # Demonstrates the use of sets, which have no duplicates.
 fruits1 = ['apple', 'apple', 'banana', ]
@@ -16,7 +16,7 @@ fruits2 = set(['apple', 'orange', ])
 print('Minus:', fruits1 - fruits2)
 print('Merge:', fruits1 | fruits2)
 print('And:', fruits1 & fruits2)
-print('Unique:', fruits1 ^ fruits2)
+print('Unique:', fruits1 ^ fruits2, '\n')
 
 # Demostrates use of dictionary.
 items = {'Weapon': 'Bow', 'Armor': 'Leather armor', }
@@ -47,3 +47,7 @@ print('Sort by values but return keys:', sort_by_values_but_return_keys)
 sort_by_function = sorted(
     items, key=(lambda x: 0 if 'a' in x else 1), reverse=True)
 print(sort_by_function)
+
+# items() is a useful function on dictionaries to turn key: value
+# into tuples.
+print(items.items())
