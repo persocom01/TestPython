@@ -23,6 +23,7 @@ for x, y in zip(questions, answers):
 q_and_a = list(zip(questions, answers))
 print(q_and_a)
 
+# Reverse zip.
 questions, answers = zip(*q_and_a)
 print(questions)
 print(answers)
