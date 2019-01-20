@@ -1,11 +1,11 @@
 [
     {
-        "Name": "Kuro",
+        "name": "Kuro",
         "sex": "M",
         "color": "Black"
     },
     {
-        "Name": "Shiro",
+        "name": "Shiro",
         "sex": "F",
         "color": "White"
     }

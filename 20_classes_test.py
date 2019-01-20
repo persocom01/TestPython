@@ -3,8 +3,8 @@ import cerberus
 import requests
 
 # Write data to file. Push it to github manually.
-list1 = [{'Name': 'Kuro', 'sex': 'M', 'color': 'Black'},
-         {'Name': 'Shiro', 'sex': 'F', 'color': 'White'}]
+list1 = [{'name': 'Kuro', 'sex': 'M', 'color': 'Black'},
+         {'name': 'Shiro', 'sex': 'F', 'color': 'White'}]
 with open('file3.txt', 'w') as f:
     json.dump(list1, f, sort_keys=False, indent=4, ensure_ascii=False)
 
@@ -47,7 +47,7 @@ class Cat(Animal):
 # for i, dic in enumerate(list2):
 #     exec 'cat%s=Cat(dic['name'], dic['sex'], dic['color'], )' % i
 
-Kuro = Cat(**list2[0])
-Kuro.sound()
-print(Kuro.sex)
-print(Kuro.color)
+# Kuro = Cat(**list2[0])
+# Kuro.sound()
+# print(Kuro.sex)
+# print(Kuro.color)
