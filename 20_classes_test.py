@@ -54,5 +54,5 @@ Kuro.sound()
 print(Kuro.name, Kuro.sex, Kuro.color)
 print(Kuro.trick)
 
-# It is also possible for a subclass to inherit from multiple classes,
-# but this is not covered here.
+# It is also possible for a subclass to inherit from multiple classes.
+# In those cases the leftmost superclass takes priority.
