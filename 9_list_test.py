@@ -8,8 +8,10 @@ print(fruits.index('apple'))
 # Find an instance of apple starting at index 2.
 print(fruits.index('apple', 2))
 
-fruits.reverse()
-print('Reverse:', fruits)
+# Demonstrates copy and reverse functions.
+fruits2 = fruits.copy()
+fruits2.reverse()
+print('Reverse:', fruits2)
 
 fruits.append('grape')
 fruits.extend(['mango', 'papaya'])

@@ -34,3 +34,9 @@ for t in range(len(texts)):
         # continue skips the code below it and starts with the next iteration.
         continue
     print('end of check\n')
+
+# Demonstrates while loops.
+i = 3
+while i >= 0:
+    print(i)
+    i -= 1

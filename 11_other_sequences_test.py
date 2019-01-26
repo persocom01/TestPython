@@ -24,7 +24,9 @@ items = {'Weapon': 'Bow', 'Armor': 'Leather armor', }
 # items = dict([('Weapon', 'Bow'), ('Armor', 'Leather armor')])
 # items = dict(Weapon='Bow', Armor='Leather armor')
 items['Ammo'] = 'Arrows'
-print(items['Ammo'])
+# Demonstrates get function. A default value can be specified in case
+# the key does not exist.
+print(items.get('Ammo', 'No ammo.'))
 
 # It is not possible to directly sort a dictionary.
 # However, a new list can be generated with sorted values and a new dictionary
