@@ -1,5 +1,6 @@
 # Demonstrates various function methods.
 from collections import deque
+from functools import reduce
 
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple']
 
@@ -9,6 +10,8 @@ print(fruits.index('apple'))
 print(fruits.index('apple', 2))
 
 # Demonstrates copy and reverse functions.
+# The significance of copy() is that the value remains unchanged when the
+# original variable is modified.
 fruits2 = fruits.copy()
 fruits2.reverse()
 print('Reverse:', fruits2)
@@ -40,3 +43,18 @@ print('append:', enemies)
 print('You struck down the ' + enemies.popleft() + '.')
 print('You struck down the ' + enemies.popleft() + '.')
 print('Enemies left:', enemies)
+
+# Demonstrates 2d list.
+
+grid = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+]
+
+# Demonstrates looping through 2d list using a nested loop.
+for row in grid:
+    print(row)
+    for element in row:
+        avg = reduce(lambda x, y: (x + y)/2, row)
+    print(avg)
