@@ -42,7 +42,7 @@ enemies.appendleft('Slime')
 print('append:', enemies)
 print('You struck down the ' + enemies.popleft() + '.')
 print('You struck down the ' + enemies.popleft() + '.')
-print('Enemies left:', enemies)
+print('Enemies left:', enemies, '\n')
 
 # Demonstrates 2d list.
 
@@ -55,6 +55,7 @@ grid = [
 # Demonstrates looping through 2d list using a nested loop.
 for row in grid:
     print(row)
+    print('Sum:', sum(row))
     for element in row:
-        avg = reduce(lambda x, y: (x + y)/2, row)
-    print(avg)
+        mavg = reduce(lambda x, y: (x + y)/2, row)
+    print('Mavg:', mavg)
