@@ -18,3 +18,17 @@ print(min(5, 2), '\n')
 print(round(1.5))
 print(math.floor(1.7))
 print(math.ceil(1.2), '\n')
+
+# Compound assingment operators.
+y = 1
+y += 1
+y -= 1
+y *= 10
+y /= 2
+print('start:', y)
+y //= 2
+print('divide and floor:', y)
+y **= 2
+print('power:', y)
+y %= 2
+print('remainder:', y)
