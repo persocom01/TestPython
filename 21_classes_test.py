@@ -12,7 +12,7 @@ with open('file3.txt', 'w') as f:
 
 # Demonstrates use of requests to retrieve file online.
 r = requests.get(
-    'https://raw.githubusercontent.com/persocom01/TestPython/master/file3.txt')
+    'https://raw.githubusercontent.com/persocom01/TestPython/master/files/file3.txt')
 
 list2 = json.loads(r.text)
 

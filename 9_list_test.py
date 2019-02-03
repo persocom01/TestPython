@@ -32,7 +32,8 @@ print(fruits.pop())
 print('pop:', fruits)
 
 # Delates list.
-print(fruits.clear(), '\n')
+print(fruits.clear())
+print()
 
 # Imports a type of list where append and pop functions can be applied to the
 # beginning.
@@ -42,7 +43,8 @@ enemies.appendleft('Slime')
 print('append:', enemies)
 print('You struck down the ' + enemies.popleft() + '.')
 print('You struck down the ' + enemies.popleft() + '.')
-print('Enemies left:', enemies, '\n')
+print('Enemies left:', enemies)
+print()
 
 # Demonstrates 2d list.
 

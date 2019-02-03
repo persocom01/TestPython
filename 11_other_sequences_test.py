@@ -4,7 +4,8 @@ print(tuple)
 tuple = ('first',)
 print(tuple)
 tuple = 'first', 'second', 'third'
-print(tuple, '\n')
+print(tuple)
+print()
 
 # Demonstrates the use of sets, which have no duplicates.
 fruits1 = ['apple', 'apple', 'banana', ]
@@ -16,7 +17,8 @@ fruits2 = set(['apple', 'orange', ])
 print('Minus:', fruits1 - fruits2)
 print('Merge:', fruits1 | fruits2)
 print('And:', fruits1 & fruits2)
-print('Unique:', fruits1 ^ fruits2, '\n')
+print('Unique:', fruits1 ^ fruits2)
+print()
 
 # Demostrates use of dictionary.
 items = {'Weapon': 'Bow', 'Armor': 'Leather armor', }

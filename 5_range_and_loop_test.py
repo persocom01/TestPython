@@ -11,7 +11,8 @@ print(range(10))
 
 # Demonstrates the 4 parameters of the range argument, start, end and step.
 rangelist = [x for x in range(1, 3, 1)]
-print(rangelist, '\n')
+print(rangelist)
+print()
 
 searchtext = ['a', 'litte']
 
@@ -33,7 +34,8 @@ for t in range(len(texts)):
     if t < len(texts) - 1:
         # continue skips the code below it and starts with the next iteration.
         continue
-    print('end of check\n')
+    print('end of check')
+    print()
 
 # Demonstrates while loops.
 i = 3

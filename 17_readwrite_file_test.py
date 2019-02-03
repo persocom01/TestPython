@@ -34,7 +34,8 @@ try:
     for line in f:
         print(line, end='')
 finally:
-    print(f.closed, '\n')
+    print(f.closed)
+    print()
     f.close()
 
 # Demonstrates writing to a file.
