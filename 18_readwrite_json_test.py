@@ -1,7 +1,8 @@
 # Demonstrates writing files in json format, useful for complicated objects.
 import json
 import os
-os.chdir(os.getcwd() + r'\TestPython/')
+# print(os.getcwd())
+os.chdir(os.getcwd() + r'\files')
 
 # Returns string of json format.
 dic = {'Apple': 'A type of fruit',

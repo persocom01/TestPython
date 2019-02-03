@@ -1,6 +1,8 @@
+import os
 import json
 import cerberus
 import requests
+os.chdir(os.getcwd() + r'\files')
 
 # Write data to file. Push it to github manually.
 list1 = [{'name': 'Kuro', 'sex': 'M', 'color': 'Black'},

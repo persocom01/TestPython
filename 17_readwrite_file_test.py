@@ -1,8 +1,8 @@
 # Prints the default file directory.
 import os
-print(os.getcwd())
+# print(os.getcwd())
 # Changes default directory.
-os.chdir(os.getcwd() + r'\TestPython/')
+os.chdir(os.getcwd() + r'\files')
 
 # Using with automatically closes the file when done.
 # Otherwise, use of f.close() is needed or resources are wasted.

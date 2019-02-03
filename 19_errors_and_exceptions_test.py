@@ -1,6 +1,7 @@
 # Demonstrates error handling.
 import os
-os.chdir(os.getcwd() + r'\TestPython/')
+# print(os.getcwd())
+os.chdir(os.getcwd() + r'\files')
 
 # Demonstrates handling of multiple errors in a line using a tuple.
 # Is is also possible to write the tuple directly into the except statement
