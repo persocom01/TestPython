@@ -4,6 +4,7 @@ import shutil
 import glob
 import sys
 import re
+from urllib.request import urlopen
 
 # Current working directory.
 print(os.getcwd())
@@ -40,3 +41,10 @@ print(sys.argv, '\n')
 text = 'The quick brown fox jumps over the lazy dog.'
 words_containing_o = re.findall(r'\b\w*o[a-z]*', text)
 print(words_containing_o, '\n')
+
+# urllib is basically a worse version of requests.
+with urlopen('https://raw.githubusercontent.com/persocom01/TestPython/master/files/file3.txt') as response:
+    for line in response:
+        line = line.decode('utf-8')
+        if 'name' in line:
+            print(line)
