@@ -14,7 +14,8 @@ with open('file3.txt', 'w') as f:
 r = requests.get(
     'https://raw.githubusercontent.com/persocom01/TestPython/master/files/file3.txt')
 
-list2 = json.loads(r.text)
+# request module contains its own json decoder, so json.load isn't required.
+list2 = r.json(r.text)
 
 # Demonstrates use of cerberus validator.
 schema = {
