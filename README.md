@@ -1,6 +1,14 @@
 # TestPython
 
-Organized by topic whereby code is written to demonstrate use of python in the topic area.
+A python testing playground organized by topic in the python tutorial.
 
-External modules are managed using pipenv, which creates a virtual
-development environment. Pipenv is responsible for the pipfile.
+Workable code is written on each topic to demonstrate use of python in the topic area.
+
+## Installation
+
+pipenv was used to install some modules in this project. As such, there is a need to open it in a virtual development environment.
+
+I use the atom ide, and open this project by opening cmd in the project folder and typing:
+
+pipenv shell
+pipenv run atom
