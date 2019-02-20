@@ -7,6 +7,7 @@ import re
 import urllib.request
 import json
 from datetime import date
+import zlib
 
 # Current working directory.
 print(os.getcwd())
@@ -63,3 +64,5 @@ print(now.strftime(format))
 y2k = date(1999, 12, 31)
 time_since = now - y2k
 print(time_since.days)
+
+# Data compression.
