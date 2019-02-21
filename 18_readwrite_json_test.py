@@ -15,6 +15,8 @@ with open('file2.txt', 'w') as f:
     # Optional arguments help json file be human readable.
     json.dump(dic, f, sort_keys=True, indent=4, ensure_ascii=False)
 
+# Shows what the file looks like in json format. If being human readable
+# is not a necessity, use rb instead as it is faster.
 with open('file2.txt', 'r') as f:
     print(f.read())
 
