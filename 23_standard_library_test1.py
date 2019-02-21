@@ -7,7 +7,9 @@ import sys
 import re
 import urllib.request
 import json
-from datetime import date
+import datetime
+import timeit
+import doctest
 
 # Current working directory.
 print(os.getcwd())
@@ -30,7 +32,6 @@ os.system('del test.txt')
 
 # Suggested module for file and directory management.
 shutil.copyfile('file.txt', 'test.txt')
-
 # Makes file lists from wildcard searches.
 # Demonstrated here with data compression.
 print(glob.glob('*.txt'))
@@ -65,12 +66,52 @@ print(result)
 print()
 
 # Datetime manipulation.
-now = date.today()
+now = datetime.date.today()
 print(now)
-format = "%m-%d-%y. %d %b %Y is a %A on the %d day of %B."
+format = '%m-%d-%y. %d %b %Y is a %A on the %d day of %B.'
 print(now.strftime(format))
 # Calendar math YYYY, M, D format.
-y2k = date(1999, 12, 31)
+y2k = datetime.date(1999, 12, 31)
 time_since = now - y2k
 print(time_since.days)
 print()
+
+# Timing processes.
+zip_process = timeit.Timer(
+    stmt='zlib.compress(data, zlib.Z_BEST_COMPRESSION)',
+    setup='import zlib; data=open(\'file3.txt\', \'rb\').read()',
+)
+time_taken_in_microseconds = zip_process.timeit(1) * 10**6
+print('Time taken for 1 interation(s) =',
+      time_taken_in_microseconds, 'microseconds')
+# It is also possible to time simple statements.
+print(timeit.timeit('10**6', number=1000000))
+print()
+
+# doctest scans for and validates modules.
+# It allows you to put module tests in ''' comments '''.
+# The tests must be written in the below specific way,
+# with >>> module(input) indicating the module run with the result below.
+# Error results are written in the below specific way.
+
+
+def celcius_to_kelvin(x):
+    '''
+    >>> celcius_to_kelvin(1)
+    274.15
+    >>> celcius_to_kelvin(-500)
+    Traceback (most recent call last):
+        ...
+    ValueError: Temperature cannot be below -273.15 degrees Celcius.
+    '''
+
+    if x < -273.15:
+        raise ValueError(
+            'Temperature cannot be below -273.15 degrees Celcius.')
+    else:
+        return x + 273.15
+
+
+print(celcius_to_kelvin(1))
+print()
+print(doctest.testmod())
