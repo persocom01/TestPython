@@ -2,6 +2,7 @@
 import math
 import random
 import statistics
+import decimal
 
 # Absolute value.
 print(abs(-123))
@@ -55,3 +56,9 @@ data = [75, 25, 250, 50]
 print(statistics.mean(data))
 print(statistics.median(data))
 print(statistics.variance(data))
+print()
+
+# Demonstrates use of the decimal module for calcuations involving fractions
+# that give weird results in floating point.
+print(1.00 % 0.10)
+print(decimal.Decimal('1.00') % decimal.Decimal('.10'))

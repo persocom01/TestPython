@@ -1,3 +1,5 @@
+import string
+
 # Demonstrates various uses of f literal format string.
 year = 2018
 event = 'comiket'
@@ -37,3 +39,21 @@ print('{__name__}\n{year}\n{event}\n'.format(**vars()))
 # Demonstrates different ways to align a string.
 print(str(year).ljust(10, '_'), event.center(10, '_'), end=' ')
 print(str(participants).rjust(10, '_'))
+print()
+
+# Demonstrates use of templates in the string module.
+# $ is used as a placeholder. $$ is needed to display $ normally.
+t = string.Template('${animal}girls cost $$50 to $action.')
+print(t.substitute(animal='racoon', action='pet'))
+# safe substitute is used so incomplate arguments may be passed without error.
+print(t.safe_substitute(animal='racoon'))
+
+# The $ placeholder can be defined as something else.
+
+
+class BatchRename(string.Template):
+    delimiter = '?'
+
+
+t = BatchRename('?{animal}girls cost ??50 to ?action.')
+print(t.substitute(animal='racoon', action='pet'))

@@ -1,3 +1,4 @@
+# Demonstrates bsic if statement, as well as how to ask for input.
 x = int(input('Please enter an integer: '))
 
 if x == 0:
