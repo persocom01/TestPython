@@ -16,9 +16,15 @@ spam
 and
 eggs\
     ''')
-
 for t in texts:
     print(t, '\n')
+
+# Demonstrates use of the % operator to insert a %d int, %s string,
+# and %.*f a float with * decimal places.
+temperature_today = 'The temperature at %dpm in %s today was %.*f degrees Celcius.' % (
+    5, 'Singapore', 2, 30.4267)
+print(temperature_today)
+print()
 
 # Demonstrates different ways to slice a string.
 slice_text = 'spam and eggs'
