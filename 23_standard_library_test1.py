@@ -4,7 +4,6 @@ import shutil
 import glob
 import zlib
 import sys
-import re
 import urllib.request
 import json
 import datetime
@@ -52,12 +51,6 @@ print()
 print(sys.argv)
 print()
 # Usage of sys.argv will be demonstrated in mymodule1.py
-
-# Regular expression functions.
-text = 'The quick brown fox jumps over the lazy dog.'
-words_containing_o = re.findall(r'\b\w*o[a-z]*', text)
-print(words_containing_o)
-print()
 
 # urllib is basically a worse version of requests module.
 url = 'https://raw.githubusercontent.com/persocom01/TestPython/master/files/file3.txt'

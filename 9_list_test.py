@@ -1,6 +1,7 @@
 # Demonstrates various function methods.
 from collections import deque
 from functools import reduce
+import bisect
 
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple']
 
@@ -31,8 +32,15 @@ print('Sort:', fruits)
 print(fruits.pop())
 print('pop:', fruits)
 
+# Demonstrates use of bisect module to replace a delated key from a list.
+fruits_numbered = list(enumerate(fruits))
+key = 2
+del fruits_numbered[key]
+bisect.insort(fruits_numbered, (key, 'guava'))
+print(fruits_numbered)
+
 # Delates list.
-print(fruits.clear())
+fruits.clear()
 print()
 
 # Imports a type of list where append and pop functions can be applied to the
@@ -61,3 +69,4 @@ for row in grid:
     for element in row:
         mavg = reduce(lambda x, y: (x + y)/2, row)
     print('Mavg:', mavg)
+print()
