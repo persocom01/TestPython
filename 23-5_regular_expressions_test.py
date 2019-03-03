@@ -39,12 +39,16 @@ print()
 
 # Returns a list of strings of all matches. Explanation of re used below:
 # ? = 0-1. + = 1+. * = 0+.
-# \w means all letters. For other such shorthand use a re cheatsheet.
+# \b means word boundary. For other such shorthand use a re cheatsheet.
 # \. the . and some special characters must be escaped.
 # () denotes a capturing group. If used, findall will only return the contents
 # of said group. (?:) is used to make it non capturing.
+# [a-z] specifies all the possible characters accepted.
+# {min,max} specifies the min and max number of repitions of the previous char.
+# re.I is known as a flag. re.I ignores case. re.M makes it multiline.
+#  The divider is needed to pass multiple flags.
 website_names = re.findall(
-    r'https?://\w+\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.\w+)?', text)
+    r'\bhttps?://\w+\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
 pprint.pprint(website_names)
 
 # Demonstrates replacement searched string.
