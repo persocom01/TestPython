@@ -68,20 +68,21 @@ words_without_o = re.findall(r'\b[^o ]+\b', text, re.I | re.M)
 words_with_a_or_e = re.findall(r'\b(\w*a\w*|\w*e\w*)\b', text, re.I | re.M)
 print('words without o:', words_without_o)
 print('words with a or e:', words_with_a_or_e)
-
-# Demonstrates replacement searched string.
-altered_text = re.sub('dog', 'cat', text)
-print(altered_text)
 print()
 
-# Possible to use /w* instead of [a-z]* here if you don't mind words with
-# capitalized improperly.
-# .group() is necessary here as search does not return a string.
-# In this case, (o) was used to deliberately put o in group 1.
-# There is no practical reason to do this in this case, but you can retrieve
-# group 1 by using .group(1)
-# word_containing_o = re.search(r'\b\w?[a-z]*(o)[a-z]*', text).group()
-# words_containing_o = re.findall(r'\b\w?[a-z]*o[a-z]*', text)
-# print(word_containing_o)
-# print(words_containing_o)
-# print()
+# Demonstrates use of groups.
+# (?P<name>) is a named group.
+match = re.match(
+    r'The (quick) brown fox (jumps (over)) the (?P<name>lazy) dog\.', text)
+# 4 groups total.
+print(len(match.groups()))
+# You can call each group individually using match.group(1).
+# 1 can be a name if named groups were used.
+for group in match.groups():
+    print(group)
+# Demonstrates replacement of searched string as well as group indicators
+# \1 and \g<name> specifically.
+altered_text = re.sub(r'The (quick) brown fox (jumps (over)) the (?P<name>lazy) dog\.',
+                      r'The \g<name> brown fox jumps over the \1 dog.', text)
+print(altered_text)
+print()
