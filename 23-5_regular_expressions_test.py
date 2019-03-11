@@ -46,13 +46,31 @@ print()
 # [a-z] specifies all the possible characters accepted.
 # {min,max} specifies the min and max number of repitions of the previous char.
 # re.I is known as a flag. re.I ignores case. re.M makes it multiline.
-#  The divider is needed to pass multiple flags.
+# The divider is needed to pass multiple flags.
 website_names = re.findall(
     r'\bhttps?://\w+\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
+# Demonstrates use of negative lookahead to exclude www website names.
+# (?!www) ensures that https:// is NOT followed by www.
+# (?<!) is lookbehind. (?=) is positive lookahead.
+non_www_website_names = re.findall(
+    r'\bhttps?://(?:(?!www)\w+)\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
+print('websites:')
 pprint.pprint(website_names)
+print('non-www websites:')
+pprint.pprint(non_www_website_names)
+print()
+
+text = 'The quick brown fox jumps over the lazy dog.'
+
+# Demonstrates use of [^o ] to excude o and blankspace characters.
+words_without_o = re.findall(r'\b[^o ]+\b', text, re.I | re.M)
+# Demonstrates use of the or divider |.
+words_with_a_or_e = re.findall(r'\b(\w*a\w*|\w*e\w*)\b', text, re.I | re.M)
+print('words without o:', words_without_o)
+print('words with a or e:', words_with_a_or_e)
 
 # Demonstrates replacement searched string.
-altered_text = re.sub('facebook', 'tastebook', text)
+altered_text = re.sub('dog', 'cat', text)
 print(altered_text)
 print()
 
