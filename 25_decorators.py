@@ -3,18 +3,18 @@
 
 
 def amplify_input(old_function):
-    def new_function(x):
+    def decorated(x):
         return old_function(x*10)
-    return new_function
+    return decorated
 
 # Demonstrates how to pass arguments to decorators.
 
 
 def add_to_input(y):
     def add(old_function):
-        def new_function(x):
+        def decorated(x):
             return old_function(x + y)
-        return new_function
+        return decorated
     return add
 
 
