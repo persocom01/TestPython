@@ -2,29 +2,33 @@
 # Decorators are functions that modify and return other functions.
 
 
-def amplify(old_function):
+def amplify_input(old_function):
     def new_function(x):
         return old_function(x*10)
     return new_function
 
+# Demonstrates how to pass arguments to decorators.
 
-def addon(old_function):
-    def new_function(x):
-        return old_function(x+10)
-    return new_function
+
+def add_to_input(y):
+    def add(old_function):
+        def new_function(x):
+            return old_function(x + y)
+        return new_function
+    return add
 
 
 # @ is used above the function to modified.
-@amplify
+@amplify_input
 def times2(x):
     return x*2
 
 
 # You may even use multiple decorators.
-# In such case the higher decorators go first.
+# In such cases the higher decorators go first.
 # In this case, ((1 + 10) * 10) + 1 = 111
-@addon
-@amplify
+@add_to_input(10)
+@amplify_input
 def plus1(x):
     return x+1
 

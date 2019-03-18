@@ -1,6 +1,6 @@
-dic = {None: None}
+x = 1
 
-if dic[None]:
-    print(1)
+if isinstance(x, int):
+    print('true')
 else:
-    print(0)
+    print('false')

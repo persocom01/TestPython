@@ -25,8 +25,8 @@ def passwordfunc(password, retries=1, tryagain='Please try again',
 
 interface()
 
-# Demonstrates how objects used as default values can be changed during the
-# same instance.
+# Demonstrates how using mutable objects as arguments can be used to build
+# a function with a mutable result.
 
 
 def mutablefunc(a, L=[]):

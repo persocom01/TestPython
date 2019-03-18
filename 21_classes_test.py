@@ -18,6 +18,7 @@ r = requests.get(
 list2 = r.json(r.text)
 
 # Demonstrates use of cerberus validator.
+# If only the type needs to be validated, use isinstance(object, type) instead.
 schema = {
     'sex': {'type': 'string', 'allowed': ['M', 'F']}
 }
