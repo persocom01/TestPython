@@ -24,6 +24,7 @@ def time_all_class_methods(OldCls):
 
         # This is called whenever an attribute of ClassWrapper is accessed.
         # name is the name of the attribute accessed.
+        # Another method of interest is __call__ for when a function is called.
         def __getattribute__(self, name):
             # Tries to see if the attribute called actually exists.
             try:
