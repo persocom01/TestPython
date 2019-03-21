@@ -36,7 +36,7 @@ Suggested milestones for incremental development:
 """
 
 # Use if directory is incorrect.
-print(os.getcwd())
+# print(os.getcwd())
 os.chdir(os.getcwd() + r'\google-python-exercises\babynames')
 
 
@@ -48,8 +48,11 @@ def extract_names(filename):
     """
     with open(filename, 'r') as f:
         content = f.read()
-        # words_containing_o = re.findall(r'\b\w*o[a-z]*', content)
-    return content
+        year_match = re.search(r'Popularity in (\d{4})', content)
+        year = year_match.group(1)
+        names = re.findall(
+            r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', content)
+    return year, names
 
 
 print(extract_names('baby1990.html'))
