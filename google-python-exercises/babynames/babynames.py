@@ -52,10 +52,13 @@ def extract_names(filename):
         year = year_match.group(1)
         names = re.findall(
             r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', content)
-    return year, names
+        ranked_names = {name: rank for [rank, name, name2] in names}
+    return ranked_names
 
 
 print(extract_names('baby1990.html'))
+# x = extract_names('baby1990.html')
+# print(x[0])
 
 # def main():
 #     # This command-line parsing code is provided.

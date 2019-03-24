@@ -27,7 +27,7 @@ def is_prime(n):
     return True
 
 
-# Demonstrates filtering of list using function.
+# Demonstrates filtering of list using a function.
 odd = [x for x in odd if is_prime(x)]
 print(odd)
 
@@ -42,18 +42,22 @@ class C:
 odd = [C.and_double(x) for x in odd]
 print(odd)
 
+# Demonstrates using a list comprehension to generate a nested list.
+reversed_odd = [[y, x] for [x, y] in odd]
+print('Reversed:', reversed_odd)
+
 # Demonstrates transposition of nested lists.
 # zip is normally used on two seperate lists to make them one.
 odd = list(zip(*odd))
-print(odd)
+print('Zipped:', odd)
 
 # Demonstrates unpacking of zipped list.
 odd1, odd2, odd3 = zip(*odd)
-print(odd1, odd2, odd3)
+print('Unpacked:', odd1, odd2, odd3)
 
 # Demonstrates falttening of list.
-odd = [x for y in odd for x in y]
-print(odd)
+odd = [x for tuple in odd for x in tuple]
+print('Flat:', odd)
 
 # Demonstrates deletion of part of list.
 del odd[3:]
