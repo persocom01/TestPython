@@ -35,9 +35,10 @@ Suggested milestones for incremental development:
  -Fix main() to use the extract_names list
 """
 
-# Use if directory is incorrect.
+# Use for testing file in atom.
+# Comment out if running from cmd.
 # print(os.getcwd())
-os.chdir(os.getcwd() + r'\google-python-exercises\babynames')
+# os.chdir(os.getcwd() + r'\google-python-exercises\babynames')
 
 
 def extract_names(filename):
@@ -50,36 +51,52 @@ def extract_names(filename):
         content = f.read()
         year_match = re.search(r'Popularity in (\d{4})', content)
         year = year_match.group(1)
+        # Turns year into a list.
+        year = [year]
         names = re.findall(
             r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', content)
-        ranked_names = {name: rank for [rank, name, name2] in names}
-    return ranked_names
+        # Generates a list of boy_names-rank strings.
+        ranked_boy_names = [name + ' ' + str(rank)
+                            for [rank, name, name2] in names]
+        # Generates a list of girl_names-rank strings.
+        ranked_girl_names = [name2 + ' ' + str(rank)
+                             for [rank, name, name2] in names]
+        # Combines the two lists.
+        ranked_names = ranked_boy_names + ranked_girl_names
+        # Sorts them in alphabetical order.
+        ranked_names.sort()
+    return year + ranked_names
 
 
-print(extract_names('baby1990.html'))
-# x = extract_names('baby1990.html')
-# print(x[0])
+def main():
+    # This command-line parsing code is provided.
+    # Make a list of command line arguments, omitting the [0] element
+    # which is the script itself.
+    args = sys.argv[1:]
 
-# def main():
-#     # This command-line parsing code is provided.
-#     # Make a list of command line arguments, omitting the [0] element
-#     # which is the script itself.
-#     args = sys.argv[1:]
-#
-#     if not args:
-#         print 'usage: [--summaryfile] file [file ...]'
-#         sys.exit(1)
-#
-#     # Notice the summary flag and remove it from args if it is present.
-#     summary = False
-#     if args[0] == '--summaryfile':
-#         summary = True
-#         del args[0]
-#
-#     # +++your code here+++
-#     # For each filename, get the names, then either print the text output
-#     # or write it to a summary file
+    if not args:
+        print('usage: [--summaryfile] file [file ...]')
+        sys.exit(1)
+
+    # Notice the summary flag and remove it from args if it is present.
+    summary = False
+    if args[0] == '--summaryfile':
+        summary = True
+        del args[0]
+
+    # +++your code here+++
+    # For each filename, get the names, then either print the text output
+    # or write it to a summary file
+    for filename in args:
+        names = extract_names(filename)
+        output = '\n'.join(names)
+    if summary:
+        with open(filename + '_summary.txt', 'w') as f:
+            f.write(output)
+
+    else:
+        print(output)
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
