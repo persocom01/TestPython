@@ -40,15 +40,15 @@ def match_ends(words):
 def front_x(words):
     # Don't meddle with original list.
     x_list = []
-    new_list = []
+    other_list = []
     for word in words:
         if word[0] == 'x':
             x_list.append(word)
         else:
-            new_list.append(word)
+            other_list.append(word)
     x_list.sort()
-    new_list.sort()
-    x_list += new_list
+    other_list.sort()
+    x_list += other_list
     return x_list
 
 # C. sort_last

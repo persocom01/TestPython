@@ -43,6 +43,8 @@ for i in insert_text_list:
     if 'spam' in i:
         # If the string inserted ahead of the searched string contains the
         # searched string, it results in an infinite loop.
+        # That's why you generally just create a new list instead of
+        # Trying to modify existing ones.
         insert_text_list.insert(insert_text_list.index(i) + 1, 'ham')
 # Prints list without commas.
 print(*insert_text_list, '\n', sep=' ')
