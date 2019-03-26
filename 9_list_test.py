@@ -28,6 +28,16 @@ print('Remove:', fruits)
 fruits.sort()
 print('Sort:', fruits)
 
+# Demonstrates sorting using a function as key.
+
+
+def last_letter(x):
+    return x[-1]
+
+
+fruits.sort(key=last_letter)
+print('Sort by last letter:', fruits)
+
 # Removes last entry and returns it. Can be used with append to make a stack.
 print(fruits.pop())
 print('pop:', fruits)
