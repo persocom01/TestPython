@@ -3,8 +3,7 @@ texts = ['mary', 'had', 'a', 'little', 'lamb']
 # Normally better to use print(list(enumerate(texts))).
 for t in range(len(texts)):
     print(t, texts[t])
-    if t == len(texts) - 1:
-        print('')
+print()
 
 # Interesting results.
 print(range(10))

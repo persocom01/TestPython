@@ -6,8 +6,10 @@ os.chdir(os.getcwd() + r'\files')
 
 # Using with automatically closes the file when done.
 # Otherwise, use of f.close() is needed or resources are wasted.
+# .split() is used here to split file contents into a list.
+# For better splitting use regex.
 with open('file.txt', 'r') as f:
-    print(f.read())
+    print(f.read().split())
 
 # Demonstrates use of readline to read individual lines.
 # The b mode is necessary for use of most seek methods other than 0 to work.

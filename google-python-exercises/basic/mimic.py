@@ -43,29 +43,63 @@ columns, so the output looks better.
 
 import random
 import sys
+import os
+import re
+import pprint
+
+# Use for testing file in atom.
+# Comment out if running from cmd.
+# print(os.getcwd())
+# os.chdir(os.getcwd() + r'\google-python-exercises\basic')
 
 
 def mimic_dict(filename):
-  """Returns mimic dict mapping each word to list of words which follow it."""
-  # +++your code here+++
-  return
+    """Returns mimic dict mapping each word to list of words which follow it."""
+    dic = {}
+    with open(filename, 'r') as f:
+        text = f.read()
+        words = re.findall(r'\b\w+\b', text)
+        prev = ''
+        for word in words:
+            if prev not in dic:
+                dic[prev] = [word]
+            else:
+                dic[prev].append(word)
+            prev = word
+    return dic
+
+# Testing purposes.
+# print(mimic_dict('alice.txt'))
 
 
-def print_mimic(mimic_dict, word):
-  """Given mimic dict and start word, prints 200 random words."""
-  # +++your code here+++
-  return
+def print_mimic(mimic_dict, word=''):
+    """Given mimic dict and start word, prints 200 random words."""
+    prev = word
+    print_string = []
+    for i in range(200):
+        print_string.append(prev)
+        if prev not in mimic_dict:
+            next = random.choice(mimic_dict[''])
+        else:
+            next = random.choice(mimic_dict[prev])
+        prev = next
+    print(' '.join(print_string))
+    return
+
+
+# Testing purposes.
+# print_mimic(mimic_dict('alice.txt'), 'I')
 
 
 # Provided main(), calls mimic_dict() and mimic()
 def main():
-  if len(sys.argv) != 2:
-    print 'usage: ./mimic.py file-to-read'
-    sys.exit(1)
+    if len(sys.argv) != 2:
+        print('usage: ./mimic.py file-to-read')
+        sys.exit(1)
 
-  dict = mimic_dict(sys.argv[1])
-  print_mimic(dict, '')
+    dict = mimic_dict(sys.argv[1])
+    print_mimic(dict, '')
 
 
 if __name__ == '__main__':
-  main()
+    main()
