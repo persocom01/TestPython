@@ -29,6 +29,7 @@ fruits.sort()
 print('Sort:', fruits)
 
 # Demonstrates sorting using a function as key.
+# Alternatively, use key=lambda x: x[-1].
 
 
 def last_letter(x):

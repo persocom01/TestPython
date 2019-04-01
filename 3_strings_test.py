@@ -66,3 +66,6 @@ print(text.startswith('spam'), text.endswith('_'))
 print(text.replace('spam', 'eggs'))
 # Opposite of split.
 print(' '.join(insert_text_list))
+# Returns index of first instance of substring in string.
+# Returns -1 if substring is not found.
+print(text.find('eggs'))
