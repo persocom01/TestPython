@@ -15,6 +15,10 @@ print(os.getcwd())
 # Change working directory.
 # To go back up, use os.chdir('..').
 os.chdir(os.getcwd() + r'\files')
+# Lists all files and folders in a directory.
+print(os.listdir(os.getcwd()))
+# A common command that joins the directory path to the filename.
+print(os.path.abspath(os.path.join(os.getcwd(), 'test.txt')))
 # Runs commands in cmd. In this case returns working directory.
 # Other commands include mkdir (make directory) and rmdir.
 print(os.system('echo %cd%'))

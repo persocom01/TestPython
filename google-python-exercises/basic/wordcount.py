@@ -38,6 +38,13 @@ print_words() and print_top().
 """
 
 import sys
+import os
+import re
+
+# Use for testing file in atom.
+# Comment out if running from cmd.
+# print(os.getcwd())
+# os.chdir(os.getcwd() + r'\google-python-exercises\basic')
 
 # +++your code here+++
 # Define print_words(filename) and print_top(filename) functions.
@@ -45,24 +52,62 @@ import sys
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
-###
+
+def open_file(filename):
+    with open(filename, 'r') as f:
+        text = f.read()
+    words = re.findall(r'\b[a-z]+\b', text, re.I)
+    dic = {}
+    for word in words:
+        lowercase = word.lower()
+        if lowercase not in dic:
+            dic[lowercase] = 1
+        else:
+            dic[lowercase] += 1
+    return dic
+
+
+# print(open_file('small.txt'))
+
+
+def print_words(filename):
+    dic = open_file(filename)
+    sorted_keys = sorted(dic)
+    for key in sorted_keys:
+        print(key, dic[key])
+
+
+# print_words('small.txt')
+
+
+def print_top(filename):
+    dic = open_file(filename)
+    sorted_keys_by_value = sorted(dic, key=dic.__getitem__, reverse=True)
+    for key in sorted_keys_by_value[:20]:
+        print(key, dic[key])
+
+
+# print_top('alice.txt')
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
-def main():
-  if len(sys.argv) != 3:
-    print 'usage: ./wordcount.py {--count | --topcount} file'
-    sys.exit(1)
 
-  option = sys.argv[1]
-  filename = sys.argv[2]
-  if option == '--count':
-    print_words(filename)
-  elif option == '--topcount':
-    print_top(filename)
-  else:
-    print 'unknown option: ' + option
-    sys.exit(1)
+
+def main():
+    if len(sys.argv) != 3:
+        print('usage: ./wordcount.py {--count | --topcount} file')
+        sys.exit(1)
+
+    option = sys.argv[1]
+    filename = sys.argv[2]
+    if option == '--count':
+        print_words(filename)
+    elif option == '--topcount':
+        print_top(filename)
+    else:
+        print('unknown option: ' + option)
+        sys.exit(1)
+
 
 if __name__ == '__main__':
-  main()
+    main()
