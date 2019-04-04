@@ -33,6 +33,6 @@ locale.setlocale(locale.LC_ALL, '')
 conv = locale.localeconv()
 print(conv)
 x = 111000.5
-format = '%s%.*f'.format
+format = '%s%.*f'
 print(locale.format_string(
     format, (conv['int_curr_symbol'], conv['frac_digits'], x), grouping=True))

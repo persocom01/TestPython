@@ -10,11 +10,12 @@ import sys
 import re
 import os
 import shutil
+import zipfile
 # import commands
 
 # Use for testing file in atom.
 # Comment out if running from cmd.
-print(os.getcwd())
+# print(os.getcwd())
 os.chdir(os.getcwd() + r'\google-python-exercises')
 
 """Copy Special exercise
@@ -40,10 +41,26 @@ print(get_special_paths(os.getcwd() + r'\copyspecial'))
 
 def copy_to(paths, to_dir):
     """Copy all of the given files to the given dir, creating it if necessary."""
+    if not os.path.exists(to_dir):
+        os.mkdir(to_dir)
+    for path in paths:
+        filename = os.path.basename(path)
+        shutil.copy(path, os.path.join(to_dir, filename))
 
 
-def zip_to(paths, zipfile):
+copy_to(get_special_paths(os.getcwd() + r'\copyspecial'),
+        os.path.join(os.getcwd() + r'\copyspecial', 'test'))
+
+
+def zip_to(paths, zfile):
     """Zip up all of the given files into a new zip file with the given name."""
+    with zipfile.ZipFile(zfile, 'w') as zip:
+        for file in paths:
+            zip.write(file)
+
+
+zip_to(get_special_paths(os.getcwd() + r'\copyspecial'),
+       os.path.join(os.getcwd() + r'\copyspecial', 'testzip.zip'))
 
 
 def main():

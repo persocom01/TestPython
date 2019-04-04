@@ -3,6 +3,7 @@ import os
 import shutil
 import glob
 import zlib
+import zipfile
 import sys
 import urllib.request
 import json
@@ -17,14 +18,23 @@ print(os.getcwd())
 os.chdir(os.getcwd() + r'\files')
 # Lists all files and folders in a directory.
 print(os.listdir(os.getcwd()))
+# Makes and removes a directory. Path can also be used instead.
+os.mkdir('testdir')
+os.rmdir('testdir')
 # A common command that joins the directory path to the filename.
-print(os.path.abspath(os.path.join(os.getcwd(), 'test.txt')))
+file_path = os.path.abspath(os.path.join(os.getcwd(), 'test.txt'))
+print(file_path)
+# Returns the filename again.
+print(os.path.basename(file_path))
 # Runs commands in cmd. In this case returns working directory.
 # Other commands include mkdir (make directory) and rmdir.
 print(os.system('echo %cd%'))
 print()
+
+# Checks if file exists.
+if os.path.exists(file_path):
+    os.system('del test.txt')
 # Making text file.
-os.system('del test.txt')
 os.system('echo testing > test.txt')
 os.system('del test.txt')
 # dir and help are common general commands.
@@ -35,6 +45,12 @@ os.system('del test.txt')
 
 # Suggested module for file and directory management.
 shutil.copyfile('file.txt', 'test.txt')
+# Does the same as above but you can use path as a target instead of filename.
+# If a dir is specified as target path, the file will have the same name as
+# the original.
+# shutil.copy('file.txt',
+#             os.path.join(os.getcwd(), 'test.txt'))
+
 # Makes file lists from wildcard searches.
 # Demonstrated here with data compression.
 print(glob.glob('*.txt'))
@@ -47,6 +63,20 @@ for file in glob.glob('*.txt'):
                           float(len(compressed_data))) / float(len(original_data))
         print('{}: {} => {} or {:.2%} compression'.format(
             file, len(original_data), len(compressed_data), compress_ratio))
+print()
+
+# Dealing with zipfiles.
+filename = 'zipfile.zip'
+# Writing a zipfile.
+with zipfile.ZipFile(filename, 'w') as zip:
+    for file in glob.glob('*.txt'):
+        zip.write(file)
+
+with zipfile.ZipFile(filename, 'r') as zip:
+    # Lists contents of zipfile.
+    zip.printdir()
+    # Extracts to target dir. Defaults to working dir if target not specified.
+    zip.extractall(os.getcwd() + r'\zipdir')
 print()
 
 # sys.argv is used to determine if the script is called in cmd with the

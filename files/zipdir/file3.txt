@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Kuro",
+        "sex": "M",
+        "color": "Black"
+    },
+    {
+        "name": "Shiro",
+        "sex": "F",
+        "color": "White"
+    }
+]
