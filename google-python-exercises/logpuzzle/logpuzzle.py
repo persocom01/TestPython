@@ -11,6 +11,11 @@ import re
 import sys
 import urllib
 
+# Use for testing file in atom.
+# Comment out if running from cmd.
+# print(os.getcwd())
+os.chdir(os.getcwd() + r'\google-python-exercises\logpuzzle')
+
 """Logpuzzle exercise
 Given an apache logfile, find the puzzle urls and download the images.
 
@@ -20,42 +25,55 @@ Here's what a puzzle url looks like:
 
 
 def read_urls(filename):
-  """Returns a list of the puzzle urls from the given log file,
-  extracting the hostname from the filename itself.
-  Screens out duplicate urls and returns the urls sorted into
-  increasing order."""
-  # +++your code here+++
-  
+    """Returns a list of the puzzle urls from the given log file,
+    extracting the hostname from the filename itself.
+    Screens out duplicate urls and returns the urls sorted into
+    increasing order."""
+    # +++your code here+++
+    underscore_index = filename.find('_')
+    hostname = filename[underscore_index + 1:]
+    with open(filename, 'r') as f:
+        content = f.read()
+    urls = re.findall(
+        r'GET (\S+/puzzle/\w(?:\-\w{4})+\.jpg)', content)
+    urls = set(urls)
+    urls = list(urls)
+    return hostname, urls
+
+
+print(read_urls('animal_code.google.com'))
+
 
 def download_images(img_urls, dest_dir):
-  """Given the urls already in the correct order, downloads
-  each image into the given directory.
-  Gives the images local filenames img0, img1, and so on.
-  Creates an index.html in the directory
-  with an img tag to show each local image file.
-  Creates the directory if necessary.
-  """
-  # +++your code here+++
-  
+    """Given the urls already in the correct order, downloads
+    each image into the given directory.
+    Gives the images local filenames img0, img1, and so on.
+    Creates an index.html in the directory
+    with an img tag to show each local image file.
+    Creates the directory if necessary.
+    """
+    # +++your code here+++
+
 
 def main():
-  args = sys.argv[1:]
+    args = sys.argv[1:]
 
-  if not args:
-    print 'usage: [--todir dir] logfile '
-    sys.exit(1)
+    if not args:
+        print('usage: [--todir dir] logfile ')
+        sys.exit(1)
 
-  todir = ''
-  if args[0] == '--todir':
-    todir = args[1]
-    del args[0:2]
+    todir = ''
+    if args[0] == '--todir':
+        todir = args[1]
+        del args[0:2]
 
-  img_urls = read_urls(args[0])
+    img_urls = read_urls(args[0])
 
-  if todir:
-    download_images(img_urls, todir)
-  else:
-    print '\n'.join(img_urls)
+    if todir:
+        download_images(img_urls, todir)
+    else:
+        print('\n'.join(img_urls))
+
 
 if __name__ == '__main__':
-  main()
+    main()

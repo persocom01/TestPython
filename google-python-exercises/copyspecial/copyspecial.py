@@ -16,7 +16,7 @@ import zipfile
 # Use for testing file in atom.
 # Comment out if running from cmd.
 # print(os.getcwd())
-os.chdir(os.getcwd() + r'\google-python-exercises')
+# os.chdir(os.getcwd() + r'\google-python-exercises')
 
 """Copy Special exercise
 """
@@ -36,7 +36,7 @@ def get_special_paths(dirname):
     return result
 
 
-print(get_special_paths(os.getcwd() + r'\copyspecial'))
+# print(get_special_paths(os.getcwd() + r'\copyspecial'))
 
 
 def copy_to(paths, to_dir):
@@ -48,8 +48,8 @@ def copy_to(paths, to_dir):
         shutil.copy(path, os.path.join(to_dir, filename))
 
 
-copy_to(get_special_paths(os.getcwd() + r'\copyspecial'),
-        os.path.join(os.getcwd() + r'\copyspecial', 'test'))
+# copy_to(get_special_paths(os.getcwd() + r'\copyspecial'),
+#         os.path.join(os.getcwd() + r'\copyspecial', 'test'))
 
 
 def zip_to(paths, zfile):
@@ -59,8 +59,8 @@ def zip_to(paths, zfile):
             zip.write(file)
 
 
-zip_to(get_special_paths(os.getcwd() + r'\copyspecial'),
-       os.path.join(os.getcwd() + r'\copyspecial', 'testzip.zip'))
+# zip_to(get_special_paths(os.getcwd() + r'\copyspecial'),
+#        os.path.join(os.getcwd() + r'\copyspecial', 'testzip.zip'))
 
 
 def main():
@@ -94,6 +94,16 @@ def main():
 
     # +++your code here+++
     # Call your functions
+    paths = []
+    for dirname in args:
+        paths.extend(get_special_paths(dirname))
+
+    if todir:
+        copy_to(paths, todir)
+    elif tozip:
+        zip_to(paths, tozip)
+    else:
+        print('\n'.join(paths))
 
 
 if __name__ == "__main__":

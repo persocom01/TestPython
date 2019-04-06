@@ -69,3 +69,7 @@ print(' '.join(insert_text_list))
 # Returns index of first instance of substring in string.
 # Returns -1 if substring is not found.
 print(text.find('eggs'))
+# It is possible to use index() instead of find.
+# index returns ValueError if substring is not found.
+# index() can be applied to lists as well.
+print(text.index('eggs'))
