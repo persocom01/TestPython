@@ -2,12 +2,13 @@ import os
 import json
 import cerberus
 import requests
-os.chdir(os.getcwd() + r'\files')
+# os.chdir(os.getcwd() + r'\files')
 
 # Write data to file. Push it to github manually.
 list1 = [{'name': 'Kuro', 'sex': 'M', 'color': 'Black'},
          {'name': 'Shiro', 'sex': 'F', 'color': 'White'}]
-with open('file3.txt', 'w') as f:
+file_path = os.path.join(os.getcwd() + r'\files', 'file3.txt')
+with open(file_path, 'w') as f:
     json.dump(list1, f, sort_keys=False, indent=4, ensure_ascii=False)
 
 # Demonstrates use of requests to retrieve file online.
