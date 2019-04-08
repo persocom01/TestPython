@@ -35,10 +35,16 @@ def read_urls(filename):
     with open(filename, 'r') as f:
         content = f.read()
     urls = re.findall(
-        r'GET (\S+/puzzle/\w(?:\-\w{4})+\.jpg)', content)
+        r'GET (\S+/puzzle\S+(?:\-\w+)+\.jpg)', content)
     urls = set(urls)
-    urls = list(urls)
-    return hostname, urls
+
+    def puzzle_key(url):
+        match = re.search(r'puzzle(\S+(?:\-\w+)+)\.jpg', url)
+        key = match.group(1)
+        return key
+    urls = sorted(urls, key=puzzle_key)
+    full_urls = ['http://' + hostname + url for url in urls]
+    return full_urls
 
 
 print(read_urls('animal_code.google.com'))

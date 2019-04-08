@@ -11,6 +11,8 @@ print()
 fruits1 = ['apple', 'apple', 'banana', ]
 fruits1 = set(fruits1)
 print(fruits1)
+# Sets cannot be sorted, but you can use sorted to return a sorted list.
+print('Sorted:', sorted(fruits1))
 
 # Demonstrates different set operations.
 fruits2 = set(['apple', 'orange', ])
