@@ -19,6 +19,8 @@ os.chdir(os.getcwd() + r'\files')
 # Lists all files and folders in a directory.
 print(os.listdir(os.getcwd()))
 # Makes and removes a directory. Path can also be used instead.
+# os.makedirs does the same thing but also creates all intemediate dirs
+# if you give it a path.
 os.mkdir('testdir')
 os.rmdir('testdir')
 # A common command that joins the directory path to the filename.

@@ -10,6 +10,7 @@ import os
 import re
 import sys
 import urllib
+import requests
 
 # Use for testing file in atom.
 # Comment out if running from cmd.
@@ -59,6 +60,12 @@ def download_images(img_urls, dest_dir):
     Creates the directory if necessary.
     """
     # +++your code here+++
+    if not os.path.exists(dest_dir):
+        os.makedirs(dest_dir)
+    i = 0
+    for url in img_urls:
+        with open('img' + i + '.jpg', 'w') as f:
+            pass
 
 
 def main():
