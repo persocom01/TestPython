@@ -15,7 +15,7 @@ import requests
 # Use for testing file in atom.
 # Comment out if running from cmd.
 # print(os.getcwd())
-os.chdir(os.getcwd() + r'\google-python-exercises\logpuzzle')
+# os.chdir(os.getcwd() + r'\google-python-exercises\logpuzzle')
 
 """Logpuzzle exercise
 Given an apache logfile, find the puzzle urls and download the images.
@@ -40,7 +40,7 @@ def read_urls(filename):
     urls = set(urls)
 
     def puzzle_key(url):
-        match = re.search(r'puzzle(\S+(?:\-\w+)+)\.jpg', url)
+        match = re.search(r'puzzle\S+((?:\-\w+)+)\.jpg', url)
         key = match.group(1)
         return key
     urls = sorted(urls, key=puzzle_key)
@@ -48,7 +48,7 @@ def read_urls(filename):
     return full_urls
 
 
-print(read_urls('animal_code.google.com'))
+# print(read_urls('animal_code.google.com'))
 
 
 def download_images(img_urls, dest_dir):
@@ -64,20 +64,22 @@ def download_images(img_urls, dest_dir):
         os.makedirs(dest_dir)
     index_path = os.path.join(dest_dir, 'index.html')
     with open(index_path, 'w') as f:
-        f.write(r'<html><body>\n')
+        f.write('<html><body>\n')
         i = 0
         for url in img_urls:
             r = requests.get(url, stream=True)
-            file_path = os.path.join(dest_dir, 'img' + i + '.jpg')
+            img_name = r'img{}.jpg'.format(i)
+            file_path = os.path.join(dest_dir, img_name)
             with open(file_path, 'wb') as f2:
                 for chunk in r:
                     f2.write(chunk)
+            f.write(r'<img src="{}">'.format(img_name))
             i += 1
-        f.write(r'</body></html>')
+        f.write('\n</body></html>\n')
 
 
-download_images('https://raw.githubusercontent.com/persocom01/TestPython/master/Innocence.jpg',
-                os.path.join(os.getcwd() + r'\google-python-exercises\logpuzzle'))
+# download_images(
+#     ['https://raw.githubusercontent.com/persocom01/TestPython/master/Innocence.jpg', 'https://raw.githubusercontent.com/persocom01/TestPython/master/files/copied_image.jpg'], os.getcwd())
 
 
 def main():
@@ -102,3 +104,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# type the following in cmd in this folder:
+# python -m logpuzzle --todir place_code place_code.google.com
