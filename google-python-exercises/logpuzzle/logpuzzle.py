@@ -62,10 +62,22 @@ def download_images(img_urls, dest_dir):
     # +++your code here+++
     if not os.path.exists(dest_dir):
         os.makedirs(dest_dir)
-    i = 0
-    for url in img_urls:
-        with open('img' + i + '.jpg', 'w') as f:
-            pass
+    index_path = os.path.join(dest_dir, 'index.html')
+    with open(index_path, 'w') as f:
+        f.write(r'<html><body>\n')
+        i = 0
+        for url in img_urls:
+            r = requests.get(url, stream=True)
+            file_path = os.path.join(dest_dir, 'img' + i + '.jpg')
+            with open(file_path, 'wb') as f2:
+                for chunk in r:
+                    f2.write(chunk)
+            i += 1
+        f.write(r'</body></html>')
+
+
+download_images('https://raw.githubusercontent.com/persocom01/TestPython/master/Innocence.jpg',
+                os.path.join(os.getcwd() + r'\google-python-exercises\logpuzzle'))
 
 
 def main():

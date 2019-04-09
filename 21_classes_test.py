@@ -2,7 +2,7 @@ import os
 import json
 import cerberus
 import requests
-# os.chdir(os.getcwd() + r'\files')
+import shutil
 
 # Write data to file. Push it to github manually.
 list1 = [{'name': 'Kuro', 'sex': 'M', 'color': 'Black'},
@@ -11,12 +11,27 @@ file_path = os.path.join(os.getcwd() + r'\files', 'file3.txt')
 with open(file_path, 'w') as f:
     json.dump(list1, f, sort_keys=False, indent=4, ensure_ascii=False)
 
-# Demonstrates use of requests to retrieve file online.
+# Demonstrates use of requests to retrieve files online.
 r = requests.get(
     'https://raw.githubusercontent.com/persocom01/TestPython/master/files/file3.txt')
+# stream = True is meant for large files. The file is downloaded in chunks
+# instead of all at once.
+r_img = requests.get(
+    'https://raw.githubusercontent.com/persocom01/TestPython/master/Innocence.jpg', stream=True)
 
-# request module contains its own json decoder, so json.load isn't required.
-list2 = r.json(r.text)
+# status code 200 means the request was sucessful.
+if r.status_code == 200:
+    # request module contains its own json decoder, so json.load isn't required.
+    list2 = r.json()
+
+img_file_path = os.path.join(os.getcwd() + r'\files', 'copied_image.jpg')
+if r_img.status_code == 200:
+    with open(img_file_path, 'wb') as f:
+        # Alternatively, you can iterate over the chunks using:
+        # for chunk in r_img:
+            # f.write(chunk)
+        r_img.raw.decode_content = True
+        shutil.copyfileobj(r_img.raw, f)
 
 # Demonstrates use of cerberus validator.
 # If only the type needs to be validated, use isinstance(object, type) instead.
