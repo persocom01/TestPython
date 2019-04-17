@@ -14,7 +14,7 @@ pipenv shell
 
 pipenv run atom
 
-### The atom packages used for the development environment are:
+### Atom packages used:
 
 Hydrogen
 
@@ -25,3 +25,21 @@ linter-flake8
 python-autopep8
 
 python-debugger
+
+### General packages:
+
+atom-beautify
+
+busy-signal
+
+file-icons
+
+intentions
+
+minimap
+
+open_in_cmd
+
+project-manager
+
+script
