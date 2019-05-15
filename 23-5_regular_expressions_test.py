@@ -77,8 +77,8 @@ print()
 
 # Demonstrates use of groups.
 # (?P<name>) is a named group.
-match = re.match(
-    r'The (quick) brown fox (jumps (over)) the (?P<name>lazy) dog\.', text)
+pattern = r'The (quick) brown fox (jumps (over)) the (?P<name>lazy) dog\.'
+match = re.match(pattern, text)
 # 4 groups total.
 print(len(match.groups()))
 # You can call each group individually using match.group(1).
@@ -87,7 +87,7 @@ for group in match.groups():
     print(group)
 # Demonstrates replacement of searched string as well as group indicators
 # \1 and \g<name> specifically.
-altered_text = re.sub(r'The (quick) brown fox (jumps (over)) the (?P<name>lazy) dog\.',
-                      r'The \g<name> brown fox jumps over the \1 dog.', text)
+altered_text = re.sub(
+    pattern, r'The \g<name> brown fox jumps over the \1 dog.', text)
 print(altered_text)
 print()
