@@ -46,7 +46,7 @@ print()
 # (?:) is used to make it a group non capturing.
 # [a-z] specifies all the possible characters accepted.
 # [^a-z] specifies all the possible characters rejected.
-# {min,max} specifies the min and max number of repetions of the previous char.
+# {min,max} specifies the min and max number of repetitions of the previous char.
 # re.I is known as a flag. re.I = ignore case. re.M = multiline.
 # re.S = dotall. (makes . also match newline)
 # The | divider is needed to pass multiple flags.
