@@ -46,9 +46,9 @@ print()
 # (?:) is used to make it a group non capturing.
 # [a-z] specifies all the possible characters accepted.
 # [^a-z] specifies all the possible characters rejected.
-# {min,max} specifies the min and max number of repitions of the previous char.
-# re.I is known as a flag. re.I ignores case. re.M makes it multiline.
-# re.S, known as dotall makes . also match newline.
+# {min,max} specifies the min and max number of repetions of the previous char.
+# re.I is known as a flag. re.I = ignore case. re.M = multiline.
+# re.S = dotall. (makes . also match newline)
 # The | divider is needed to pass multiple flags.
 website_names = re.findall(
     r'\bhttps?://\w+\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
