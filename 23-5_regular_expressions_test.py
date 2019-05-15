@@ -37,7 +37,9 @@ else:
     print('facebook absent')
 print()
 
-# Returns a list of strings of all matches. Explanation of re used below:
+# Explanation of various re below:
+# ^regex$ ^ and $ used this way are called anchors. They represent the start
+# and end of a string. \b can be used instead for start of a word.
 # ? = 0-1. + = 1+. * = 0+.
 # \b means word boundary. Other common ones are \d number, \s whitespace, \w word.
 # A capital \B means the opposite of \b.
