@@ -59,7 +59,9 @@ print('Sort by values but return keys:', sort_by_values_but_return_keys)
 
 # Note the reverse argument which reverses the order of the result.
 sort_by_function = sorted(
-    items, key=(lambda x: 0 if 'a' in x else 1), reverse=True)
+    # This function sorts words with 'r' in them towards the back then reverses
+    # the order.
+    items, key=(lambda x: 1 if 'r' in x else -1), reverse=False)
 print('Sort by function:', sort_by_function)
 
 # items() is a useful function on dictionaries to turn key: value

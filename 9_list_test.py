@@ -1,4 +1,4 @@
-# Demonstrates various function methods.
+# Demonstrates various list methods.
 from collections import deque
 from functools import reduce
 import bisect
@@ -43,7 +43,7 @@ print('Sort by last letter:', fruits)
 print(fruits.pop())
 print('pop:', fruits)
 
-# Demonstrates use of bisect module to replace a delated key from a list.
+# Demonstrates use of bisect module to replace a deleted key from a list.
 fruits_numbered = list(enumerate(fruits))
 key = 2
 del fruits_numbered[key]
