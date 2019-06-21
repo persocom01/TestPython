@@ -16,30 +16,19 @@ pipenv run atom
 
 ### Atom packages used:
 
-Hydrogen
-
-atom-ide-debugger-python
-
-linter-flake8
-
-python-autopep8
-
-python-debugger
+* Hydrogen
+* atom-ide-debugger-python
+* linter-flake8
+* python-autopep8
+* python-debugger
 
 ### General packages:
 
-atom-beautify
-
-busy-signal
-
-file-icons
-
-intentions
-
-minimap
-
-open_in_cmd
-
-project-manager
-
-script
+* atom-beautify
+* busy-signal
+* file-icons
+* intentions
+* minimap
+* open_in_cmd
+* project-manager
+* script
