@@ -5,6 +5,8 @@ import bisect
 
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple']
 
+# Size of list.
+print(len(fruits))
 print(fruits.count('apple'))
 print(fruits.index('apple'))
 # Find an instance of apple starting at index 2.
