@@ -8,6 +8,7 @@ fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple']
 # Size of list.
 print(len(fruits))
 print(fruits.count('apple'))
+# If you just need to know if a value is in a list, use: value in list.
 print(fruits.index('apple'))
 # Find an instance of apple starting at index 2.
 print(fruits.index('apple', 2))
