@@ -62,3 +62,8 @@ print()
 # that give weird results in floating point.
 print(1.00 % 0.10)
 print(decimal.Decimal('1.00') % decimal.Decimal('.10'))
+print()
+
+# Alternatively, use math.isclose() to prevent floating point precision errors.
+print(0.1 + 0.7 == 0.8)
+print(math.isclose(0.1 + 0.7, 0.8))
