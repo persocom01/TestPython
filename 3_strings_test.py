@@ -50,7 +50,7 @@ for i in insert_text_list:
 print(*insert_text_list, '\n', sep=' ')
 
 # Demonstrates common functions used on strings.
-text = '_spam and eggs_'
+text = '_spam spam and eggs_'
 
 # Case manipulation.
 print(text.lower(), text.upper())
@@ -62,7 +62,7 @@ print(text.strip('_'))
 print(text.strip('_').isalpha(), text.isdigit(), text.isspace())
 # Tests if string starts or ends with something.
 print(text.startswith('spam'), text.endswith('_'))
-# Replace part of string.
+# Replace all instances of a string inside a string with another.
 print(text.replace('spam', 'eggs'))
 # Opposite of split.
 print(' '.join(insert_text_list))
