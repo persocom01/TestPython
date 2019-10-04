@@ -21,6 +21,8 @@ print(fruits.index('apple', 2))
 # The significance of copy() is that the value remains unchanged when the
 # original variable is modified.
 fruits2 = fruits.copy()
+# It is also possible to reverse the list without altering the original using
+# list(reversed(fruits))
 fruits2.reverse()
 print('Reverse:', fruits2)
 
