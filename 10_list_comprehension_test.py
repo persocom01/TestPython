@@ -7,6 +7,8 @@ odd = [x for x in range(10) if x % 2 != 0]
 print(odd)
 
 
+# Variables or function that return boolean values are named is_var or has_var
+# by convention.
 def is_prime(n):
     if n == 2 or n == 3:
         return True
