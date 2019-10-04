@@ -3,6 +3,7 @@ from collections import deque
 from functools import reduce
 import bisect
 
+# List names are plural by convention.
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple']
 
 # Size of list.
