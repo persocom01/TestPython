@@ -8,18 +8,21 @@ print(tuple)
 print()
 
 # Demonstrates the use of sets, which have no duplicates.
-fruits1 = ['apple', 'apple', 'banana', ]
-fruits1 = set(fruits1)
-print(fruits1)
+print('unique elements: ', len({'apple', 'apple', 'banana', }))
+fruits = ['apple', 'apple', 'banana', ]
+# Sets are defined by {}. However since {} also define dictionaries, sets are
+# typically created using set() instead.
+fruits = set(fruits)
+print(fruits)
 # Sets cannot be sorted, but you can use sorted to return a sorted list.
-print('Sorted:', sorted(fruits1))
+print('Sorted:', sorted(fruits))
 
 # Demonstrates different set operations.
 fruits2 = set(['apple', 'orange', ])
-print('Minus:', fruits1 - fruits2)
-print('Merge:', fruits1 | fruits2)
-print('And:', fruits1 & fruits2)
-print('Unique:', fruits1 ^ fruits2)
+print('Minus:', fruits - fruits2)
+print('Merge:', fruits | fruits2)
+print('And:', fruits & fruits2)
+print('Unique:', fruits ^ fruits2)
 print()
 
 # Demostrates use of dictionary.
