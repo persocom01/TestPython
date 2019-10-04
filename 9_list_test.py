@@ -4,6 +4,9 @@ from functools import reduce
 import bisect
 
 # List names are plural by convention.
+# Lists are considered mutable objects, thus when var = list is used, the list
+# is passed by reference instead of by value. As a result, any changes to list
+# will affect var.
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple']
 
 # Size of list.
