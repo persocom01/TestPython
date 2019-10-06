@@ -52,6 +52,10 @@ for key in cats2:
 
 
 class Animal:
+    # Class properties not inside the __init__ function are shared by all
+    # instances of the class.
+    # They can be overwritten in class instances, but mutable objects like
+    # lists will remain shared.
     subclasses = []
 
     def __init__(self, dictionary):
@@ -73,8 +77,11 @@ class Cat(Animal):
 Kuro = Cat(cats2[0])
 Kuro.add_trick('claw rush')
 Kuro.sound()
+# As this property is mutable, this line will affect the base class.
+Kuro.subclasses.append('Cat')
 print(Kuro.name, Kuro.sex, Kuro.color)
 print(Kuro.trick)
+print('shared class list: ', Animal.subclasses)
 
 # It is also possible for a subclass to inherit from multiple classes.
 # In those cases the leftmost superclass takes priority.
