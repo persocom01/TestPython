@@ -36,3 +36,15 @@ def mutablefunc(a, L=[]):
 
 print(mutablefunc(1))
 print(mutablefunc(2))
+
+
+# Demonstrates passing a function to a function.
+def greet(name):
+    print('hello ' + name)
+
+
+def wrapper(func, arg):
+    return func(arg)
+
+
+wrapper(greet, 'Ash')
