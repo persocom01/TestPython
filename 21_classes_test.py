@@ -52,13 +52,15 @@ for key in cats2:
 
 
 class Animal:
-    # Class properties not inside the __init__ function are shared by all
-    # instances of the class.
-    # They can be overwritten in class instances, but mutable objects like
+    # Class properties not inside the __init__ function are called class
+    # variables. They are shared by all instances of the class.
+    # They can be overwritten in individual instances, but mutable objects like
     # lists will remain shared.
     subclasses = []
 
     def __init__(self, dictionary):
+        # Class properties inside the __init__ function are called instance
+        # variables.
         self.trick = []
         for k, v in dictionary.items():
             setattr(self, k, v)
