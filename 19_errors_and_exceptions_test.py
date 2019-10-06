@@ -22,8 +22,10 @@ except ValueError as err:
 # other erros will cause them to never trigger.
 except Exception as err:
     print('Other errors: {0}'.format(err))
+# else is executed when no exceptions are encountered.
 else:
     f.close()
+# finally is executed no matter what.
 finally:
     print()
 
