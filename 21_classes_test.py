@@ -75,13 +75,16 @@ class Cat(Animal):
 
 
 Kuro = Cat(cats2[0])
-Kuro.add_trick('claw rush')
-Kuro.sound()
+
 # As this property is mutable, this line will affect the base class.
 Kuro.subclasses.append('Cat')
+Kuro.add_trick('claw rush')
+Kuro.sound()
+
+print('shared class list: ', Animal.subclasses)
 print(Kuro.name, Kuro.sex, Kuro.color)
 print(Kuro.trick)
-print('shared class list: ', Animal.subclasses)
+
 
 # It is also possible for a subclass to inherit from multiple classes.
 # In those cases the leftmost superclass takes priority.
