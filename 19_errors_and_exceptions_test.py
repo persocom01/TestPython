@@ -23,6 +23,7 @@ except ValueError as err:
 except Exception as err:
     print('Other errors: {0}'.format(err))
 # else is executed when no exceptions are encountered.
+# It must come after except statements.
 else:
     f.close()
 # finally is executed no matter what.
