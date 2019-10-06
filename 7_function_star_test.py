@@ -4,8 +4,8 @@ from inspect import signature
 # Demonstrates use of optional postional and keyword arguments
 # ': str' and '-> str' are annotations.
 # They specify what data types the function takes in and what it returns.
-# In this case, the function doesn't actually return anything,
-# but annotations have effect on running the function.
+# Annotations, however, do not actually affect how the function runs.
+# *args becomes a tuple named args.
 
 
 def creature(kind, *args: str, HP=1, Atk, **kwargs) -> int:
