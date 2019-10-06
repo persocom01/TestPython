@@ -5,11 +5,11 @@ import requests
 import shutil
 
 # Write data to file. Push it to github manually.
-list1 = [{'name': 'Kuro', 'sex': 'M', 'color': 'Black'},
-         {'name': 'Shiro', 'sex': 'F', 'color': 'White'}]
+cats = [{'name': 'Kuro', 'sex': 'M', 'color': 'Black'},
+        {'name': 'Shiro', 'sex': 'F', 'color': 'White'}]
 file_path = os.path.join(os.getcwd() + r'\files', 'file3.txt')
 with open(file_path, 'w') as f:
-    json.dump(list1, f, sort_keys=False, indent=4, ensure_ascii=False)
+    json.dump(cats, f, sort_keys=False, indent=4, ensure_ascii=False)
 
 # Demonstrates use of requests to retrieve files online.
 r = requests.get(
@@ -22,7 +22,7 @@ r_img = requests.get(
 # status code 200 means the request was sucessful.
 if r.status_code == 200:
     # request module contains its own json decoder, so json.load isn't required.
-    list2 = r.json()
+    cats2 = r.json()
 
 img_file_path = os.path.join(os.getcwd() + r'\files', 'copied_image.jpg')
 if r_img.status_code == 200:
@@ -42,7 +42,7 @@ schema = {
 # allow_unknown=True allows unknown keys to exist.
 v = cerberus.Validator(schema, allow_unknown=True)
 
-for key in list2:
+for key in cats2:
     if not v.validate(key):
         raise Exception('Wrong value for sex.')
         print(v.errors)
@@ -52,6 +52,8 @@ for key in list2:
 
 
 class Animal:
+    subclasses = []
+
     def __init__(self, dictionary):
         self.trick = []
         for k, v in dictionary.items():
@@ -68,7 +70,7 @@ class Cat(Animal):
         print('Meow')
 
 
-Kuro = Cat(list2[0])
+Kuro = Cat(cats2[0])
 Kuro.add_trick('claw rush')
 Kuro.sound()
 print(Kuro.name, Kuro.sex, Kuro.color)

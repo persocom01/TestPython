@@ -27,6 +27,9 @@ interface()
 
 # Demonstrates how using mutable objects as arguments can be used to build
 # a function with a mutable result.
+# This also works in classes by defining a class property as a mutable object.
+# Any class instance that modifies said object does so for all instances of
+# the class.
 
 
 def mutablefunc(a, L=[]):
