@@ -16,6 +16,8 @@ print(fruits.count('apple'))
 print(fruits.index('apple'))
 # Find an instance of apple starting at index 2.
 print(fruits.index('apple', 2))
+# slice() works on lists as it does strings.
+print('slice:', fruits[slice(0, 10, 2)])
 
 # Demonstrates copy and reverse functions.
 # The significance of copy() is that the value remains unchanged when the
@@ -24,18 +26,18 @@ fruits2 = fruits.copy()
 # It is also possible to reverse the list without altering the original using
 # list(reversed(fruits))
 fruits2.reverse()
-print('Reverse:', fruits2)
+print('reverse:', fruits2)
 
 fruits.append('grape')
 fruits.extend(['mango', 'papaya'])
-print('Append:', fruits)
+print('append:', fruits)
 
 # Of note is the face remove only removes the first matching element.
 fruits.remove('apple')
-print('Remove:', fruits)
+print('remove:', fruits)
 
 fruits.sort()
-print('Sort:', fruits)
+print('sort:', fruits)
 
 # Demonstrates sorting using a function as key.
 # Alternatively, use key=lambda x: x[-1].
@@ -46,7 +48,7 @@ def last_letter(x):
 
 
 fruits.sort(key=last_letter)
-print('Sort by last letter:', fruits)
+print('sort by last letter:', fruits)
 
 # Removes last entry and returns it. Can be used with append to make a stack.
 print(fruits.pop())

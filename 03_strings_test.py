@@ -28,7 +28,7 @@ print()
 
 # Demonstrates different ways to slice a string.
 # 5 is the 6th char from the front. -7 is the 7th char from the back.
-# slice() allows you to slice multiple chars at once.
+# slice(start, stop, step) allows you to slice multiple chars at once.
 slice_text = 'spam and eggs'
 slices = [5, -7, len(slice_text) - 6, slice(0, 6)]
 
