@@ -84,6 +84,8 @@ grid = [
     [7, 8, 9],
 ]
 
+# Note how indexing works on a 2d list.
+print(grid[2])
 # Demonstrates looping through 2d list using a nested loop.
 for row in grid:
     print(row)
