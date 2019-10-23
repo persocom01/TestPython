@@ -1,6 +1,6 @@
 # TestPython
 
-A python testing playground organized by topic in the python tutorial.
+A python testing playground organized by topic in the python tutorial: https://docs.python.org/3/tutorial/index.html
 
 Workable code is written on each topic to demonstrate use of python in the topic area.
 
