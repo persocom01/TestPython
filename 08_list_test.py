@@ -50,8 +50,10 @@ def last_letter(x):
 fruits.sort(key=last_letter)
 print('sort by last letter:', fruits)
 
-# Removes last entry and returns it. Can be used with append to make a stack.
-print(fruits.pop())
+# list.pop(index=None) removes last entry and returns it.
+# If index is given it removes the correspending list element.
+# Can be used with append to make a stack.
+print(fruits.pop(2))
 print('pop:', fruits)
 
 # Demonstrates use of bisect module to replace a deleted key from a list.
