@@ -59,7 +59,8 @@ print(statistics.variance(data))
 print()
 
 # Demonstrates use of the decimal module for calcuations involving fractions
-# that give weird results in floating point.
+# that give weird results in floating point. Alternatively, multiply all input
+# by a factor of 10.
 print(1.00 % 0.10)
 print(decimal.Decimal('1.00') % decimal.Decimal('.10'))
 print()
