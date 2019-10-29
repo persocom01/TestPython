@@ -1,3 +1,5 @@
+import operator as op
+
 # Demonstrates creation of tuples.
 tuple = ()
 print(tuple)
@@ -31,12 +33,17 @@ print()
 # items = dict(Weapon='Bow', Armor='Leather armor')
 items = {'Weapon': 'Bow', 'Armor': 'Leather armor', }
 
+# Demonstrates getting multiple keys from a dictionary.
+# Alternatively, make a list of keys and iterate through the dict
+# with said keys.
+print(op.itemgetter('Weapon', 'Armor')(items))
 # Demonstrates adding key to dictionary.
 items['Ammo'] = ['Wood arrows']
 # Demonstrates appending to a key containing a list.
 items['Ammo'].append('Iron arrows')
 # Demonstrates get function. A default value can be specified in case
 # the key does not exist. In this case the default is 'No ammo.'
+# Can also be used in a dictionary comprehension to retrieve multiple keys.
 print(items.get('Ammo', 'No ammo.'))
 # Demonstrates deleting a key from a dictionary.
 # It is possible to use del items['Ammo'] instead, but it will return an error
