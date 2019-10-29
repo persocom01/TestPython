@@ -9,7 +9,7 @@ print()
 print(range(10))
 
 # Demonstrates the 4 parameters of the range argument, start, end and step.
-rangelist = [x for x in range(1, 3, 1)]
+rangelist = range(1, 3, 1)
 print(rangelist)
 print()
 
