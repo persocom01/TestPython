@@ -34,6 +34,8 @@ interface()
 
 def mutablefunc(a, L=[]):
     L.append(a)
+    # It is possible to return multiple values in python, but not
+    # javascript.
     return L
 
 
