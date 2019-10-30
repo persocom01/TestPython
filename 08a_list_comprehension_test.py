@@ -46,21 +46,21 @@ print(odd)
 
 # Demonstrates using a list comprehension to generate a nested list.
 reversed_odd = [[y, x] for [x, y] in odd]
-print('Reversed:', reversed_odd)
+print('reversed:', reversed_odd)
 
 # Demonstrates transposition of nested lists.
 # zip is normally used on two seperate lists to make them one.
 odd = list(zip(*odd))
-print('Zipped:', odd)
+print('zipped:', odd)
 
 # Demonstrates unpacking of zipped list.
 odd1, odd2, odd3 = zip(*odd)
-print('Unpacked:', odd1, odd2, odd3)
+print('unpacked:', odd1, odd2, odd3)
 
 # Demonstrates falttening of list.
 odd = [x for tuple in odd for x in tuple]
-print('Flat:', odd)
+print('flat:', odd)
 
 # Demonstrates deletion of part of list.
 del odd[3:]
-print(odd)
+print('del:', odd)

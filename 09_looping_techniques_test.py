@@ -31,9 +31,9 @@ print(answers)
 print()
 
 # Demonstrates practical use of zip to collect values under the same key.
-# There are less sophisticated ways to do this but it demonstrates use of
-# the setdefault function, which insets a key with value [] in this case
-# when the default key is not found.
+# There are less sophisticated ways to do this but it demonstrates use of the
+# setdefault function, which insets a key with value [] in this case when the
+# default key is not found.
 key = ['a', 'b', 'a']
 value = [1, 2, 3]
 dict = {}

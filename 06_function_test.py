@@ -23,6 +23,7 @@ def passwordfunc(password, retries=1, tryagain='Please try again',
                 print(fail)
 
 
+# Comment out if not using hydrogen.
 interface()
 
 # Demonstrates how using mutable objects as arguments can be used to build
