@@ -19,10 +19,17 @@ print('Sorted:', sorted(fruits))
 
 # Demonstrates different set operations.
 fruits2 = set(['apple', 'orange', ])
-print('Minus:', fruits - fruits2)
-print('Merge:', fruits | fruits2)
-print('And:', fruits & fruits2)
-print('Unique:', fruits ^ fruits2)
+print('minus:', fruits - fruits2)
+print('merge:', fruits | fruits2)
+print('and:', fruits & fruits2)
+print('unique:', fruits ^ fruits2)
+fruits2.add('peach')
+print('add:', fruits2)
+# Use update to add multiple elements to a set.
+fruits2.update(['papaya'])
+print('update:', fruits2)
+fruits2.remove('papaya')
+print('remove:', fruits2)
 print()
 
 # Demostrates use of dictionary.
