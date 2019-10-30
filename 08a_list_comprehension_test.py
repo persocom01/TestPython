@@ -9,6 +9,8 @@ print(odd)
 
 # Variables or function that return boolean values are named is_var or has_var
 # by convention.
+
+
 def is_prime(n):
     if n == 2 or n == 3:
         return True
@@ -41,8 +43,12 @@ class C:
 
 
 # Demonstrates usage of method on list and ability to create nested lists.
-odd = [C.and_double(x) for x in odd]
-print(odd)
+new_odd = [C.and_double(x) for x in odd]
+print('method:', new_odd)
+# An alternative to using list comprehensions to map is using the map function.
+# It is said to use less memory.
+odd = list(map(C.and_double, odd))
+print('map:', odd)
 
 # Demonstrates using a list comprehension to generate a nested list.
 reversed_odd = [[y, x] for [x, y] in odd]
