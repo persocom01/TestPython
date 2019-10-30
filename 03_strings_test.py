@@ -55,23 +55,23 @@ print(*insert_text_list, '\n', sep=' ')
 text = '_spam spam and eggs_'
 
 # Case manipulation.
-print(text.lower(), text.upper(), text.title())
+print('change case:', text.lower(), text.upper(), text.title())
 # Removes _ from front and back.
-print(text.strip('_'))
+print('strip:', text.strip('_'))
 # Tests if all of string is of type.
 # Also demonstrates use of more than 1 function at a time.
 # isupper and islower are also functions.
-print(text.strip('_').isalpha(), text.isdigit(), text.isspace())
+print('tests:', text.strip('_').isalpha(), text.isdigit(), text.isspace())
 # Tests if string starts or ends with something.
-print(text.startswith('spam'), text.endswith('_'))
+print('start or end with:', text.startswith('spam'), text.endswith('_'))
 # Replace all instances of a string inside a string with another.
-print(text.replace('spam', 'eggs'))
+print('replace:', text.replace('spam', 'eggs'))
 # Opposite of split.
-print(' '.join(insert_text_list))
+print('join:', ' '.join(insert_text_list))
 # Returns index of first instance of substring in string.
 # Returns -1 if substring is not found.
-print(text.find('eggs'))
+print('find:', text.find('eggs'))
 # It is possible to use index() instead of find.
 # index returns ValueError if substring is not found.
 # index() can be applied to lists as well.
-print(text.index('eggs'))
+print('index:', text.index('eggs'))
