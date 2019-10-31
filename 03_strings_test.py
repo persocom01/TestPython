@@ -55,7 +55,12 @@ print(*insert_text_list, '\n', sep=' ')
 text = '_spam spam and eggs_'
 
 # Case manipulation.
-print('change case:', text.lower(), text.upper(), text.title())
+print('lower/upper/title casing:')
+print(text.lower())
+print(text.upper())
+print(text.title())
+print()
+
 # Removes _ from front and back.
 print('strip:', text.strip('_'))
 # Tests if all of string is of type.
