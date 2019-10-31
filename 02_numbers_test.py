@@ -45,6 +45,8 @@ print()
 print(random.choice(['one', 'two', 'three']))
 # No repeats.
 print(random.sample(range(100), 10))
+# Set random seed.
+random.seed(123)
 # Similar to excel's rand()
 print(random.random())
 # Rand int from 1-10.
