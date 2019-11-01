@@ -41,14 +41,15 @@ print()
 # ^regex$ ^ and $ used this way are called anchors. They represent the start
 # and end of a string. \b can be used instead for start of a word.
 # ? = 0-1. + = 1+. * = 0+.
-# \b means word boundary. Other common ones are \d number, \s whitespace, \w word.
+# \b = word boundary. Other common ones are \d number, \s whitespace, \w word.
 # A capital \B means the opposite of \b.
 # \. escapes .. Other characters needing escape are \+*?[]^$(){}=!<>|:-.
-# () denotes a group. If used, findall will only return the contents said group.
+# () denotes a group. If used, findall will return the contents said group
+# instead of the whole match.
 # (?:) is used to make it a group non capturing.
 # [a-z] specifies all the possible characters accepted.
 # [^a-z] specifies all the possible characters rejected.
-# {min,max} specifies the min and max number of repetitions of the previous char.
+# {min,max} specifies the min, max number of repetitions of the previous char.
 # re.I is known as a flag. re.I = ignore case. re.M = multiline.
 # re.S = dotall. (makes . also match newline)
 # The | divider is needed to pass multiple flags.
