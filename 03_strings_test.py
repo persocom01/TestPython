@@ -39,7 +39,8 @@ for s in slices:
 
 # Demonstrates list method insert.
 insert_text = 'spam and eggs'
-# Demonstrates splitting of a string into a list.
+# str.split(seperator, max) split a string into a list.
+# By default, it splits along all whitespace word boundaries.
 insert_text_list = insert_text.split(' ')
 for i in insert_text_list:
     if 'spam' in i:
