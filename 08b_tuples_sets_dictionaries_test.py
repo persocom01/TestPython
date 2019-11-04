@@ -38,14 +38,6 @@ print()
 # items = dict(Weapon='Bow', Armor='Leather armor')
 items = {'Weapon': 'Bow', 'Armor': 'Leather armor', }
 
-# Demonstrates getting multiple keys from a dictionary.
-# Alternatively:
-# import operator as op
-# op.itemgetter('Weapon', 'Armor')(items)
-# This method returns the items only, and not a modified dictionary.
-keys = ['weapon', 'armor']
-multiple_keys = {k: v for k, v in items.items() if k in keys}
-print('multiple_keys:', multiple_keys)
 # Demonstrates adding key to dictionary.
 items['Ammo'] = ['Wood arrows']
 # Demonstrates appending to a key containing a list.
@@ -58,6 +50,16 @@ print('get:', items.get('Ammo', 'No ammo.'))
 # It is possible to use del items['Ammo'] instead, but it will return an error
 # if the key is not found.
 items.pop('Ammo', None)
+print()
+
+# Demonstrates getting multiple keys from a dictionary.
+# Alternatively:
+# import operator as op
+# op.itemgetter('Weapon', 'Armor')(items)
+# This method returns the items only, and not a modified dictionary.
+keys = ['weapon', 'armor']
+multiple_keys = {k: v for k, v in items.items() if k in keys}
+print('multiple_keys:', multiple_keys)
 
 # It is not possible to directly sort a dictionary.
 # However, a new list can be generated with sorted values and a new dictionary
