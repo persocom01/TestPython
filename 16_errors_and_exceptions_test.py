@@ -62,3 +62,8 @@ except OverValError:
     # Demonstrates use of raise to re-raise the error.
     raise
     # pass
+
+# Demonstrates use of assert to raise errors. assert is roughly equal to:
+# if not assert_condition:
+#     raise AssertionError()
+assert 1 == 1
