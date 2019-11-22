@@ -19,7 +19,15 @@ r = requests.get(
 r_img = requests.get(
     'https://raw.githubusercontent.com/persocom01/TestPython/master/Innocence.jpg', stream=True)
 
-# status code 200 means the request was sucessful.
+# The status codes are:
+# 200	OK
+# 301	Moved Permanently
+# 302	Moved Temporarily
+# 307	Temporary Redirect
+# 400	Bad Request
+# 403	Forbidden
+# 404	Not Found
+# 500	Internal Server Error
 if r.status_code == 200:
     # request module contains its own json decoder, so json.load isn't required.
     cats2 = r.json()
