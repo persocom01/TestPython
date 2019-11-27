@@ -50,7 +50,7 @@ print()
 # [a-z] specifies all the possible characters accepted.
 # [^a-z] specifies all the possible characters rejected.
 # {min,max} specifies the min, max number of repetitions of the previous char.
-# re.I is known as a flag. re.I = ignore case. re.M = multiline.
+# re.I is known as a flag. re.I=ignore case. re.M=multiline.
 # re.S = dotall. (makes . also match newline)
 # The | divider is needed to pass multiple flags.
 website_names = re.findall(
