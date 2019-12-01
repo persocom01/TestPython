@@ -1,10 +1,18 @@
 # Demonstrates a way to generate lists without need for loops or lambdas.
-# odd = []
+
+# Demonstrates an if else comprehension.
+# is_sevens = []
 # for x in range(10):
-#     if x%2 == 0:
-#         odd.append(x)
-odd = [x for x in range(10) if x % 2 != 0]
-print(odd)
+#     if x == 7:
+#         is_sevens.append('yes')
+#     else:
+#         is_sevens.append('no')
+is_sevens = ['yes' if x == 7 else 'no' for x in range(10)]
+print(is_sevens)
+
+# Demonstrates basic filtering.
+odds = [x for x in range(10) if x % 2 != 0]
+print(odds)
 
 
 # Variables or function that return boolean values are named is_var or has_var
@@ -32,8 +40,8 @@ def is_prime(n):
 
 
 # Demonstrates filtering of list using a function.
-odd = [x for x in odd if is_prime(x)]
-print(odd)
+odds = [x for x in odds if is_prime(x)]
+print(odds)
 
 
 class C:
@@ -43,30 +51,30 @@ class C:
 
 
 # Demonstrates usage of method on list and ability to create nested lists.
-new_odd = [C.and_double(x) for x in odd]
-print('method:', new_odd)
+new_odds = [C.and_double(x) for x in odds]
+print('method:', new_odds)
 # An alternative to using list comprehensions to map is using the map function.
 # It is said to use less memory.
-odd = list(map(C.and_double, odd))
-print('map:', odd)
+odds = list(map(C.and_double, odds))
+print('map:', odds)
 
 # Demonstrates using a list comprehension to generate a nested list.
-reversed_odd = [[y, x] for [x, y] in odd]
-print('reversed:', reversed_odd)
+reversed_odds = [[y, x] for [x, y] in odds]
+print('reversed:', reversed_odds)
 
 # Demonstrates transposition of nested lists.
 # zip is normally used on two seperate lists to make them one.
-odd = list(zip(*odd))
-print('zipped:', odd)
+odds = list(zip(*odds))
+print('zipped:', odds)
 
 # Demonstrates unpacking of zipped list.
-odd1, odd2, odd3 = zip(*odd)
-print('unpacked:', odd1, odd2, odd3)
+odds1, odds2, odds3 = zip(*odds)
+print('unpacked:', odds1, odds2, odds3)
 
 # Demonstrates falttening of list.
-odd = [x for tuple in odd for x in tuple]
-print('flat:', odd)
+odds = [x for tuple in odds for x in tuple]
+print('flat:', odds)
 
 # Demonstrates deletion of part of list.
-del odd[3:]
-print('del:', odd)
+del odds[3:]
+print('del:', odds)
