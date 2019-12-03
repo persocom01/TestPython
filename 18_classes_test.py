@@ -74,6 +74,8 @@ class Animal:
         for k, v in dictionary.items():
             setattr(self, k, v)
 
+    # self makes a function usable by instances of the class. Without which,
+    # it can only be used by the master class.
     def add_trick(self, trick):
         self.trick.append(trick)
 
