@@ -57,11 +57,12 @@ website_names = re.findall(
     r'\bhttps?://\w+\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
 # Demonstrates use of negative lookahead to exclude www website names.
 # (?!) is called negative lookahead. It ensures that the text in the brackets
-# is not in front of the text behind it.
+# is not behind the text in front of it. The text in the backets looks looks
+# ahead of itself.
 # Replacing ! with = makes it positive. (?=) is positive lookahead.
 # (?<=) is lookbehind.
 non_www_website_names = re.findall(
-    r'\bhttps?://(?:(?!www)\w+)\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
+    r'\bhttps?://(?!www)(?:\w+)\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
 print('websites:')
 pprint.pprint(website_names)
 print('non-www websites:')
