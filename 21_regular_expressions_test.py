@@ -90,6 +90,7 @@ for group in match.groups():
     print(group)
 # Demonstrates replacement of searched string as well as group indicators
 # \1 and \g<name> specifically.
+# re.sub replaces all instances of the pattern.
 altered_text = re.sub(
     pattern, r'The \g<name> brown fox jumps over the \1 dog.', text)
 print(altered_text)
