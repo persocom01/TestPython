@@ -1,8 +1,19 @@
 texts = ['mary', 'had', 'a', 'little', 'lamb']
 
-# Normally better to use print(list(enumerate(texts))).
+# The reason this doesn't work is because the current element in a loop cannot
+# overwrite itself. To overwrite the current element use list[index] of the
+# element.
+for t in texts:
+    t = t.upper()
+print(texts)
+print()
+
+# May be better to use print(list(enumerate(texts))).
+# Demonstrates writing over current element using lsit index.
 for t in range(len(texts)):
+    texts[t] = texts[t].upper()
     print(t, texts[t])
+    texts[t] = texts[t].lower()
 print()
 
 # Interesting results.
