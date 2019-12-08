@@ -78,6 +78,9 @@ class Animal:
     # it can only be used by the master class.
     def add_trick(self, trick):
         self.trick.append(trick)
+        # Functions can use other functions in the same class by using
+        # self.function_name()
+        self.sound()
 
 # Demonstrates creation of subclass
 
@@ -92,7 +95,6 @@ Kuro = Cat(cats2[0])
 # As this property is mutable, this line will affect the base class.
 Kuro.subclasses.append('Cat')
 Kuro.add_trick('claw rush')
-Kuro.sound()
 
 print('shared class list: ', Animal.subclasses)
 print(Kuro.name, Kuro.sex, Kuro.color)
