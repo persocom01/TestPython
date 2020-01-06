@@ -10,9 +10,10 @@ pipenv was used to install some modules in this project. As such, there is a nee
 
 I use the atom ide, and open this project by opening cmd in the project folder and typing:
 
+```
 pipenv shell
-
 pipenv run atom
+```
 
 ### Atom packages used:
 
