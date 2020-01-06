@@ -33,7 +33,7 @@ pipenv run atom
 * project-manager
 * script
 
-## Noted issues
+## Known issues
 
 Python's locale.getpreferredencoding() returns cp1252 in windows. This may cause problems with information from certain web apis. To rectify this problem, type:
 
