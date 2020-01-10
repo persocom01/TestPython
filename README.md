@@ -6,9 +6,11 @@ Workable code is written on each topic to demonstrate use of python in the topic
 
 ## Installation
 
-pipenv was used to install some modules in this project. As such, there is a need to open it in a virtual development environment.
+This project was written using atom.
 
-I use the atom ide, and open this project by opening cmd in the project folder and typing:
+* [atom_1.40.1](https://atom.io/)
+
+pipenv was used to install some modules in this project. As such, there is a need to open atom in the pipenv virtual development environment. To do so, open cmd in the project folder and type:
 
 ```
 pipenv shell
