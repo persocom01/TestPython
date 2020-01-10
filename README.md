@@ -8,8 +8,8 @@ Workable code is written on each topic to demonstrate use of python in the topic
 
 python has to be downloaded and installed. Atom was used as text editor.
 
-* [python_3.8.1](https://www.python.org/downloads/)
-* [atom_1.40.1](https://atom.io/)
+* [python 3.8.1 Windows x86-64](https://www.python.org/downloads/)
+* [atom 1.40.1](https://atom.io/)
 
 pipenv was used to install some modules in this project. As such, there is a need to open atom in the pipenv virtual development environment. To do so, open cmd in the project folder and type:
 
