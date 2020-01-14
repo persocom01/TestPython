@@ -11,7 +11,9 @@ print()
 print('unique elements: ', len({'apple', 'apple', 'banana', }))
 fruits = ['apple', 'apple', 'banana', ]
 # Sets are defined by {}. However since {} also define dictionaries, sets are
-# typically created using set() instead.
+# typically created using set() instead. In cases when set(str) is used, the
+# string will be considered a list of numbers. To pass the whole string, use
+# set([str]) instead.
 fruits = set(fruits)
 print(fruits)
 # Sets cannot be sorted, but you can use sorted to return a sorted list.
