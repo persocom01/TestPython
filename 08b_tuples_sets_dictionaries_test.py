@@ -39,11 +39,15 @@ print()
 # items = dict([('Weapon', 'Bow'), ('Armor', 'Leather armor')])
 # items = dict(Weapon='Bow', Armor='Leather armor')
 items = {'Weapon': 'Bow', 'Armor': 'Leather armor', }
+items2 = {'Helmet': 'Steel helmet'}
 
 # Demonstrates adding key to dictionary.
 items['Ammo'] = ['Wood arrows']
 # Demonstrates appending to a key containing a list.
 items['Ammo'].append('Iron arrows')
+# Demonstrates adding dictionaries together.
+items.update(items2)
+print('adding dictionaries together:', items)
 # Demonstrates get function. A default value can be specified in case
 # the key does not exist. In this case the default is 'No ammo.'
 # Can also be used in a dictionary comprehension to retrieve multiple keys.
