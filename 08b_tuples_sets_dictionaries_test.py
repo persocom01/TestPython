@@ -64,7 +64,7 @@ print()
 # op.itemgetter('Weapon', 'Armor')(items)
 # This method returns the items only, and not a modified dictionary.
 keys = ['weapon', 'armor']
-multiple_keys = {k: v for k, v in items.items() if k in keys}
+multiple_keys = {k: v for k, v in items.items() if k.lower() in keys}
 print('multiple_keys:', multiple_keys)
 
 # It is not possible to directly sort a dictionary.
