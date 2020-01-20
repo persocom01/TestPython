@@ -48,6 +48,7 @@ items['Ammo'].append('Iron arrows')
 # Demonstrates adding dictionaries together.
 # In cases where this doesn't work, use:
 # items = dict(list(items.items()) + list(items2.items()))
+# Note that the above causes items in list2 to overwrite items in list1.
 items.update(items2)
 print('adding dictionaries together:', items)
 # Demonstrates get function. A default value can be specified in case
