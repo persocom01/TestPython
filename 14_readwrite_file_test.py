@@ -4,8 +4,10 @@ import os
 # Changes default directory.
 os.chdir(os.getcwd() + r'\files')
 
-# Using with automatically closes the file when done.
-# Otherwise, use of f.close() is needed or resources are wasted.
+# Using with automatically closes the file when done, otherwise, f.close()
+# needs to be used to prevent resource wastage.
+# To open multiple files, use:
+# with open('file1', 'r') as f1, open('file2', 'r') as f2:
 # .split() is used here to split file contents into a list.
 # For better splitting use regex.
 with open('file.txt', 'r') as f:
