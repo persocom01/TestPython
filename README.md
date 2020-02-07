@@ -8,8 +8,8 @@ Workable code is written on each topic to demonstrate use of python in the topic
 
 python has to be downloaded and installed. Atom was used as text editor.
 
-* [python 3.8.1 Windows x86-64](https://www.python.org/downloads/)
-* [atom 1.40.1](https://atom.io/)
+* [python 3.8.1](https://www.python.org/downloads/)
+* [atom 1.43.0](https://atom.io/)
 
 pipenv was used to install some modules in this project. As such, there is a need to open atom in the pipenv virtual development environment. To do so, open cmd in the project folder and type:
 
@@ -39,7 +39,7 @@ pipenv run atom
 
 ## Known issues
 
-Python's locale.getpreferredencoding() returns cp1252 in windows. This may cause problems with information from certain web apis. To rectify this problem, type:
+While not an issue in this project itself, python's locale.getpreferredencoding() returns cp1252 in windows. This may cause problems with information from web apis in other python projects. To rectify this problem insert the following code on top of python files with encoding issues:
 
 ```
 import sys
