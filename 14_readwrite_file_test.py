@@ -3,6 +3,28 @@ import os
 # print(os.getcwd())
 # Changes default directory.
 os.chdir(os.getcwd() + r'\files')
+# os.rename(file, new_name) renames files.
+# os.remove(file) deletes files.
+
+# File modes:
+# r - read
+# rb - read binary
+# r+ - r + write
+# rb+ - rb + write
+# w - write. OVERWRITES file if it exists. Creates a new one if it doesn't.
+# wb - write binary
+# w+ - w + read
+# wb+ - wb + read
+# a - append
+# ab - append binary
+# a+ - a + read
+# ab+ - ab + read
+
+# File attributes:
+# .closed - boolean.
+# .mode - file access mode.
+# .name
+# .softspace - false if space explicitly required with print.
 
 # Using with automatically closes the file when done, otherwise, f.close()
 # needs to be used to prevent resource wastage.
