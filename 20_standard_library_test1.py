@@ -54,6 +54,9 @@ shutil.copyfile('file.txt', 'test.txt')
 #             os.path.join(os.getcwd(), 'test.txt'))
 
 # Makes file lists from wildcard searches.
+# If wildcard searches are not required, use os.listdir(path) instead.
+# Note that glob returns files with their full path, while os.listdir lists
+# directory and filenames only.
 # Demonstrated here with data compression.
 print(glob.glob('*.txt'))
 # You need rb here to perform compression.
