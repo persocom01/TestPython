@@ -19,7 +19,8 @@ change = (participants - prior_year) / prior_year
 # Default is -.
 # 4.2 means minimum 4 characters wide, 2 decimal place precision.
 # , means use thousands separator.
-print('This year, there was a {0:+4.2%} change in particpants '
+# .format works with r'strings' common when passing strings into regex.
+print(r'This year, there was a {0:+4.2%} change in particpants '
       'represented by {1:,} people.'
       .format(change, abs(participants - prior_year), ))
 

@@ -20,7 +20,9 @@ text = '''
 '''
 
 # Matches beginnings of string.
-if re.match('facebook', text):
+# The r in front of a string makes it a raw string literal, which allows use of
+# \ without escaping them unlike regular strings.
+if re.match(r'facebook', text):
     print('facebook present from beginning of string')
 else:
     print('facebook absent from beginning of string')
