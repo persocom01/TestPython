@@ -24,7 +24,11 @@ def solution(N, A):
     for X in A:
         if 1 <= X <= N:
             arr = increase(arr, X-1)
-            print(arr)
+            # print(arr)
         if X == N + 1:
             arr = max_counter(arr)
+            # print(arr)
     return arr
+
+
+print(solution(N, A))
