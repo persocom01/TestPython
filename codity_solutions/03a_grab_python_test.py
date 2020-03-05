@@ -1,7 +1,7 @@
 # The code I submitted for the grab codity python test. It scored 100 on
 # correctness but only 33 for performance. Using a dictionary will probably
 # make the process faster for large datasets. The objective is to return the
-# number of times the eltters for balloon may be removed from a string.
+# number of times the letters for balloon may be removed from a string.
 S = 'BAOOLLNNOLOLGBAX'
 
 
