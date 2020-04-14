@@ -19,17 +19,22 @@ text = '''
 </ul>
 '''
 
-# Matches beginnings of string.
+# Matches beginnings of string. Returns None if absent.
 # The r in front of a string makes it a raw string literal, which allows use of
 # \ without escaping them unlike regular strings.
-if re.match(r'facebook', text):
-    print('facebook present from beginning of string')
+match = re.match(r'facebook', text)
+print('match:')
+if match:
+    # Alternatively, match[0].
+    print(f'{match.group()} present from beginning of string')
 else:
     print('facebook absent from beginning of string')
 
-# Matches first instance anywhere in string.
+# Matches first instance anywhere in string. Returns None if absent.
 search = re.search('facebook', text)
+print('search:')
 if search:
+    # Alternatively, search[0].
     print(search.group())
     # Returns start position of match. Note that the first position is 0.
     print(search.start())
