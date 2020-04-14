@@ -88,12 +88,12 @@ print()
 # Demonstrates use of groups.
 # (?P<name>) is a named group.
 pattern = r'The (quick) brown fox (jumps (over)) the (?P<name>lazy) dog\.'
-match = re.match(pattern, text)
+search = re.search(pattern, text)
 # 4 groups total.
-print(len(match.groups()))
+print(len(search.groups()))
 # You can call each group individually using match.group(1).
 # 1 can be a name if named groups were used.
-for group in match.groups():
+for group in search.groups():
     print(group)
 # Demonstrates replacement of searched string as well as group indicators
 # \1 and \g<name> specifically.
