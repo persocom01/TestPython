@@ -15,9 +15,10 @@ os.chdir(os.getcwd() + r'\files')
 # wb - write binary
 # w+ - w + read
 # wb+ - wb + read
-# a - append
+# a - append. Creates a new file if it doesn't exist.
 # ab - append binary
-# a+ - a + read
+# a+ - a + read. f.seek(0) needs to be used prior to read to set the read
+# position to the beginning of the file.
 # ab+ - ab + read
 
 # File attributes:
