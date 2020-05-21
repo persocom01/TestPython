@@ -29,7 +29,10 @@ with open(file_path, 'w') as f:
 
 # Shows what the file looks like in json format. If being human readable
 # is not a necessity, use rb instead as it is faster.
-with open(file_path, 'r') as f:
+# For reasons unknown, singapore computers do not automatically use utf-8. As
+# such problems may occur when trying to read a json file. Use encoding dring
+# file load to fix the issue.
+with open(file_path, 'r', encoding='utf-8') as f:
     print(f.read())
 
 # Demonstrates retriving the dictionary from json format.
