@@ -37,7 +37,7 @@ pipenv run atom
 
 ## Known issues
 
-While not an issue in this project itself, python's locale.getpreferredencoding() returns cp1252 in windows. This may cause problems with information from web apis in other python projects. To rectify this problem insert the following code on top of python files with encoding issues:
+While not an issue in this project itself, python's locale.getpreferredencoding() returns cp1252 in windows. This may cause problems with information from web apis. To rectify this problem insert the following code on top of python files with encoding issues:
 
 ```
 import sys
