@@ -1,4 +1,4 @@
-# Demonstrates writing files in json format, useful for complicated objects.
+# Demonstrates reading and writing files in json format.
 import json
 
 # Changes the python default directory. With this there is no need to set the
