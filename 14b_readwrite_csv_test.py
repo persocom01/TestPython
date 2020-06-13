@@ -31,13 +31,13 @@ def csv_clean_colnames(file, sep=''):
     with open(file, 'r') as infile, open(tempfile, 'w', newline='') as outfile:
         r = csv.reader(infile, delimiter=',', quotechar='"')
         colnames = next(r)
-        colnames = [remove_special_characters(x.strip().lower().replace(' ', '_').replace('(', sep).replace(')', sep).replace('/', sep)) for x in colnames]
+        colnames = [remove_special_characters(x.strip().lower().replace(' ', '_').replace(
+            '(', sep).replace(')', sep).replace('/', sep)) for x in colnames]
 
         w = csv.writer(outfile)
         w.writerow(colnames)
-        for i, row in enumerate(r):
-            if i > 0:
-                w.writerow(row)
+        for row in r:
+            w.writerow(row)
 
     # Delete original and replace it with the cleaned file.
     os.remove(file)
