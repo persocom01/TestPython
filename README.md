@@ -35,6 +35,13 @@ pipenv run atom
 * project-manager
 * script
 
+Some of the packages require using pip to install certain module, so open up cmd and type:
+
+```
+pip install flake8
+pip install autopep8
+```
+
 ## Known issues
 
 While not an issue in this project itself, python's locale.getpreferredencoding() returns cp1252 in windows. This may cause problems with information from web apis. To rectify this problem insert the following code on top of python files with encoding issues:
