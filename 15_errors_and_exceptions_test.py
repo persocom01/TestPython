@@ -4,8 +4,8 @@ import os
 os.chdir(os.getcwd() + r'\files')
 
 # Demonstrates handling of multiple errors in a line using a tuple.
-# Is is also possible to write the tuple directly into the except statement
-# without creating a variable for it.
+# It may also be preferrable to write the tuple directly into the except
+# statement without defining a variable.
 errors = (FileNotFoundError, NameError)
 try:
     f = open('file2.txt', 'r')
@@ -19,7 +19,7 @@ except ValueError as err:
 # Catches all other exceptions. Using except: does the same thing,
 # but in this case we want to print the error.
 # The order matters. Since this catches all exceptions, putting it above the
-# other erros will cause them to never trigger.
+# other errors will cause them to never trigger.
 except Exception as err:
     print('Other errors: {0}'.format(err))
 # else is executed when no exceptions are encountered.
