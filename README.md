@@ -30,6 +30,7 @@ pipenv run atom
 * busy-signal
 * file-icons
 * intentions
+* linter
 * minimap
 * open_in_cmd
 * project-manager
