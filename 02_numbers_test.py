@@ -33,6 +33,7 @@ y -= 1
 y *= 10
 y /= 2
 print('start:', y)
+# Use this if you want the result to be an integer.
 y //= 2
 print('divide and floor:', y)
 y **= 2

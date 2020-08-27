@@ -1,4 +1,4 @@
-# Operators from highest to lowest prioirty:
+# Operators from highest to lowest priority:
 # ()
 # f(arg):
 # slice[:9]
