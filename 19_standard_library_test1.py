@@ -54,6 +54,8 @@ shutil.copyfile('file.txt', 'test.txt')
 #             os.path.join(os.getcwd(), 'test.txt'))
 
 # Makes file lists from wildcard searches.
+# Most often used for file types, such as './dir/*.filetype' but also has
+# subdirectory functionality in python 3.5+ using './dir/**/*.filetype'
 # If wildcard searches are not required, use os.listdir(path) instead.
 # Note that glob returns files with their full path, while os.listdir lists
 # directory and filenames only.
