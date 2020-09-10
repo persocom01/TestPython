@@ -2,6 +2,9 @@
 import os
 # print(os.getcwd())
 # Changes default directory.
+# There is a small difference between / and \ when writing file paths.
+# Unix systems only accept /. Windows accepts / and \, but if both are mixed
+# together, it only accepts \.
 os.chdir(os.getcwd() + r'\files')
 # os.rename(file, new_name) renames files.
 # os.remove(file) deletes files.
