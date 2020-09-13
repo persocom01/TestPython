@@ -15,6 +15,10 @@ import doctest
 print(os.getcwd())
 # Change working directory.
 # To go back up, use os.chdir('..').
+# There is a small difference between / and \ when writing file paths.
+# Unix systems only accept /. Windows accepts / and \, but if both are mixed
+# together, it only accepts \. Changing / to \ can fix windows based errors
+# in some codes.
 os.chdir(os.getcwd() + r'\files')
 # Lists all files and folders in a directory.
 print(os.listdir(os.getcwd()))

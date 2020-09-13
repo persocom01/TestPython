@@ -1,13 +1,4 @@
-# Prints the default file directory.
-import os
-# print(os.getcwd())
-# Changes default directory.
-# There is a small difference between / and \ when writing file paths.
-# Unix systems only accept /. Windows accepts / and \, but if both are mixed
-# together, it only accepts \.
-os.chdir(os.getcwd() + r'\files')
-# os.rename(file, new_name) renames files.
-# os.remove(file) deletes files.
+# Demonstrates reading and writing a file.
 
 # File modes:
 # r - read
@@ -30,18 +21,20 @@ os.chdir(os.getcwd() + r'\files')
 # .name
 # .softspace - false if space explicitly required with print.
 
+# Demonstrates reading a file.
 # Using with automatically closes the file when done, otherwise, f.close()
 # needs to be used to prevent resource wastage.
 # To open multiple files, use:
 # with open('file1', 'r') as f1, open('file2', 'r') as f2:
 # .split() is used here to split file contents into a list.
 # For better splitting use regex.
-with open('file.txt', 'r') as f:
+read_file = './files/file.txt'
+with open(read_file, 'r') as f:
     print(f.read().split())
 
 # Demonstrates use of readline to read individual lines.
 # The b mode is necessary for use of most seek methods other than 0 to work.
-with open('file.txt', 'rb') as f:
+with open(read_file, 'rb') as f:
     print(f.readline())
     print(f.readline())
     # Demonstrates use of tell to read position and seek to goto position.
@@ -52,7 +45,7 @@ with open('file.txt', 'rb') as f:
 
 # Functionally idential to repeating readline() if you read all lines.
 # readlines() returns a list of lines. Alternatively, use list(f).
-with open('file.txt', 'r') as f:
+with open(read_file, 'r') as f:
     for line in f.readlines():
         print(line, end='')
     print()
@@ -60,7 +53,7 @@ with open('file.txt', 'r') as f:
 # Demonstrates use of loops to read files instead of with.
 # It does not close the file automatically.
 try:
-    f = open('file.txt', 'r')
+    f = open(read_file, 'r')
     for line in f:
         print(line, end='')
 finally:
@@ -72,6 +65,7 @@ finally:
 # Because changes won't be saved until the file is closed,
 # it has to be closed before the new contents can be read.
 # Not used in this file is the mode a for append.
+write_file = './files/file2.txt'
 try:
     f = open('file2.txt', 'w+')
     f.write('line1\nline2')
