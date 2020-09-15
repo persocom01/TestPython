@@ -67,12 +67,12 @@ finally:
 # Not used in this file is the mode a for append.
 write_file = './files/file2.txt'
 try:
-    f = open('file2.txt', 'w+')
+    f = open(write_file, 'w+')
     f.write('line1\nline2')
     # Reads nothing.
     print(f.read(), end='')
 finally:
     f.close()
-    f = open('file2.txt', 'r')
+    f = open(write_file, 'r')
     print(f.read())
     f.close()
