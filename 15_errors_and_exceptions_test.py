@@ -1,14 +1,12 @@
 # Demonstrates error handling.
-import os
-# print(os.getcwd())
-os.chdir(os.getcwd() + r'\files')
+file = './files/file2.txt'
 
 # Demonstrates handling of multiple errors in a line using a tuple.
 # It may also be preferrable to write the tuple directly into the except
 # statement without defining a variable.
 errors = (FileNotFoundError, NameError)
 try:
-    f = open('file2.txt', 'r')
+    f = open(file, 'r')
     r = f.readline()
     i = int(r.strip())
 # Change to non existant file or variable name to get this error.
