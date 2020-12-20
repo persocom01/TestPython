@@ -29,7 +29,7 @@ finally:
     print()
 
 # --------------------------------------------------------------------------------
-# Demonstrates the creation of custom errors.
+# Demonstrates the creation and raising of custom errors.
 
 
 class MyError(Exception):
@@ -55,6 +55,9 @@ try:
         # customized error msg to occur.
         raise underval_error
     elif var > 10:
+        # One can replace this custom error with any of the python built-in
+        # error types. The standard ones are found here:
+        # https://www.tutorialspoint.com/python/standard_exceptions.htm
         raise OverValError(var)
 except OverValError:
     # Demonstrates use of raise to re-raise the error.
