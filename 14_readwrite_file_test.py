@@ -1,6 +1,8 @@
 # Demonstrates reading and writing a file.
 
-# File modes:
+# open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None,
+# closefd=True, opener=None)
+# modes:
 # r - read
 # rb - read binary
 # r+ - r + write
@@ -14,6 +16,8 @@
 # a+ - a + read. f.seek(0) needs to be used prior to read to set the read
 # position to the beginning of the file.
 # ab+ - ab + read
+# encoding can be import since windows does not use the same encoding as linux.
+# To avoid encoding issues, use encoding='utf-8'
 
 # File attributes:
 # .closed - boolean.
@@ -29,7 +33,7 @@
 # .split() is used here to split file contents into a list.
 # For better splitting use regex.
 read_file = './files/file.txt'
-with open(read_file, 'r') as f:
+with open(read_file, 'r', encoding='utf-8') as f:
     print(f.read().split())
 
 # Demonstrates use of readline to read individual lines.
@@ -45,7 +49,7 @@ with open(read_file, 'rb') as f:
 
 # Functionally idential to repeating readline() if you read all lines.
 # readlines() returns a list of lines. Alternatively, use list(f).
-with open(read_file, 'r') as f:
+with open(read_file, 'r', encoding='utf-8') as f:
     for line in f.readlines():
         print(line, end='')
     print()
@@ -53,7 +57,7 @@ with open(read_file, 'r') as f:
 # Demonstrates use of loops to read files instead of with.
 # It does not close the file automatically.
 try:
-    f = open(read_file, 'r')
+    f = open(read_file, 'r', encoding='utf-8')
     for line in f:
         print(line, end='')
 finally:
@@ -67,12 +71,12 @@ finally:
 # Not used in this file is the mode a for append.
 write_file = './files/file2.txt'
 try:
-    f = open(write_file, 'w+')
+    f = open(write_file, 'w+', encoding='utf-8')
     f.write('line1\nline2')
     # Reads nothing.
     print(f.read(), end='')
 finally:
     f.close()
-    f = open(write_file, 'r')
+    f = open(write_file, 'r', encoding='utf-8')
     print(f.read())
     f.close()
