@@ -1,3 +1,5 @@
+# Demonstrates various python string methods. For f strings, see
+# 13_input_output_test.py
 texts = []
 
 # Demonstrates \used to escape special characters as well as addition and
