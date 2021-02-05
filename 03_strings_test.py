@@ -83,3 +83,14 @@ print('find:', text.find('eggs'))
 # index returns ValueError if substring is not found.
 # index() can be applied to lists as well.
 print('index:', text.index('eggs'))
+
+# python supports special escape (\) characters as defined here:
+# \n	new line
+# \r	carriage return
+# \f	form feed
+# \b	backspace
+# \t	tab
+# \'	single quote
+# \\	backslash
+# \ooo	Octal character (ooo)
+# \xhh	Hex value (hh)
