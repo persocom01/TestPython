@@ -84,7 +84,7 @@ print('find:', text.find('eggs'))
 # index() can be applied to lists as well.
 print('index:', text.index('eggs'))
 
-# python supports special escape (\) characters as defined here:
+# python supports special escape (\) characters as defined below:
 # \n	new line
 # \r	carriage return
 # \f	form feed
