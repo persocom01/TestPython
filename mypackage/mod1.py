@@ -1,5 +1,5 @@
 def question(x):
-    print('how about lunch, ' + x + '?')
+    print('how do you do, ' + x + '?')
 
-def reply(x):
-    print('no thank you, ' + x)
+def reply():
+    print("I'm fine, thank you")
