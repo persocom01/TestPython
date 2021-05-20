@@ -10,6 +10,9 @@ def scope_test():
         spam = "local spam"
 
     # nonlocal goes one level higher to the parent function.
+    # nonlocal closure functions are an alternative to recursive functions.
+    # They also tend to be faster. Details here:
+    # https://towardsdatascience.com/dont-use-recursion-in-python-any-more-918aad95094c
     def do_nonlocal():
         nonlocal spam
         spam = "nonlocal spam"
