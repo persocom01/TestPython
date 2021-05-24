@@ -36,7 +36,7 @@ pipenv run atom
 * project-manager
 * script
 
-Some of the packages require using pip to install certain module, so open up cmd and type:
+Some of the packages require using pip to install certain modules, so open up cmd and enter:
 
 ```
 pip install flake8

@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = [
+    ".",
+    "tests"
+]
+markers = [
+    "math: marks tests as slow (deselect with '-m \"not slow\"')",
+    "others"
+]
