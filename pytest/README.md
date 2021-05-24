@@ -12,7 +12,7 @@ pip install pytest
 
 ## Usage
 
-pytest runs any python file in the root folder and `test` subfolder starting with `test_`. An error is returned if any of the files share the same file name. To run pytest, enter:
+pytest runs python files starting with `test_` in the root folder and `test` subfolder. An error is returned if any of the files share the same name. When the files are run, pytest executes every function in the file whose name starts with `test_`. Unlike file names, functions can share the same name so long as they are in different files. To run pytest, enter the following into command line in the root folder:
 
 ```
 pytest optional_filename
