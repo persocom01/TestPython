@@ -104,8 +104,13 @@ print(result)
 print()
 
 # Datetime manipulation.
-now = datetime.date.today()
-print(now)
+today = datetime.date.today()
+print('today: ' + str(today))
+now = datetime.datetime.now()
+print('now: ' + str(now))
+print(now.year)
+print(now.month)
+print(now.day)
 # Format code list.
 # %a	Abbreviated weekday name.	Sun, Mon, ...
 # %A	Full weekday name.	Sunday, Monday, ...
