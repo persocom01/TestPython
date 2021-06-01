@@ -86,10 +86,18 @@ class Animal:
 
 
 class Cat(Animal):
+    # A staticmethod is one that can be called without creating an instance of
+    # the class.
+    @staticmethod
+    def description():
+        print('a domestic feline')
+
     def sound(self):
         print('Meow')
 
 
+# Demonstrates calling a static method.
+Cat.description()
 Kuro = Cat(cats2[0])
 
 # As this property is mutable, this line will affect the base class.
