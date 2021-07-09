@@ -91,7 +91,7 @@ pattern = r'The (quick) brown fox (jumps (over)) the (?P<name>lazy) dog\.'
 search = re.search(pattern, text)
 # 4 groups total.
 print(len(search.groups()))
-# You can call each group individually using match.group(1).
+# You can call each group individually using search.group(1).
 # 1 can be a name if named groups were used.
 for group in search.groups():
     print(group)

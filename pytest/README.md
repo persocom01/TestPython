@@ -10,6 +10,12 @@ The pytest module needs to be installed:
 pip install pytest
 ```
 
+If testing has to cover `async` functions, install `pytest-asyncio`:
+
+```
+pip install pytest-asyncio
+```
+
 ## Usage
 
 pytest runs python files starting with `test_` in the root folder and `test` subfolder. An error is returned if any of the files share the same name. When the files are run, pytest executes every function in the file whose name starts with `test_`. Unlike file names, functions can share the same name so long as they are in different files. To run pytest, enter the following into command line in the root folder:
@@ -65,6 +71,18 @@ xfail causes a test to be run, but no details to be printed regardless of whethe
 3. skip
 
 A skip marker causes the test not to be run at all. It will only be recorded in the result summary as "skipped".
+
+4. asyncio
+
+This marker is added by the `pytest-asyncio` module, that adds `async` function support to `pytest`. When testing `async` functions, the test will have `await` somewhere in it. For example:
+
+```
+@pytest.mark.asyncio
+async def test_function_name():
+    output = await async_function()
+
+    assert output == expected_output
+```
 
 ### fixture
 
