@@ -34,7 +34,7 @@ fruits2.remove('papaya')
 print('remove:', fruits2)
 print()
 
-# Demostrates use of dictionary.
+# Demonstrates use of dictionary.
 # Alternatively:
 # items = dict([('Weapon', 'Bow'), ('Armor', 'Leather armor')])
 # items = dict(Weapon='Bow', Armor='Leather armor')
