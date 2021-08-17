@@ -24,6 +24,9 @@ print()
 print(round(1.5))
 print(math.floor(1.7))
 print(math.ceil(1.2))
+# round to nearest 0.5 instead of 1.
+factor = 0.5/1
+print(round(1.4/factor)*factor)
 print()
 
 # Compound assingment operators.
