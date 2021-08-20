@@ -4,7 +4,8 @@ import importlib
 # Note that using this method imports the functions directly into the symbol
 # table.
 from file_module2 import *
-# Imports a package with subpackages and modules defined in __init__.py.
+# Imports a package with subpackages and modules defined inthe module's
+# __init__.py file.
 import mypackage as p
 # If __init__.py is empty or the module is included in __all__ inside, you may
 # possible to import a file using:
