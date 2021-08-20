@@ -41,6 +41,10 @@ Some of the packages require using pip to install certain modules, so open up cm
 ```
 pip install flake8
 pip install autopep8
+
+<!-- Anaconda versions -->
+conda install -y -c anaconda flake8
+conda install -y -c conda-forge autopep8
 ```
 
 ## Known issues

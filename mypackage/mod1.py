@@ -1,5 +1,5 @@
-def question(x):
-    print('how do you do, ' + x + '?')
+def name(x):
+    print(f'package module {x}')
 
-def reply():
-    print("I'm fine, thank you")
+def ai():
+    print('function imported via absolute import path')
