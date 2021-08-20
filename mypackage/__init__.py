@@ -9,6 +9,7 @@ from mypackage.mod1 import ai
 from mypackage import childpackage
 
 # Just like how modules can define imported functions, packages can define
-# which files within the package can be imported.
+# which files within the package can be imported. This is equivalent to
+# from . import file
 # __all__ = ['mod1', 'mod2']
 __all__ = ['mod1']
