@@ -47,6 +47,8 @@ conda install -y -c anaconda flake8
 conda install -y -c conda-forge autopep8
 ```
 
+The path `flake8` is installed to may need to be added to windows environmental variables to use `linter-flake8`. The path to the anaconda installation is probably `C:\ProgramData\Anaconda3\Scripts`.
+
 ## Known issues
 
 While not an issue in this project itself, python's locale.getpreferredencoding() returns cp1252 in windows. This may cause problems with information from web apis. To rectify this problem insert the following code on top of python files with encoding issues:
