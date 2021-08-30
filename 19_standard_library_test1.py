@@ -108,6 +108,9 @@ today = datetime.date.today()
 print('today: ' + str(today))
 now = datetime.datetime.now()
 print('now: ' + str(now))
+# Gets the UNIX timestamp.
+timestamp = datetime.datetime.timestamp(now)
+print('timestamp: ' + str(timestamp))
 print(now.year)
 print(now.month)
 print(now.day)
@@ -151,9 +154,9 @@ yesterday = datetime.date.today() - datetime.timedelta(days=1)
 format = 'yesterday\'s date was %Y-%m-%d'
 print(yesterday.strftime(format))
 # Calendar math YYYY, M, D format.
-y2k = datetime.date(1999, 12, 31)
+y2k = datetime.datetime(1999, 12, 31)
 time_since = now - y2k
-print(time_since.days)
+print(f'no of days since {y2k}: ' + str(time_since.days))
 print()
 
 # Timing processes.
