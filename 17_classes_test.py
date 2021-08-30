@@ -57,6 +57,7 @@ for key in cats2:
         print(v.errors)
 
 # Demonstrates creation of class.
+# User made classes use the UpperCaseCamelCase naming convention.
 # In this case a dictionary is used to set instance attributes.
 
 

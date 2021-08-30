@@ -116,3 +116,5 @@ dmypy.json
 
 # Custom exceptions
 00_test.py
+key.pem
+cert.pem
