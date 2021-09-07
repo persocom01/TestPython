@@ -10,7 +10,7 @@ def get_url(path, https=False):
     return domain + path
 
 
-path = '/no'
+path = '/10.2'
 # We use verify=False because the api is using a self signed ssl cert that will
 # fail verification.
 r = requests.get(get_url(path, https=False), verify=False)

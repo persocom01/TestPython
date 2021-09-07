@@ -197,8 +197,8 @@ The function can be `async` or not, depending on whether you will need `await` t
 from fastapi import Request
 
 @app.post('/request')
-async def return_json(res: Request):
-   data = await res.json()
+async def return_json(req: Request):
+   data = await req.json()
    return data
 ```
 
