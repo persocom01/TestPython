@@ -8,11 +8,11 @@ import uvicorn
 
 app = FastAPI()
 
-# Cross origin error is something you may encounter when accessing the browser
-# attempts to access the api in a different origin, which is a combination of
-# protocol (http, https), domain (myapp.com, localhost, localhost.myapp.com),
-# and port (80, 443, 8080). Using CORSMiddleware allows you to define permitted
-# domains. Documentation here: https://fastapi.tiangolo.com/tutorial/cors/
+# Cross origin error is something you may encounter when the browser attempts
+# to access the api in a different origin, which is a combination of protocol
+# (http, https), domain (myapp.com, localhost, localhost.myapp.com), and port
+# (80, 443, 8080). Using CORSMiddleware allows you to define permitted domains
+# Documentation here: https://fastapi.tiangolo.com/tutorial/cors/
 origins = ['*']
 app.add_middleware(
     CORSMiddleware,
@@ -40,8 +40,12 @@ class PydanticTest(BaseModel):
 
 @app.post('/pydantic')
 def post_object(data: PydanticTest):
-    output = data
-    return output
+    print('string: ' + data.string)
+    print('bool: ' + str(data.bool))
+    print('int: ' + str(data.int))
+    print('list: ' + str(data.list))
+    print('direction: ' + data.direction.name)
+    return data
 
 
 @app.post('/file')
