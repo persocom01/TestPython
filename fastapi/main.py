@@ -52,7 +52,7 @@ def post_object(data: PydanticTest):
 async def post_file(file: UploadFile = File(...)):
     content = await file.read()
     content = content.rstrip()
-    print('file contents:')
+    print(f'contents of uploaded file {file.filename}:')
     print(content)
     return content
 

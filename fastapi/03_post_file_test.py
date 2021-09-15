@@ -22,18 +22,21 @@ def send_request(path, post=False, **kwargs):
     return request
 
 
-filepath = './fastapi/upload1.txt'
+filepath = './fastapi/upload.txt'
 domain = 'localhost:8000'
 path = f'{domain}/file'
 
 with open(filepath, 'rb') as f:
+    # filename affects the filename attribute of the uploaded file. You can
+    # name it anything, but we use the original filename for convenience.
     filename = os.path.basename(f.name)
     encoder = MultipartEncoder({'file': (filename, f)})
     # We use MultipartEncoder here because it is superior to how requests
-    # handles a multipart encoded file. For simile files the following code
+    # handles a multipart encoded file. For smaller files the following code
     # is sufficient:
-    r = send_request(path, post=True, files={filename: f}, verify=False)
-    # r = send_request(path, post=True, data=encoder, headers={'Content-Type': encoder.content_type}, verify=False)
+    # files = {'file': (filename, f, 'multipart/form-data')}
+    # r = send_request(path, post=True, files=files, verify=False)
+    r = send_request(path, post=True, data=encoder, headers={'Content-Type': encoder.content_type}, verify=False)
 
 if r.status_code == 200:
     print(r.text.strip('"'))

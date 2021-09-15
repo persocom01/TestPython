@@ -194,7 +194,7 @@ In this case, the only acceptable path parameters are `n, s, e, w` or the right 
 
 3. async functions
 
-The function can be `async` or not, depending on whether you will need `await` to use a library in the code. It is not clear when it is necessary to make the function `async`, but one clear use for it is during the use of the `Request` object:
+The function can be `async` or not, depending on whether you will need `await` to use a library in the code. It is not clear when it is necessary to make the function `async`, but known uses for it are when using the `Request` object and when accepting file uploads:
 
 ```
 from fastapi import Request
@@ -203,6 +203,14 @@ from fastapi import Request
 async def return_json(req: Request):
    data = await req.json()
    return data
+
+from fastapi import File, UploadFile
+
+@app.post('/file')
+async def post_file(file: UploadFile = File(...)):
+   content = await file.read()
+   content = content.rstrip()
+   return content
 ```
 
 This is because retrieving the data from the `Request` object requires use of `await`.
