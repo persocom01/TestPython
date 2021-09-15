@@ -1,4 +1,4 @@
-# Demonstrats how to send json messages with the request body.
+# Demonstrates how to send json messages with the request body.
 
 
 def send_request(path, post=False, **kwargs):

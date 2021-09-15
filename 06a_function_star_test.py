@@ -46,5 +46,10 @@ itemlist.sort()
 itemdic = {'item' + str(itemlist.index(item)+1) +
            ':': item for item in itemlist}
 
-creature('Elf', *description,
-         HP=100, Atk=10, **itemdic)
+
+# Demonstrates how to pass star arguments to subfunctions.
+def create_elf(*args, **kwargs):
+    creature('Elf', *args, HP=100, Atk=10, **kwargs)
+
+
+create_elf(*description, **itemdic)

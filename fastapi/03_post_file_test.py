@@ -1,4 +1,6 @@
-# Demonstrats how to send files with the request body.
+# Demonstrates how to send files with the request body.
+from requests_toolbelt import MultipartEncoder
+import os
 
 
 def send_request(path, post=False, **kwargs):
@@ -20,17 +22,20 @@ def send_request(path, post=False, **kwargs):
     return request
 
 
-json = {
-    'string': 'string data',
-    'bool': 'no',
-    'int': 1.5,
-    'direction': 'n'
-    }
-
+filepath = './fastapi/upload1.txt'
 domain = 'localhost:8000'
-path = f'{domain}/pydantic'
-r = send_request(path, post=True, json=json, verify=False)
+path = f'{domain}/file'
+
+with open(filepath, 'rb') as f:
+    filename = os.path.basename(f.name)
+    encoder = MultipartEncoder({'file': (filename, f)})
+    # We use MultipartEncoder here because it is superior to how requests
+    # handles a multipart encoded file. For simile files the following code
+    # is sufficient:
+    r = send_request(path, post=True, files={filename: f}, verify=False)
+    # r = send_request(path, post=True, data=encoder, headers={'Content-Type': encoder.content_type}, verify=False)
+
 if r.status_code == 200:
-    print(r.json())
+    print(r.text.strip('"'))
 else:
     print('request code: ' + str(r.status_code))

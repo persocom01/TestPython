@@ -49,8 +49,12 @@ def post_object(data: PydanticTest):
 
 
 @app.post('/file')
-def post_file(file: UploadFile = File(...)):
-    pass
+async def post_file(file: UploadFile = File(...)):
+    content = await file.read()
+    content = content.rstrip()
+    print('file contents:')
+    print(content)
+    return content
 
 
 @app.post('/request')

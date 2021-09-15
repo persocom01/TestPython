@@ -6,7 +6,7 @@ A FastAPI and requests testing playground.
 
 1. Create new python environment (optional)
 
-You might want to install FastAPI and all the packages the app needs in a separate environment, which is what venv is for. To create a new environment, open the project folder in cmd and type:
+You might want to install FastAPI and all the packages the app needs in a separate environment, which is what venv is for. To create a new environment, open the project folder in cmd admin mode and type:
 
 ```
 <!-- Non anaconda -->
@@ -26,15 +26,18 @@ With the new environment activated, install needed dependencies by entering the 
 pip install fastapi
 pip install python-multipart
 pip install uvicorn[standard]
+pip install requests-toolbelt
 
 <!-- Ananconda -->
 conda install -y -c conda-forge fastapi
 conda install -y -c conda-forge python-multipart
 conda install -y -c conda-forge uvicorn
+conda install -y -c conda-forge requests-toolbelt
 ```
 
 * `python-multipart` - needed by FastAPI to handle form data.
 * `uvicorn` - an ASGI server, which is needed to run a FastAPI app.
+* `requests-toolbelt` - provides support to uploading large multipart files without first loading the file into ram.
 
 ## Usage
 

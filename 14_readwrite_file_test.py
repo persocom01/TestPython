@@ -1,4 +1,5 @@
 # Demonstrates reading and writing a file.
+import os
 
 # open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None,
 # closefd=True, opener=None)
@@ -34,6 +35,9 @@
 # For better splitting use regex.
 read_file = './files/file.txt'
 with open(read_file, 'r', encoding='utf-8') as f:
+    # Demonstrates how to get the filename of the file.
+    filename = os.path.basename(f.name)
+    print(f'contents of file {filename}')
     print(f.read().split())
 
 # Demonstrates use of readline to read individual lines.
