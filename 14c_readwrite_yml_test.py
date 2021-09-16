@@ -4,6 +4,7 @@ import yaml
 dict = {
     'name': 'yml test file',
     'float': 1.51,
+    'bool': False,
     'list': [
         0,
         {
