@@ -20,7 +20,7 @@ pip install pyyaml
 conda install -y -c anaconda pyyaml
 ```
 
-Alternatively python has the ability to install dependencies from a text file, normally named `requirements.txt`. To install dependencies from file, enter the following into cmd:
+Alternatively python has the ability to install up to 100 dependencies from a text file, normally named `requirements.txt`. To install dependencies from file, enter the following into cmd:
 
 ```
 pip install -r requirements.txt
