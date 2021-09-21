@@ -170,7 +170,9 @@ class PydanticTest(BaseModel):
     bool: Optional[bool]
 ```
 
-An error will be returned if the parameter cannot be converted to the defined type. Optional data will have value `None`, and other json keys will be ignored. For more complicated body structures, refer here: https://fastapi.tiangolo.com/tutorial/body-multiple-params/
+An error will be returned if the parameter cannot be converted to the defined type. Optional data will have value `None`, and other json keys will be ignored. For more information:
+* Complex body structures: https://fastapi.tiangolo.com/tutorial/body-multiple-params/
+* Detailed data validation: https://pydantic-docs.helpmanual.io/usage/types/
 
 2. Accepting only predefined values
 
