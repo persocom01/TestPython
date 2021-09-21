@@ -1,11 +1,15 @@
 # Demonstrates reading and writing files in json format.
 import json
 
-file = './files/file2.txt'
+file = './files/json_file.json'
 
 # Returns string of json format.
-dic = {'Apple': 'A type of fruit',
-       'Ball': ['A spherical object.', 'A dance party.']}
+dic = {
+    'str': 'hello world',
+    'float': 1.5,
+    'bool': True,
+    'list': ['A spherical object.', 'A dance party.']
+    }
 print(json.dumps(dic))
 
 # Demonstrates writing json to txt file. It is also possible to write to .json

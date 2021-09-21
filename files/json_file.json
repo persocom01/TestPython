@@ -1,0 +1,9 @@
+{
+    "bool": true,
+    "float": 1.5,
+    "list": [
+        "A spherical object.",
+        "A dance party."
+    ],
+    "str": "hello world"
+}
