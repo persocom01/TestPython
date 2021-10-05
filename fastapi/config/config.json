@@ -1,0 +1,9 @@
+{
+    "cors": [
+        "*"
+    ],
+    "model": "./model",
+    "path": "/",
+    "port": 8000,
+    "temp": "./tmp.wav"
+}

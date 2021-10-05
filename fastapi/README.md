@@ -27,17 +27,22 @@ pip install fastapi
 pip install python-multipart
 pip install uvicorn[standard]
 pip install requests-toolbelt
+pip install vosk
 
 <!-- Ananconda -->
 conda install -y -c conda-forge fastapi
 conda install -y -c conda-forge python-multipart
 conda install -y -c conda-forge uvicorn
 conda install -y -c conda-forge requests-toolbelt
+<!-- Anaconda does not have a vosk installation -->
 ```
 
 * `python-multipart` - needed by FastAPI to handle form data.
 * `uvicorn` - an ASGI server, which is needed to run a FastAPI app.
 * `requests-toolbelt` - provides support to uploading large multipart files without first loading the file into ram.
+* `vosk` - the speech recognition toolkit used to covert speech to text (STT).
+* `SpeechRecognition` - the api used to convert voice into a wav file.
+* `pyaudio` - needed for microphone support.
 
 ## Usage
 

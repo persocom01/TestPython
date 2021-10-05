@@ -2,6 +2,10 @@
 from requests_toolbelt import MultipartEncoder
 import os
 
+filepath = './fastapi/upload.txt'
+domain = 'localhost:8000'
+path = f'{domain}/file'
+
 
 def send_request(path, post=False, **kwargs):
     import requests
@@ -21,10 +25,6 @@ def send_request(path, post=False, **kwargs):
             request = requests.get(https, **kwargs)
     return request
 
-
-filepath = './fastapi/upload.txt'
-domain = 'localhost:8000'
-path = f'{domain}/file'
 
 with open(filepath, 'rb') as f:
     # filename affects the filename attribute of the uploaded file. You can

@@ -1,10 +1,23 @@
-from fastapi import FastAPI, File, UploadFile, Request
+import json
+from fastapi import FastAPI, File, UploadFile, Request, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from enum import Enum
 from typing import Optional
 import pathlib
 import uvicorn
+import os
+import vosk_stt as stt
+
+config_path = './config/config.json'
+
+with open(config_path, 'r') as f:
+    config = json.load(f)
+
+stt_model = config['model']
+cors = config['cors']
+tempfile = config['temp']
+port = config['port']
 
 app = FastAPI()
 
@@ -13,10 +26,9 @@ app = FastAPI()
 # (http, https), domain (myapp.com, localhost, localhost.myapp.com), and port
 # (80, 443, 8080). Using CORSMiddleware allows you to define permitted domains
 # Documentation here: https://fastapi.tiangolo.com/tutorial/cors/
-origins = ['*']
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=cors,
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
@@ -64,6 +76,27 @@ async def return_json(res: Request):
 #     return data
 
 
+@app.post('/stt')
+async def post_audio(file: UploadFile = File(...)):
+    content = await file.read()
+    tempfile = 'tmp.wav'
+    with open(tempfile, 'wb') as f:
+        f.write(content)
+    text = stt.text_from_sound_file(tempfile, stt_model)
+    os.remove(tempfile)
+    print(f'speech to text: {text}')
+    return text
+
+
+# @app.post('/audstream')
+# async def websocket_endpoint(websocket: WebSocket):
+#     await websocket.accept()
+#     while True:
+#         await asyncio.sleep(0.1)
+#         payload = next(measurements)
+#         await websocket.send_json(payload)
+
+
 @app.get('/{query}')
 def get_divide_query_by_two(query: float):
     output = query / 2
@@ -73,4 +106,4 @@ def get_divide_query_by_two(query: float):
 # uvicorn main:app --reload
 app_name = pathlib.Path(__file__).stem
 if __name__ == '__main__':
-    uvicorn.run(f'{app_name}:app', host='0.0.0.0', port=8000, log_level='debug', ssl_certfile='./cert.pem', ssl_keyfile='./key.pem')
+    uvicorn.run(f'{app_name}:app', host='0.0.0.0', port=port, log_level='debug', ssl_certfile='./config/cert.pem', ssl_keyfile='./config/key.pem')

@@ -1,4 +1,6 @@
 # Demonstrates how to send a get request and recieve a text response.
+domain = 'localhost:8000'
+path = f'{domain}/10.2'
 
 
 def send_request(path, post=False, **kwargs):
@@ -20,8 +22,6 @@ def send_request(path, post=False, **kwargs):
     return request
 
 
-domain = 'localhost:8000'
-path = f'{domain}/10.2'
 # We use verify=False because the api is using a self signed ssl cert that will
 # fail verification.
 r = send_request(path, verify=False)

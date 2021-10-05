@@ -1,4 +1,13 @@
 # Demonstrates how to send json messages with the request body.
+json = {
+    'string': 'string data',
+    'bool': 'no',
+    'int': 1.5,
+    'direction': 'n'
+    }
+
+domain = 'localhost:8000'
+path = f'{domain}/pydantic'
 
 
 def send_request(path, post=False, **kwargs):
@@ -20,15 +29,6 @@ def send_request(path, post=False, **kwargs):
     return request
 
 
-json = {
-    'string': 'string data',
-    'bool': 'no',
-    'int': 1.5,
-    'direction': 'n'
-    }
-
-domain = 'localhost:8000'
-path = f'{domain}/pydantic'
 r = send_request(path, post=True, json=json, verify=False)
 if r.status_code == 200:
     print(r.json())

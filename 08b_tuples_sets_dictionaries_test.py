@@ -34,6 +34,23 @@ fruits2.remove('papaya')
 print('remove:', fruits2)
 print()
 
+
+# Dictionaries are normally accessed through dict[key]. However, in some cases,
+# dict.key might be preferable. This class allows dictionary-like objects to be
+# instantiated using either
+# Adict = AttribDict(dict)
+# Adict = AttribDict(param1=value1, param2=value2)
+# and accessed using attributes instead of []. They are, however, not actual
+# dictionaries and some dictionary methods may fail.
+class AttribDict(object):
+    def __init__(self, *initial_data, **kwargs):
+        for dictionary in initial_data:
+            for key in dictionary:
+                setattr(self, key, dictionary[key])
+        for key in kwargs:
+            setattr(self, key, kwargs[key])
+
+
 # Demonstrates use of dictionary.
 # Alternatively:
 # items = dict([('Weapon', 'Bow'), ('Armor', 'Leather armor')])
@@ -41,6 +58,9 @@ print()
 items = {'Weapon': 'Bow', 'Armor': 'Leather armor', }
 items2 = {'Helmet': 'Steel helmet'}
 
+# Demonstrates attribute dictionaries.
+Aitems = AttribDict(items)
+print('attribute dictionary: ' + Aitems.Weapon)
 # Demonstrates adding key to dictionary.
 items['Ammo'] = ['Wood arrows']
 # Demonstrates appending to a key containing a list.
