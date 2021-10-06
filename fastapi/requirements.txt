@@ -1,7 +1,7 @@
-fastapi
-python-multipart
-uvicorn[standard]
-requests-toolbelt
-SpeechRecognition
-pyaudio
-vosk
+fastapi==0.68.0
+python-multipart==0.0.5
+uvicorn[standard]==0.15.0
+requests-toolbelt==0.9.1
+SpeechRecognition==3.8.1
+pyaudio==0.2.11
+vosk==0.3.31

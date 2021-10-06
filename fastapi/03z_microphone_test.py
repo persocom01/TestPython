@@ -1,8 +1,17 @@
 # This file uses the microphone to generate a wav file.
 import speech_recognition as sr
+import pyaudio
 
 file = './files/test_wav.wav'
-device_index = 1
+device_index = -1
+
+def get_microphone_device_index():
+    device_index = -1
+    pa = pyaudio.PyAudio()
+    try:
+        pa.get_host_api_info_by_index(0)['defaultInputDevice']
+    except KeyError:
+
 
 try:
     mic = sr.Microphone(device_index=device_index)
