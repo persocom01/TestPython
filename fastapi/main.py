@@ -6,7 +6,7 @@ from enum import Enum
 from typing import Optional
 import pathlib
 import uvicorn
-import os
+import io
 import vosk_stt as stt
 
 config_path = './config/config.json'
@@ -79,11 +79,10 @@ async def return_json(res: Request):
 @app.post('/stt')
 async def post_audio(file: UploadFile = File(...)):
     content = await file.read()
-    tempfile = 'tmp.wav'
-    with open(tempfile, 'wb') as f:
+    with io.BytesIO() as f:
         f.write(content)
-    text = stt.text_from_sound_file(tempfile, stt_model)
-    os.remove(tempfile)
+        f.seek(0)
+        text = stt.text_from_sound_file(f, stt_model)
     print(f'speech to text: {text}')
     return text
 

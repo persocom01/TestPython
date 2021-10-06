@@ -1,5 +1,7 @@
 # Demonstrates reading and writing a file.
 import os
+import io
+import time
 
 # open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None,
 # closefd=True, opener=None)
@@ -69,10 +71,11 @@ finally:
     print()
     f.close()
 
-# Demonstrates writing to a file.
+# Demonstrates writing to a file without with.
 # Because changes won't be saved until the file is closed,
 # it has to be closed before the new contents can be read.
 # Not used in this file is the mode a for append.
+begin = time.time()
 write_file = './files/file2.txt'
 try:
     f = open(write_file, 'w+', encoding='utf-8')
@@ -84,3 +87,23 @@ finally:
     f = open(write_file, 'r', encoding='utf-8')
     print(f.read())
     f.close()
+end = time.time()
+seconds = end - begin
+print('write file time: ' + str(seconds))
+print()
+
+# Demonstrates writing and reading from a temp file.
+# There are times when it is convenient to write data to a temp file instead
+# of dedicating a space in local storage, especially when the file is small.
+# In such cases, this method is much faster.
+begin = time.time()
+with io.BytesIO() as f:
+    f.write(b'line1\nline2')
+    # Read nothing.
+    print(f.read())
+    # You need to seek to the beginning of the buffer to read it.
+    f.seek(0)
+    print(f.read())
+end = time.time()
+seconds = end - begin
+print('write buffer time: ' + str(seconds))
