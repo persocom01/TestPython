@@ -225,3 +225,7 @@ This is because retrieving the data from the `Request` object requires use of `a
 ## Documentation
 
 FastAPI generates automatic documentation of the api at `/docs` or an alternative at `/redoc`.
+
+## Known issues
+
+As of 6 Oct 2021, the `pyaudio` module only works up to python 3.6 or using anaconda to install it.
