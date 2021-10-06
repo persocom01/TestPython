@@ -228,4 +228,4 @@ FastAPI generates automatic documentation of the api at `/docs` or an alternativ
 
 ## Known issues
 
-As of 6 Oct 2021, the `pyaudio` module only works up to python 3.6 or using anaconda to install it.
+While not necessary for the app itself, the test files use the `pyaudio` module, which as of 4 Oct 2021 only works up to python 3.6 or using anaconda install.
