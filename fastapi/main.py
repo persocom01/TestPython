@@ -16,7 +16,6 @@ with open(config_path, 'r') as f:
 
 stt_model = config['model']
 cors = config['cors']
-tempfile = config['temp']
 port = config['port']
 
 app = FastAPI()
