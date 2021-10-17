@@ -6,6 +6,7 @@ import json
 
 class Vosk:
     def __init__(self, modelpath):
+        SetLogLevel(0)
         self.model = modelpath
 
     @property
@@ -23,8 +24,6 @@ class Vosk:
             print("[vosk_stt]Model not found. Please download the model from https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
 
     def text_from_sound_file(self, file):
-        SetLogLevel(0)
-
         wf = wave.open(file, 'rb')
         if wf.getnchannels() != 1 or wf.getsampwidth() != 2 or wf.getcomptype() != 'NONE':
             print('[vosk_stt]Audio file must be WAV format mono PCM.')
