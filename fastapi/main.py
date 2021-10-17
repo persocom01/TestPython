@@ -85,6 +85,7 @@ async def post_audio(file: UploadFile = File(...)):
         f.write(content)
         f.seek(0)
         text = vosk.text_from_sound_file(f)
+        print(f'[vosk_stt]speech to text: {text}')
     return text
 
 
