@@ -1,4 +1,4 @@
-fastapi==0.68.0
+fastapi==0.68.1
 python-multipart==0.0.5
 uvicorn[standard]==0.15.0
 requests-toolbelt==0.9.1

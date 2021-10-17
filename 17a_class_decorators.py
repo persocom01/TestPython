@@ -51,23 +51,6 @@ class Student:
     def __init__(self, name):
         self.name = name
 
-    # property() is a special function which you can pass up to 3 functions as
-    # arguments:
-    # We pass "getter()" by default when we use it as a decorator.
-    @property
-    def name(self):
-        print('Getting value')
-        return self._name
-
-    # Here we pass the "setter" argument.
-    @name.setter
-    def name(self, val):
-        if not isinstance(val, str):
-            raise ValueError('Name must be a string.')
-        else:
-            print('Setting value')
-            self._name = val
-
     def greeting(self):
         import time
         print('Hi, my name is', self.name)

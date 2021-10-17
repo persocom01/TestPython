@@ -15,9 +15,11 @@ Additional modules were added to python. Enter the following into cmd to install
 
 ```
 pip install pyyaml
+pip install cerberus
 
 <!-- Anaconda versions -->
 conda install -y -c anaconda pyyaml
+conda install -y -c conda-forge cerberus
 ```
 
 Alternatively python has the ability to install up to 100 dependencies from a text file, normally named `requirements.txt`. To install dependencies from file, enter the following into cmd:

@@ -9,7 +9,12 @@ import urllib.request
 import json
 import datetime
 import timeit
+import time
 import doctest
+
+# Demonstrates timing this file module using 2 different methods.
+current_time = datetime.datetime.now()
+current_time_s = time.time()
 
 # Current working directory.
 print(os.getcwd())
@@ -196,5 +201,8 @@ def celcius_to_kelvin(x):
 
 
 print(celcius_to_kelvin(1))
-print()
 print(doctest.testmod())
+print()
+
+print(f'module time usig datetime: {datetime.datetime.now() - current_time}')
+print(f'module time using time: {time.time() - current_time_s}')

@@ -74,6 +74,9 @@ async def return_json(res: Request):
 #     data = await res.json()
 #     return data
 
+# By preloading the model, api response time is reduced.
+vosk = stt.Vosk(stt_model)
+
 
 @app.post('/stt')
 async def post_audio(file: UploadFile = File(...)):
@@ -81,8 +84,7 @@ async def post_audio(file: UploadFile = File(...)):
     with io.BytesIO() as f:
         f.write(content)
         f.seek(0)
-        text = stt.text_from_sound_file(f, stt_model)
-    print(f'speech to text: {text}')
+        text = vosk.text_from_sound_file(f)
     return text
 
 

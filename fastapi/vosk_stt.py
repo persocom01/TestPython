@@ -4,30 +4,43 @@ import wave
 import json
 
 
-def text_from_sound_file(file, modelpath):
-    SetLogLevel(0)
+class Vosk:
+    def __init__(self, modelpath):
+        self.model = modelpath
 
-    if not os.path.exists(modelpath):
-        print("Please download the model from https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
-        exit(1)
+    @property
+    def model(self):
+        if hasattr(self, '_model'):
+            return self._model
+        else:
+            print('the model attribute does not exist')
 
-    wf = wave.open(file, 'rb')
-    if wf.getnchannels() != 1 or wf.getsampwidth() != 2 or wf.getcomptype() != 'NONE':
-        print('Audio file must be WAV format mono PCM.')
-        exit(1)
+    @model.setter
+    def model(self, value):
+        if os.path.exists(value):
+            self._model = Model(value)
+        else:
+            print("Model not found. Please download the model from https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
 
-    model = Model(modelpath)
-    rec = KaldiRecognizer(model, wf.getframerate())
-    rec.SetWords(True)
+    def text_from_sound_file(self, file):
+        SetLogLevel(0)
 
-    while True:
-        data = wf.readframes(4000)
-        if len(data) == 0:
-            break
-        rec.AcceptWaveform(data)
-        # if rec.AcceptWaveform(data):
-        #     print(rec.Result())
-        # else:
-        #     print(rec.PartialResult())
+        wf = wave.open(file, 'rb')
+        if wf.getnchannels() != 1 or wf.getsampwidth() != 2 or wf.getcomptype() != 'NONE':
+            print('Audio file must be WAV format mono PCM.')
+            exit(1)
 
-    return json.loads(rec.FinalResult())['text']
+        rec = KaldiRecognizer(self._model, wf.getframerate())
+        rec.SetWords(True)
+
+        while True:
+            data = wf.readframes(4000)
+            if len(data) == 0:
+                break
+            rec.AcceptWaveform(data)
+            # if rec.AcceptWaveform(data):
+            #     print(rec.Result())
+            # else:
+            #     print(rec.PartialResult())
+
+        return json.loads(rec.FinalResult())['text']

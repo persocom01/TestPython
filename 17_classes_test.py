@@ -1,3 +1,4 @@
+# Demonstrates classes in python.
 import os
 import json
 import cerberus
@@ -53,8 +54,8 @@ v = cerberus.Validator(schema, allow_unknown=True)
 
 for key in cats2:
     if not v.validate(key):
-        raise Exception('Wrong value for sex.')
         print(v.errors)
+        raise Exception('Wrong value for sex.')
 
 # Demonstrates creation of class.
 # User made classes use the UpperCaseCamelCase naming convention.
@@ -62,7 +63,7 @@ for key in cats2:
 
 
 class Animal:
-    # Class properties not inside the __init__ function are called class
+    # Class properties outside the __init__ function are called class
     # variables. They are shared by all instances of the class.
     # They can be overwritten in individual instances, but mutable objects like
     # lists will remain shared.
@@ -72,8 +73,41 @@ class Animal:
         # Class properties inside the __init__ function are called instance
         # variables.
         self.trick = []
+        # Demonstrates setting of instance properties from a dictionary.
         for k, v in dictionary.items():
             setattr(self, k, v)
+
+    # The built in class method property() is a special function which you can
+    # pass up to 3 special functions, getter(), setter(), and deleter(). We
+    # pass getter() by default when we use it as a decorator. If we do not
+    # define the other two functions, the property will be effectively read
+    # only, as the value cannot be changed or deleted.
+    @property
+    def food(self):
+        if hasattr(self, '_food'):
+            return self._food
+        else:
+            print('the food attribute does not exist')
+
+        # Alternatively:
+        # try:
+        #     return self._food
+        # except AttributeError:
+        #     print('the food attribute does not exist')
+
+    # Here we pass the "setter" argument.
+    @food.setter
+    def food(self, value):
+        if not isinstance(value, str):
+            raise ValueError('food must be a string')
+        else:
+            self._food = value
+
+    # Here we determine what happens when we delete the attribute.
+    @food.deleter
+    def food(self):
+        print(f'deleting value "{self._food}" from food attribute')
+        del self._food
 
     # self makes a function usable by instances of the class. Without which,
     # it can only be used by the master class.
@@ -103,10 +137,14 @@ Kuro = Cat(cats2[0])
 
 # As this property is mutable, this line will affect the base class.
 Kuro.subclasses.append('Cat')
+# Class properties can be added at any time just like other languages.
+Kuro.food = 'mouse'
+del Kuro.food
+Kuro.food = 'fish'
 Kuro.add_trick('claw rush')
 
 print('shared class list: ', Animal.subclasses)
-print(Kuro.name, Kuro.sex, Kuro.color)
+print(Kuro.name, Kuro.sex, Kuro.color, Kuro.food)
 print(Kuro.trick)
 
 
