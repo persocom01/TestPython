@@ -3,26 +3,24 @@ from requests_toolbelt import MultipartEncoder
 import os
 
 filepath = './files/test_wav.wav'
-domain = 'localhost:8000'
+domain = 'http://localhost:8000'
 path = f'{domain}/stt'
 
 
 def send_request(path, post=False, **kwargs):
     import requests
-    http = f'http://{path}'
-    https = f'https://{path}'
     if post:
         try:
-            request = requests.post(http, **kwargs)
-        except requests.exceptions.ConnectionError:
-            print('http request failed, trying https...')
-            request = requests.post(https, **kwargs)
+            request = requests.post(path, **kwargs)
+        except requests.exceptions.ConnectionError as e:
+            print('http(s) request failed, perhaps try the other...')
+            raise e
     else:
         try:
-            request = requests.get(http, **kwargs)
-        except requests.exceptions.ConnectionError:
-            print('http request failed, trying https...')
-            request = requests.get(https, **kwargs)
+            request = requests.get(path, **kwargs)
+        except requests.exceptions.ConnectionError as e:
+            print('http(s) request failed, perhaps try the other...')
+            raise e
     return request
 
 

@@ -2,6 +2,11 @@
     "cors": [
         "*"
     ],
+    "https": {
+        "certfile": "./config/cert.pem",
+        "enabled": false,
+        "keyfile": "./config/key.pem"
+    },
     "model": "./vosk-model-small-en-us-0.15",
     "path": "/",
     "port": 8000

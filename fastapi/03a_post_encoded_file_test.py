@@ -1,8 +1,10 @@
-# Demonstrates how to send files with the request body.
+# Demonstrates how to send encoded files using io.BytesIO()files with the request body.
 from requests_toolbelt import MultipartEncoder
-import os
+import base64
+import io
 
-filepath = './fastapi/upload.txt'
+password = 'encoded file text'
+filename = 'encode.txt'
 domain = 'http://localhost:8000'
 path = f'{domain}/_file'
 
@@ -24,14 +26,12 @@ def send_request(path, post=False, **kwargs):
     return request
 
 
-with open(filepath, 'rb') as f:
-    # filename affects the filename attribute of the uploaded file. You can
-    # name it anything, but we use the original filename for convenience.
-    filename = os.path.basename(f.name)
+# Convert to encoded bytes.
+password = base64.urlsafe_b64encode(password.encode())
+with io.BytesIO() as f:
+    f.write(password)
+    f.seek(0)
     encoder = MultipartEncoder({'file': (filename, f)})
-    # We use MultipartEncoder here because it is superior to how requests
-    # handles a multipart encoded file. For smaller files the following code
-    # is sufficient:
     # files = {'file': (filename, f, 'multipart/form-data')}
     # r = send_request(path, post=True, files=files, verify=False)
     r = send_request(path, post=True, data=encoder, headers={'Content-Type': encoder.content_type}, verify=False)
@@ -39,5 +39,4 @@ with open(filepath, 'rb') as f:
 if r.status_code == 200:
     print(r.text.strip('"'))
 else:
-    print(r.text.strip('"'))
     print('request code: ' + str(r.status_code))

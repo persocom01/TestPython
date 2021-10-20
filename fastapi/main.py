@@ -6,7 +6,8 @@ from enum import Enum
 from typing import Optional
 import pathlib
 import uvicorn
-import io
+import base64
+import time
 import vosk_stt as stt
 
 config_path = './config/config.json'
@@ -17,6 +18,8 @@ with open(config_path, 'r') as f:
 stt_model = config['model']
 cors = config['cors']
 port = config['port']
+certfile = config['https']['certfile']
+keyfile = config['https']['keyfile']
 
 app = FastAPI()
 
@@ -51,6 +54,7 @@ class PydanticTest(BaseModel):
 
 @app.post('/pydantic')
 def post_object(data: PydanticTest):
+    print('post json with data validation')
     print('string: ' + data.string)
     print('bool: ' + str(data.bool))
     print('int: ' + str(data.int))
@@ -60,10 +64,33 @@ def post_object(data: PydanticTest):
 
 
 @app.post('/file')
-async def post_file(file: UploadFile = File(...)):
+async def post_file_upload(file: UploadFile = File(...)):
+    print('post file')
+    # This is the async way to get file contents according to:
+    # https://fastapi.tiangolo.com/tutorial/request-files/
+    # You can also get the file contents by using non async file.file.read(),
+    # or pass the whole file using file.file.
+    # content = file.file.read()
     content = await file.read()
     content = content.rstrip()
-    print(f'contents of uploaded file {file.filename}:')
+    print(f'file {file.filename} contents:')
+    print(content.decode('utf-8'))
+    return content
+
+
+@app.post('/_file')
+def post_encoded_file(file: bytes = File(...)):
+    print('post encoded bytes file')
+    try:
+        content = base64.b64decode(file).decode()
+        encoded_message = file.decode()
+        print('encoded contents:')
+        print(encoded_message)
+        print()
+    except base64.binascii.Error:
+        content = file.decode()
+    content = content.rstrip()
+    print('file contents:')
     print(content)
     return content
 
@@ -79,13 +106,14 @@ vosk = stt.Vosk(stt_model)
 
 
 @app.post('/stt')
-async def post_audio(file: UploadFile = File(...)):
-    content = await file.read()
-    with io.BytesIO() as f:
-        f.write(content)
-        f.seek(0)
+def post_audio(file: UploadFile = File(...)):
+    start = time.time()
+    with file.file as f:
         text = vosk.text_from_sound_file(f)
-        print(f'[vosk_stt]speech to text: {text}')
+    print(f'[vosk_stt]speech to text: {text}')
+    end = time.time()
+    total = start - end
+    print(f'[vosk_stt]transcription time: {total}')
     return text
 
 
@@ -107,4 +135,7 @@ def get_divide_query_by_two(query: float):
 # uvicorn main:app --reload
 app_name = pathlib.Path(__file__).stem
 if __name__ == '__main__':
-    uvicorn.run(f'{app_name}:app', host='0.0.0.0', port=port, log_level='debug', ssl_certfile='./config/cert.pem', ssl_keyfile='./config/key.pem')
+    if config['https']['enabled']:
+        uvicorn.run(f'{app_name}:app', host='0.0.0.0', port=port, log_level='debug', ssl_certfile=f'{certfile}', ssl_keyfile=f'{keyfile}')
+    else:
+        uvicorn.run(f'{app_name}:app', reload=True)
