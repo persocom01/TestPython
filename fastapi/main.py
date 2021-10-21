@@ -12,14 +12,17 @@ import vosk_stt as stt
 
 config_path = './config/config.json'
 
-with open(config_path, 'r') as f:
-    config = json.load(f)
+try:
+    with open(config_path, 'r') as f:
+        config = json.load(f)
+except Exception as e:
+    print(f'error reading config file: {e}')
 
-stt_model = config['model']
-cors = config['cors']
-port = config['port']
-certfile = config['https']['certfile']
-keyfile = config['https']['keyfile']
+stt_model = config['model'] or './model'
+cors = config['cors'] or ['*']
+port = config['port'] or 8000
+certfile = config['https']['certfile'] or './cert.pem'
+keyfile = config['https']['keyfile'] or './key.pem'
 
 app = FastAPI()
 
