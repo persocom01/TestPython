@@ -7,7 +7,7 @@
         "enabled": false,
         "keyfile": "./config/key.pem"
     },
-    "model": "./vosk-model-small-en-us-0.15",
+    "model": "./modules/vosk_stt/model",
     "path": "/",
     "port": 8000
 }

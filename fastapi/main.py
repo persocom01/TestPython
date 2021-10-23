@@ -8,7 +8,7 @@ import pathlib
 import uvicorn
 import base64
 import time
-import vosk_stt as stt
+import modules.vosk_stt.vosk as stt
 
 config_path = './config/config.json'
 
@@ -18,6 +18,7 @@ try:
 except Exception as e:
     print(f'error reading config file: {e}')
 
+# Models can be found from: https://alphacephei.com/vosk/models
 stt_model = config['model'] or './model'
 cors = config['cors'] or ['*']
 port = config['port'] or 8000

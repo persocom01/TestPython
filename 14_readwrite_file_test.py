@@ -11,7 +11,8 @@ import time
 # r+ - r + write
 # rb+ - rb + write
 # w - write. OVERWRITES file if it exists. Creates a new one if it doesn't.
-# wb - write binary
+# wb - write binary. While the difference in speed from w may not be
+# appreciated, this may be necessary when writing data from non text files.
 # w+ - w + read
 # wb+ - wb + read
 # a - append. Creates a new file if it doesn't exist.
