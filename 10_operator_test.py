@@ -6,7 +6,7 @@
 # var.method
 # **
 
-# Demonstrates use of conditions in variables.]
+# Demonstrates use of conditions in variables.
 # The logical operators are and, or and not.
 # and and or are evaluated from left to right.
 letter1, letter2, letter3 = 'a', '', 'c'
