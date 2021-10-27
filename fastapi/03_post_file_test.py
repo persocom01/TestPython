@@ -3,8 +3,8 @@ from requests_toolbelt import MultipartEncoder
 import os
 
 filepath = './fastapi/upload.txt'
-domain = 'http://localhost:3000'
-path = f'{domain}/api/buffer'
+domain = 'http://localhost:8000'
+path = f'{domain}/file'
 
 
 def send_request(path, post=False, **kwargs):
