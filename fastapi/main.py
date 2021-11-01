@@ -58,7 +58,10 @@ class PydanticTest(BaseModel):
 
 @app.get(config['commands']['get_help'] or '/')
 def get_help():
-    return config['commands']
+    try:
+        return config['commands']
+    except Exception:
+        return 'error reading commands from config file'
 
 
 @app.get(config['commands']['get_divide_query_by_two'] or '/{query}')
