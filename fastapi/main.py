@@ -21,6 +21,13 @@ except Exception as e:
 # Models can be found from: https://alphacephei.com/vosk/models
 stt_model = config['model'] or './model'
 cors = config['cors'] or ['*']
+help_path = config['commands']['get_help'] or '/'
+divide_query_by_two_path = config['commands']['get_divide_query_by_two'] or '/{query}'
+encoded_file_path = config['commands']['post_encoded_file'] or '/_file'
+normal_file_path = config['commands']['post_file'] or '/file'
+pydantic_path = config['commands']['post_pydantic'] or '/pydantic'
+request_path = config['commands']['post_request'] or '/req'
+speech2text_path = config['commands']['post_speech2text'] or '/stt'
 port = config['port'] or 8000
 certfile = config['https']['certfile'] or './cert.pem'
 keyfile = config['https']['keyfile'] or './key.pem'
@@ -56,7 +63,18 @@ class PydanticTest(BaseModel):
     direction: Direction
 
 
-@app.post('/pydantic')
+@app.get(help_path)
+def get_help():
+    return config['commands']
+
+
+@app.get(divide_query_by_two_path)
+def get_divide_query_by_two(query: float):
+    output = query / 2
+    return output
+
+
+@app.post(pydantic_path)
 def post_object(data: PydanticTest):
     print('post json with data validation')
     print('string: ' + data.string)
@@ -67,7 +85,7 @@ def post_object(data: PydanticTest):
     return data
 
 
-@app.post('/file')
+@app.post(normal_file_path)
 async def post_file_upload(file: UploadFile = File(...)):
     print('post file')
     # This is the async way to get file contents according to:
@@ -82,7 +100,7 @@ async def post_file_upload(file: UploadFile = File(...)):
     return content
 
 
-@app.post('/_file')
+@app.post(encoded_file_path)
 def post_encoded_file(file: bytes = File(...)):
     print('post encoded bytes file')
     try:
@@ -99,7 +117,7 @@ def post_encoded_file(file: bytes = File(...)):
     return content
 
 
-@app.post('/request')
+@app.post(request_path)
 async def return_json(res: Request):
     pass
 #     data = await res.json()
@@ -109,7 +127,7 @@ async def return_json(res: Request):
 vosk = stt.Vosk(stt_model)
 
 
-@app.post('/stt')
+@app.post(speech2text_path)
 def post_audio(file: UploadFile = File(...)):
     start = time.time()
     with file.file as f:
@@ -128,12 +146,6 @@ def post_audio(file: UploadFile = File(...)):
 #         await asyncio.sleep(0.1)
 #         payload = next(measurements)
 #         await websocket.send_json(payload)
-
-
-@app.get('/{query}')
-def get_divide_query_by_two(query: float):
-    output = query / 2
-    return output
 
 
 # uvicorn main:app --reload

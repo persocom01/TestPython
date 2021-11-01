@@ -1,4 +1,13 @@
 {
+    "commands": {
+        "get_divide_query_by_two": "/{query}",
+        "get_help": "/",
+        "post_encoded_file": "/_file",
+        "post_file": "/file",
+        "post_pydantic": "/pydantic",
+        "post_request": "/req",
+        "post_speech2text": "/stt"
+    },
     "cors": [
         "*"
     ],
@@ -8,6 +17,5 @@
         "keyfile": "./config/key.pem"
     },
     "model": "./modules/vosk_stt/model",
-    "path": "/",
     "port": 8000
 }
