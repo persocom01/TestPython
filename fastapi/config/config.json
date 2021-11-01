@@ -16,6 +16,7 @@
         "enabled": false,
         "keyfile": "./config/key.pem"
     },
+    "log_prefix": "[api_test]",
     "model": "./modules/vosk_stt/model",
     "port": 8000
 }

@@ -19,6 +19,7 @@ except Exception as e:
     print(f'error reading config file: {e}')
 
 # Models can be found from: https://alphacephei.com/vosk/models
+log_prefix = config['log_prefix']
 stt_model = config['model'] or './model'
 cors = config['cors'] or ['*']
 port = config['port'] or 8000
@@ -58,6 +59,7 @@ class PydanticTest(BaseModel):
 
 @app.get(config['commands']['get_help'] or '/')
 def get_help():
+    print(f'{log_prefix}getting help')
     try:
         return config['commands']
     except Exception:
@@ -66,13 +68,14 @@ def get_help():
 
 @app.get(config['commands']['get_divide_query_by_two'] or '/{query}')
 def get_divide_query_by_two(query: float):
+    print(f'{log_prefix}dividing {query} by two')
     output = query / 2
     return output
 
 
 @app.post(config['commands']['post_pydantic'] or '/pydantic')
 def post_object(data: PydanticTest):
-    print('post json with data validation')
+    print(f'{log_prefix}post json with data validation')
     print('string: ' + data.string)
     print('bool: ' + str(data.bool))
     print('int: ' + str(data.int))
@@ -83,7 +86,7 @@ def post_object(data: PydanticTest):
 
 @app.post(config['commands']['post_file'] or '/file')
 async def post_file_upload(file: UploadFile = File(...)):
-    print('post file')
+    print(f'{log_prefix}post file')
     # This is the async way to get file contents according to:
     # https://fastapi.tiangolo.com/tutorial/request-files/
     # You can also get the file contents by using non async file.file.read(),
@@ -98,7 +101,7 @@ async def post_file_upload(file: UploadFile = File(...)):
 
 @app.post(config['commands']['post_encoded_file'] or '/_file')
 def post_encoded_file(file: bytes = File(...)):
-    print('post encoded bytes file')
+    print(f'{log_prefix}post encoded bytes file')
     try:
         content = base64.b64decode(file).decode()
         encoded_message = file.decode()
@@ -120,7 +123,7 @@ async def return_json(res: Request):
 #     return data
 
 # By preloading the model, api response time is reduced.
-vosk = stt.Vosk(stt_model)
+vosk = stt.Vosk(stt_model, log_prefix=log_prefix)
 
 
 @app.post(config['commands']['post_speech2text'] or '/stt')
@@ -128,10 +131,10 @@ def post_audio(file: UploadFile = File(...)):
     start = time.time()
     with file.file as f:
         text = vosk.text_from_sound_file(f)
-    print(f'[vosk_stt]speech to text: {text}')
+    print(f'{log_prefix}speech to text: {text}')
     end = time.time()
     total = start - end
-    print(f'[vosk_stt]transcription time: {total}')
+    print(f'{log_prefix}transcription time: {total}')
     return text
 
 
