@@ -26,6 +26,16 @@ port = config['port'] or 8000
 certfile = config['https']['certfile'] or './cert.pem'
 keyfile = config['https']['keyfile'] or './key.pem'
 
+defaults = {
+    'get_help': '/',
+    'get_divide_query_by_two': '/{query}',
+    'post_pydantic': '/pydantic',
+    'post_file': '/file',
+    'post_encoded_file': '/_file',
+    'post_request': '/req',
+    'post_speech2text': '/stt'
+}
+
 app = FastAPI()
 
 # Cross origin error is something you may encounter when the browser attempts
@@ -57,23 +67,23 @@ class PydanticTest(BaseModel):
     direction: Direction
 
 
-@app.get(config['commands']['get_help'] or '/')
+@app.get(config['commands']['get_help'] or defaults['get_help'])
 def get_help():
     print(f'{log_prefix}getting help')
     try:
         return config['commands']
     except Exception:
-        return 'error reading commands from config file'
+        return defaults
 
 
-@app.get(config['commands']['get_divide_query_by_two'] or '/{query}')
+@app.get(config['commands']['get_divide_query_by_two'] or defaults['get_divide_query_by_two'])
 def get_divide_query_by_two(query: float):
     print(f'{log_prefix}dividing {query} by two')
     output = query / 2
     return output
 
 
-@app.post(config['commands']['post_pydantic'] or '/pydantic')
+@app.post(config['commands']['post_pydantic'] or defaults['post_pydantic'])
 def post_object(data: PydanticTest):
     print(f'{log_prefix}post json with data validation')
     print('string: ' + data.string)
@@ -84,7 +94,7 @@ def post_object(data: PydanticTest):
     return data
 
 
-@app.post(config['commands']['post_file'] or '/file')
+@app.post(config['commands']['post_file'] or defaults['post_file'])
 async def post_file_upload(file: UploadFile = File(...)):
     print(f'{log_prefix}post file')
     # This is the async way to get file contents according to:
@@ -99,7 +109,7 @@ async def post_file_upload(file: UploadFile = File(...)):
     return content
 
 
-@app.post(config['commands']['post_encoded_file'] or '/_file')
+@app.post(config['commands']['post_encoded_file'] or defaults['post_encoded_file'])
 def post_encoded_file(file: bytes = File(...)):
     print(f'{log_prefix}post encoded bytes file')
     try:
@@ -116,7 +126,7 @@ def post_encoded_file(file: bytes = File(...)):
     return content
 
 
-@app.post(config['commands']['post_request'] or '/req')
+@app.post(config['commands']['post_request'] or defaults['post_request'])
 async def return_json(res: Request):
     pass
 #     data = await res.json()
@@ -126,7 +136,7 @@ async def return_json(res: Request):
 vosk = stt.Vosk(stt_model, log_prefix=log_prefix)
 
 
-@app.post(config['commands']['post_speech2text'] or '/stt')
+@app.post(config['commands']['post_speech2text'] or defaults['post_speech2text'])
 def post_audio(file: UploadFile = File(...)):
     start = time.time()
     with file.file as f:
