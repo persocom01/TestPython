@@ -19,7 +19,7 @@ except Exception as e:
     print(f'error reading config file: {e}')
 
 # Models can be found from: https://alphacephei.com/vosk/models
-log_prefix = config['log_prefix']
+log_prefix = config['log_prefix'] or '[api_test]'
 stt_model = config['model'] or './model'
 cors = config['cors'] or ['*']
 port = config['port'] or 8000
