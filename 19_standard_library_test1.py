@@ -206,7 +206,7 @@ print()
 
 end_dt = datetime.datetime.now()
 end_s = time.time()
-total_dt = start_dt - end_dt
-total_s = start_s - end_s
-print(f'module time usig datetime: {total_dt}')
+total_dt = end_dt - start_dt
+total_s = end_s - start_s
+print(f'module time using datetime: {total_dt}')
 print(f'module time using time: {total_s}')
