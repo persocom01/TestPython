@@ -19,22 +19,31 @@ text = '''
 </ul>
 '''
 
-# Matches beginnings of string. Returns None if absent.
+# Matches the beginning of string. If the string does not start with the
+# pattern, returns None.
 # The r in front of a string makes it a raw string literal, which allows use of
 # \ without escaping them unlike regular strings.
-match = re.match(r'facebook', text)
+pattern = r'facebook(.{4})'
+match = re.match(pattern, text)
 print('match:')
 if match:
-    # Alternatively, match[0].
     print(f'{match.group()} present from beginning of string')
 else:
-    print('facebook absent from beginning of string')
+    print('return None due to no match at beginning of string')
 
-# Matches first instance anywhere in string. Returns None if absent.
-search = re.search('facebook', text)
+# Matches first instance anywhere in string. Returns None if absent. Normally
+# used to test if something is present or absent. To search for all instances,
+# use re.findall() or re.finditer() instead. .findall() returns a list of
+# matches. If the matches have groups, the list becomes a list of tuples.
+search = re.search(pattern, text)
 print('search:')
 if search:
-    # Alternatively, search[0].
+    # Match and search return objects similar to lists, where [0] corresponds
+    # to the full text match and the other numbers to groups. Using
+    # .group('name_or_number') returns individual groups, where number is
+    # functionally equivalent to treating the object like a list. Leaving the
+    # argument empty is the same as 0. To return the whole list,
+    # print(search.groups()).
     print(search.group())
     # Returns start position of match. Note that the first position is 0.
     print(search.start())
@@ -60,15 +69,15 @@ print()
 # re.I is known as a flag. re.I=ignore case. re.M=multiline.
 # re.S = dotall. (makes . also match newline)
 # The | divider is needed to pass multiple flags.
-website_names = re.findall(
-    r'\bhttps?://\w+\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
+pattern = r'\bhttps?://\w+\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?'
+website_names = re.findall(pattern, text, re.I | re.M)
 # Demonstrates use of negative lookahead to exclude www website names.
 # (?!) is called negative lookahead. It looks ahead of itself to ensure that it
 # is not behind the text in front of it.
 # Replacing ! with = makes it positive. (?=) is positive lookahead.
 # (?<=) is lookbehind.
-non_www_website_names = re.findall(
-    r'\bhttps?://(?!www)(?:\w+)\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?', text, re.I | re.M)
+pattern = r'\bhttps?://(?!www)(?:\w+)\.\w+(?:\.\w+)?(?:/\+?\w+)*/?(?:\.[a-z]{2,4})?'
+non_www_website_names = re.findall(pattern, text, re.I | re.M)
 print('websites:')
 pprint.pprint(website_names)
 print('non-www websites:')
@@ -85,16 +94,27 @@ print('words without o:', words_without_o)
 print('words with a or e:', words_with_a_or_e)
 print()
 
-# Demonstrates use of groups.
+# Demonstrates more complex use of groups.
+# .findall() does not preserve named groups. match and search work, but for
+# multiple matches use .finditer() instead.
 # (?P<name>) is a named group.
 pattern = r'The (quick) brown fox (jumps (over)) the (?P<name>lazy) dog\.'
-search = re.search(pattern, text)
-# 4 groups total.
-print(len(search.groups()))
-# You can call each group individually using search.group(1).
-# 1 can be a name if named groups were used.
-for group in search.groups():
-    print(group)
+searches = re.finditer(pattern, text)
+while True:
+    try:
+        search = next(searches)
+        print('regex groups:')
+        # 4 groups total.
+        print(len(search.groups()))
+        # You can use the name of a group to summon it.
+        print(search.group('name'))
+        print(search.groups())
+        print(search[2])
+    except StopIteration:
+        print('end of iterator')
+        print()
+        break
+
 # Demonstrates replacement of searched string as well as group indicators
 # \1 and \g<name> specifically.
 # re.sub replaces all instances of the pattern.
