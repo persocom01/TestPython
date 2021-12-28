@@ -7,10 +7,11 @@ texts = []
 texts = texts + ['spam said ' + 2*'\'eggs\'']
 
 # Demonstrates r used to indicate rawtext as well as quoted string autojoin.
-# Often used with regex.
+# r is often used with regex.
 texts.append(
     r'^spam\s[a-z]{3}'
-    r'\seggs?')
+    r'\seggs?'
+    )
 
 # Demonstrates multiline string without \n. \ is needed to escape autonewline.
 texts.append('''\
@@ -18,13 +19,16 @@ spam
 and
 eggs\
     ''')
+print('appended text:')
 for t in texts:
-    print(t, '\n')
+    print(t)
+print()
 
 # Demonstrates use of the % operator to insert a %d int, %s string,
 # and %.*f a float with * decimal places.
 temperature_today = 'The temperature at %dpm in %s today was %.*f degrees Celcius.' % (
     5, 'Singapore', 2, 30.4267)
+print('using the % operator:')
 print(temperature_today)
 print()
 
@@ -36,8 +40,10 @@ slice_text = 'spam and eggs'
 # string_slice[start:stop:step]
 slices = [5, -7, len(slice_text) - 6, slice(0, 6)]
 
+print('string slicing:')
 for s in slices:
     print(slice_text[s])
+print()
 
 # Demonstrates list method insert.
 insert_text = 'spam and eggs'
@@ -52,6 +58,7 @@ for i in insert_text_list:
         # Trying to modify existing ones.
         insert_text_list.insert(insert_text_list.index(i) + 1, 'ham')
 # Prints list without commas.
+print('insert string:')
 print(*insert_text_list, '\n', sep=' ')
 
 # Demonstrates common functions used on strings.
