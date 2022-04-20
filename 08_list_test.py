@@ -63,7 +63,7 @@ del fruits_numbered[key]
 bisect.insort(fruits_numbered, (key, 'guava'))
 print(fruits_numbered)
 
-# Delates list.
+# Deletes list.
 fruits.clear()
 print()
 
@@ -78,8 +78,17 @@ print('You struck down the ' + enemies.popleft() + '.')
 print('Enemies left:', enemies)
 print()
 
-# Demonstrates 2d list.
+# Demonstrates mathematical operations between number lists
+nums = [1, 2, 3]
+nums2 = [3, 2, 1]
+result = []
+for n, n2 in zip(nums, nums2):
+    result.append(n - n2)
+print('subtraction between lists:')
+print(result)
+print()
 
+# Demonstrates 2d list.
 grid = [
     [1, 2, 3],
     [4, 5, 6],
