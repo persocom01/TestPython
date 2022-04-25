@@ -19,4 +19,3 @@ elif 10 > x > 0:
     print('{} is between 10 and zero'.format(x))
 else:
     print(str(x) + ' is smaller than zero')
-# 
