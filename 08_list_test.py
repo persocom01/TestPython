@@ -82,8 +82,8 @@ print()
 nums = [1, 2, 3]
 nums2 = [3, 2, 1]
 result = []
-for n, n2 in zip(nums, nums2):
-    result.append(n - n2)
+for e, e2 in zip(nums, nums2):
+    result.append(e - e2)
 print('subtraction between lists:')
 print(result)
 print()
