@@ -76,7 +76,8 @@ items.update(items2)
 print('adding dictionaries together:', items)
 # Demonstrates get function. A default value can be specified in case
 # the key does not exist. In this case the default is 'No ammo.'
-# Can also be used in a dictionary comprehension to retrieve multiple keys.
+# If the value of a key is another dictionary, get can be chained to get values
+# from deeper keys.
 print('get:', items.get('Ammo', 'No ammo.'))
 # Demonstrates deleting a key from a dictionary.
 # It is possible to use del items['Ammo'] instead, but it will return an error
