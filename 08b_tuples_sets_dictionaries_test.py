@@ -69,9 +69,12 @@ items['Ammo'] = ['Wood arrows']
 # Demonstrates appending to a key containing a list.
 items['Ammo'].append('Iron arrows')
 # Demonstrates adding dictionaries together.
-# In cases where this doesn't work, use:
+# Alternative methods:
 # items = dict(list(items.items()) + list(items2.items()))
-# Note that the above causes items in list2 to overwrite items in list1.
+# items = {**items, **items2}
+# Note that in both cases, the second dictionary will overwrite the first if
+# they share common keys. If this is undesirable, a for loop is recommended
+# instead.
 items.update(items2)
 print('adding dictionaries together:', items)
 # Demonstrates get function. A default value can be specified in case
