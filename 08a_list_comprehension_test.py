@@ -11,6 +11,7 @@ is_sevens = ['yes' if x == 7 else 'no' for x in range(10)]
 print(is_sevens)
 
 # Demonstrates multiple conditions using multiple if.
+# Conditions are evaluated from left to right.
 even_and_multiple_of_3_above_0 = [x for x in range(20) if x % 2 == 0 if x % 3 == 0 if x > 0]
 print(even_and_multiple_of_3_above_0)
 
