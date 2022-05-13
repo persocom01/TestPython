@@ -29,6 +29,8 @@ fruits2.reverse()
 print('reverse:', fruits2)
 
 fruits.append('grape')
+# extend is like append, but for lists. It returns None. If you wish to return
+# the combined lists instead, use result = list1 + list2
 fruits.extend(['mango', 'papaya'])
 print('append:', fruits)
 
