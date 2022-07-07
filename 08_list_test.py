@@ -1,25 +1,25 @@
-# Demonstrates various list methods.
+# Demonstrates various list methods
 from collections import deque
 from functools import reduce
 import bisect
 
-# List names are plural by convention.
+# List names are plural by convention
 # Lists are considered mutable objects, thus when var = list is used, the list
 # is passed by reference instead of by value. As a result, any changes to list
 # will affect var.
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple']
 
-# Size of list.
+# Size of list
 print(len(fruits))
 print(fruits.count('apple'))
-# If you just need to know if a value is in a list, use: value in list.
+# If you just need to know if a value is in a list, use: value in list
 print(fruits.index('apple'))
-# Find an instance of apple starting at index 2.
+# Find an instance of apple starting at index 2
 print(fruits.index('apple', 2))
-# slice() works on lists as it does strings.
+# slice() works on lists as it does strings
 print('slice:', fruits[slice(0, 10, 2)])
 
-# Demonstrates copy and reverse functions.
+# Demonstrates copy and reverse functions
 # The significance of copy() is that the value remains unchanged when the
 # original variable is modified.
 fruits2 = fruits.copy()
@@ -51,6 +51,16 @@ def last_letter(x):
 
 fruits.sort(key=last_letter)
 print('sort by last letter:', fruits)
+
+# Demonstrates chcking for elements in a list
+e = 'apple'
+if e in fruits:
+    print(f'{e} is in fruits')
+
+# Checking for multiple elements
+e = ['apple', 'orange']
+if all(x in fruits for x in e):
+    print(f'{e} is in fruits')
 
 # list.pop(index=None) removes last entry and returns it.
 # If index is given it removes the correspending list element.
