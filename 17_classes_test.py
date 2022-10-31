@@ -13,7 +13,9 @@ with open(file_path, 'w') as f:
     json.dump(cats, f, sort_keys=False, indent=4, ensure_ascii=False)
 
 # Demonstrates use of requests to retrieve files online.
-# There are 5 HTTP request methods: GET, POST, PATCH, DELETE and HEAD.
+# There are 5 HTTP request methods: GET, POST, PATCH, DELETE and HEAD. They can
+# be used via the format requests.method(url, other_params). The kind of
+# available params can be found here: https://www.w3schools.com/python/module_requests.asp
 r = requests.get(
     'https://raw.githubusercontent.com/persocom01/TestPython/master/files/file3.txt')
 # stream = True is meant for large files. The file is downloaded in chunks
