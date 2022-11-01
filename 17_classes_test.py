@@ -16,8 +16,10 @@ with open(file_path, 'w') as f:
 # There are 5 HTTP request methods: GET, POST, PATCH, DELETE and HEAD. They can
 # be used via the format requests.method(url, other_params). The kind of
 # available params can be found here: https://www.w3schools.com/python/module_requests.asp
+# auth=(user, password) is the simpliest form of authentication for get.
 r = requests.get(
-    'https://raw.githubusercontent.com/persocom01/TestPython/master/files/file3.txt')
+    'https://raw.githubusercontent.com/persocom01/TestPython/master/files/file3.txt',
+    auth=None)
 # stream = True is meant for large files. The file is downloaded in chunks
 # instead of all at once.
 r_img = requests.get(
