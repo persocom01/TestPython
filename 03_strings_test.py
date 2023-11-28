@@ -34,7 +34,8 @@ print()
 
 # Demonstrates different ways to slice a string.
 # 5 is the 6th char from the front. -7 is the 7th char from the back.
-# slice(start, end, step=1) allows you to slice multiple chars at once.
+# slice(start, end, step=1) allows you to slice multiple chars at once. To
+# avoid specifying the end, None can be used instead of len(string).
 slice_text = 'spam and eggs'
 # The default string slice can have 3 parameters:
 # string_slice[start:stop:step]
